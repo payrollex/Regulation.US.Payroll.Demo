@@ -1,0 +1,21 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "linda.okafor@apexdigital.com",
+  "testName": "DEMO-TC06-US-Linda-Garnishment",
+  "testDescription": "Linda Okafor — Biweekly January 2026. Child support garnishment $500/period. CCPA limit (60% disposable) validated by GarnishmentAlgorithm.cs. Garnishment applied post-tax.",
+  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularSalary",    "value": 2500.00,   "description": "$65,000 / 26 pay periods" },
+      { "wageTypeName": "FederalIncomeTax", "value": -133.00,   "description": "TODO: verify — Single, lower bracket" },
+      { "wageTypeName": "SocialSecurityTax","value": -155.00,   "description": "$2,500 × 6.2%" },
+      { "wageTypeName": "MedicareTax",      "value": -36.25,    "description": "$2,500 × 1.45%" },
+      { "wageTypeName": "StateSIT",         "value": -73.00,    "description": "TODO: verify — NY graduated on $2,500" },
+      { "wageTypeName": "LocalTax",         "value": -56.00,    "description": "TODO: verify — NYC city graduated" },
+      { "wageTypeName": "Garnishment",      "value": -500.00,   "description": "Child support — CCPA limit 60% × ~$2,048 = $1,229 → $500 within limit" },
+      { "wageTypeName": "NetPay",           "value": 1548.00,   "description": "TODO: verify with PE (after garnishment deduction)" }
+    ]
+  }
+}

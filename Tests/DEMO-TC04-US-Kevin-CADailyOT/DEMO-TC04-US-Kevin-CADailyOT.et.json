@@ -1,0 +1,36 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "kevin.wu@apexdigital.com",
+  "testName": "DEMO-TC04-US-Kevin-CADailyOT",
+  "testDescription": "Kevin Wu — Biweekly January 2026 (sprint week). CA Labor Code §510 daily OT: 3h on days >8h @ 1.5× = $270. CA SDI 1.3% uncapped (SB 951). Period case: CADay1-4Hours with 9/9/8/9/8.",
+  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
+  "periodCases": [
+    {
+      "caseName": "US.EmployeeWorkHours",
+      "values": [
+        { "caseFieldName": "US.CADay1Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
+        { "caseFieldName": "US.CADay2Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
+        { "caseFieldName": "US.CADay3Hours", "value": "8", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
+        { "caseFieldName": "US.CADay4Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
+        { "caseFieldName": "US.CADay5Hours", "value": "8", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" }
+      ]
+    }
+  ],
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularWages",     "value": 4800.00,  "description": "80h × $60 (standard biweekly)" },
+      { "wageTypeName": "CADailyOvertime",  "value": 270.00,   "description": "3h × $90 (1.5×) — Mon+Tue+Thu each 1h over 8" },
+      { "wageTypeName": "GrossWagesTotal",  "value": 5070.00,  "description": "Regular + CA daily OT" },
+      { "wageTypeName": "FITTaxableWages",  "value": 4596.50,  "description": "$5,070 − 401k $253.50 − health $220" },
+      { "wageTypeName": "FICATaxableWages", "value": 4850.00,  "description": "$5,070 − health $220" },
+      { "wageTypeName": "FederalIncomeTax", "value": -608.00,  "description": "TODO: verify — Single, 22% bracket" },
+      { "wageTypeName": "SocialSecurityTax","value": -300.70,  "description": "$4,850 × 6.2%" },
+      { "wageTypeName": "MedicareTax",      "value": -70.33,   "description": "$4,850 × 1.45%" },
+      { "wageTypeName": "StateSIT",         "value": -280.00,  "description": "TODO: verify — CA EDD DE44 Method B" },
+      { "wageTypeName": "CASDI",            "value": -65.91,   "description": "$5,070 × 1.3% — SB 951 uncapped" },
+      { "wageTypeName": "NetPay",           "value": 3335.00,  "description": "TODO: verify with PE" }
+    ]
+  }
+}

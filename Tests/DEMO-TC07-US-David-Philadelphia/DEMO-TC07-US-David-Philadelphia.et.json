@@ -1,0 +1,29 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Weekly",
+  "employeeIdentifier": "david.kim@apexdigital.com",
+  "testName": "DEMO-TC07-US-David-Philadelphia",
+  "testDescription": "David Kim — Weekly January 2026 (standard 40h). Four tax lines: FIT + FICA + PA SIT 3.07% flat + Philadelphia Wage Tax 3.75% (PSD 510101 resident). PA local tax resolved via PSD code lookup.",
+  "period": "2026-01-05T00:00:00.0Z/2026-01-11T00:00:00.0Z",
+  "periodCases": [
+    {
+      "caseName": "US.EmployeeWorkHours",
+      "values": [
+        { "caseFieldName": "US.RegularHours",  "value": "40", "start": "2026-01-05T00:00:00.0Z" },
+        { "caseFieldName": "US.OvertimeHours", "value": "0",  "start": "2026-01-05T00:00:00.0Z" }
+      ]
+    }
+  ],
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularWages",     "value": 1280.00,  "description": "40h × $32" },
+      { "wageTypeName": "FederalIncomeTax", "value": -95.00,   "description": "TODO: verify — Single, weekly annualization ×52" },
+      { "wageTypeName": "SocialSecurityTax","value": -79.36,   "description": "$1,280 × 6.2%" },
+      { "wageTypeName": "MedicareTax",      "value": -18.56,   "description": "$1,280 × 1.45%" },
+      { "wageTypeName": "StateSIT",         "value": -39.30,   "description": "$1,280 × 3.07% PA flat rate" },
+      { "wageTypeName": "LocalTax",         "value": -48.00,   "description": "$1,280 × 3.75% Philadelphia EIT (PSD 510101 resident rate)" },
+      { "wageTypeName": "NetPay",           "value": 999.00,   "description": "TODO: verify with PE" }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "marcus.johnson@apexdigital.com",
+  "testName": "DEMO-TC02-US-Marcus-NJtoNY",
+  "testDescription": "Marcus Johnson — Biweekly January 2026. NJ resident / NY work state, no reciprocity. Both NY (WT 5300) and NJ (WT 5301) withholding appear on the same payslip.",
+  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularSalary",    "value": 5769.23,  "description": "$150,000 / 26 pay periods" },
+      { "wageTypeName": "FITTaxableWages",  "value": 5223.08,  "description": "Gross − 401k − health" },
+      { "wageTypeName": "FICATaxableWages", "value": 5369.23,  "description": "Gross − health (401k not deducted from FICA)" },
+      { "wageTypeName": "FederalIncomeTax", "value": -780.00,  "description": "TODO: verify with PE — Single, Pub 15-T biweekly annualization ×26" },
+      { "wageTypeName": "SocialSecurityTax","value": -332.89,  "description": "$5,369.23 × 6.2%" },
+      { "wageTypeName": "MedicareTax",      "value": -77.85,   "description": "$5,369.23 × 1.45%" },
+      { "wageTypeName": "StateSIT",         "value": -306.00,  "description": "TODO: verify — NY work-state graduated withholding" },
+      { "wageTypeName": "ResidentSIT",      "value": -180.00,  "description": "TODO: verify — NJ resident graduated withholding (WT 5301)" },
+      { "wageTypeName": "NetPay",           "value": 3843.00,  "description": "TODO: verify with PE" }
+    ]
+  }
+}

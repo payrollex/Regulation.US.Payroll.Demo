@@ -1,0 +1,20 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "carlos.rivera@apexdigital.com",
+  "testName": "DEMO-TC08-US-Apex-Transit-L2",
+  "testDescription": "Carlos Rivera — Biweekly February 2026. L2 §132 transit benefit ($300/period) reduces BOTH FIT and FICA taxable wages. Validates T4-Customizing L2 regulation layer without modifying the base US.Payroll regulation.",
+  "period": "2026-02-03T00:00:00.0Z/2026-02-16T00:00:00.0Z",
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularSalary",        "value": 7115.38,   "description": "$185,000 / 26 — unchanged by L2" },
+      { "wageTypeName": "TransitBenefit",        "value": -300.00,   "description": "TODO: verify WT name — L2 §132(f) pre-tax transit deduction" },
+      { "wageTypeName": "FITTaxableWages",       "value": 6815.38,   "description": "Gross − transit $300 — L2 reduces FIT taxable" },
+      { "wageTypeName": "FICATaxableWages",      "value": 6815.38,   "description": "Gross − transit $300 — L2 also reduces FICA taxable (§132 exemption)" },
+      { "wageTypeName": "FederalIncomeTax",      "value": -1154.00,  "description": "TODO: verify — should be ~$96 less than TC03 (L2 transit saves tax)" },
+      { "wageTypeName": "SocialSecurityTax",     "value": -422.55,   "description": "TODO: verify — $6,815.38 × 6.2% (lower than TC03 $441.15)" },
+      { "wageTypeName": "MedicareTax",           "value": -98.82,    "description": "TODO: verify — $6,815.38 × 1.45%" }
+    ]
+  }
+}

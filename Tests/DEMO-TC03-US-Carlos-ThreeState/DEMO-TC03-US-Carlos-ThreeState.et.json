@@ -1,0 +1,22 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "carlos.rivera@apexdigital.com",
+  "testName": "DEMO-TC03-US-Carlos-ThreeState",
+  "testDescription": "Carlos Rivera — Biweekly January 2026. Three-state allocation NY(60%)/NJ(25%)/CT(15%). WT 5310 MultiStateWithholding produces 4 state/local tax lines on one payslip.",
+  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularSalary",           "value": 7115.38,  "description": "$185,000 / 26 pay periods" },
+      { "wageTypeName": "FederalIncomeTax",         "value": -1250.00, "description": "TODO: verify — Single, approaching 32% bracket" },
+      { "wageTypeName": "SocialSecurityTax",        "value": -441.15,  "description": "$7,115.38 × 6.2%" },
+      { "wageTypeName": "MedicareTax",              "value": -103.17,  "description": "$7,115.38 × 1.45%" },
+      { "wageTypeName": "MultiStateWithholding_NY", "value": -370.00,  "description": "TODO: verify — WT 5310 slot 1: NY 60% share ($111k annual)" },
+      { "wageTypeName": "MultiStateWithholding_NJ", "value": -95.00,   "description": "TODO: verify — WT 5310 slot 2: NJ 25% share ($46,250 annual)" },
+      { "wageTypeName": "MultiStateWithholding_CT", "value": -76.00,   "description": "TODO: verify — WT 5310 slot 3: CT 15% share ($27,750 annual)" },
+      { "wageTypeName": "LocalTax",                 "value": -200.00,  "description": "TODO: verify — NYC local on NY-allocated share only" },
+      { "wageTypeName": "NetPay",                   "value": 4480.00,  "description": "TODO: verify with PE" }
+    ]
+  }
+}

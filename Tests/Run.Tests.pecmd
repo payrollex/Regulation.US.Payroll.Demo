@@ -1,0 +1,34 @@
+# Run all demo integration tests
+# Prerequisite: T1-Bootstrap must be completed first
+
+# DEMO-TC01 — Sara Chen: Monthly, January 2026
+# Company car · 401k · W-4 Step3/4c · Additional Medicare trigger
+PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
+
+# DEMO-TC02 — Marcus Johnson: NJ→NY split-state withholding
+# Biweekly, both NY and NJ on same payslip (no reciprocity)
+PayrunEmployeeTest DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json
+
+# DEMO-TC03 — Carlos Rivera: Three-state allocation NY/NJ/CT
+# StateAllocationCount=3 → WT 5310 MultiStateWithholding
+PayrunEmployeeTest DEMO-TC03-US-Carlos-ThreeState/DEMO-TC03-US-Carlos-ThreeState.et.json
+
+# DEMO-TC04 — Kevin Wu: CA daily overtime, sprint week
+# CADay1-5Hours with daily OT trigger (§510 Labor Code)
+PayrunEmployeeTest DEMO-TC04-US-Kevin-CADailyOT/DEMO-TC04-US-Kevin-CADailyOT.et.json
+
+# DEMO-TC05 — Jessica Torres: TX no-SIT baseline
+# Also covers Q1 supplemental wage at flat 22%
+PayrunEmployeeTest DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json
+
+# DEMO-TC06 — Linda Okafor: Child support garnishment
+# CCPA limit validation (60% disposable earnings)
+PayrunEmployeeTest DEMO-TC06-US-Linda-Garnishment/DEMO-TC06-US-Linda-Garnishment.et.json
+
+# DEMO-TC07 — David Kim: Philadelphia weekly
+# PA SIT (3.07%) + Philadelphia EIT (3.75%) — PSD code resolution
+PayrunEmployeeTest DEMO-TC07-US-David-Philadelphia/DEMO-TC07-US-David-Philadelphia.et.json
+
+# DEMO-TC08 — L2 §132 transit benefit (requires T4-Customizing completed)
+# Carlos with $300/period transit — confirms L2 reduces FIT/FICA taxable wages
+PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-L2.et.json

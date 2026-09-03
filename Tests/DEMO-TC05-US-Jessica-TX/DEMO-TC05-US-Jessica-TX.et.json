@@ -1,0 +1,20 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
+  "tenantIdentifier": "Apex.DigitalSolutions",
+  "payrollName": "Apex.Payroll.Biweekly",
+  "employeeIdentifier": "jessica.torres@apexdigital.com",
+  "testName": "DEMO-TC05-US-Jessica-TX",
+  "testDescription": "Jessica Torres — Biweekly January 2026. Texas has no state income tax: exactly 2 tax lines (FIT + FICA). Simplest payslip in the demo — use as baseline contrast with multi-state employees.",
+  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
+  "results": {
+    "wageTypeResults": [
+      { "wageTypeName": "RegularSalary",    "value": 3076.92,  "description": "$80,000 / 26 pay periods" },
+      { "wageTypeName": "FITTaxableWages",  "value": 2643.84,  "description": "$3,076.92 − 401k $123.08 − health $310" },
+      { "wageTypeName": "FederalIncomeTax", "value": -117.00,  "description": "TODO: verify — MFJ, lower bracket" },
+      { "wageTypeName": "SocialSecurityTax","value": -190.77,  "description": "TODO: verify — $3,076.92 × 6.2% (health/401k interaction)" },
+      { "wageTypeName": "MedicareTax",      "value": -44.62,   "description": "TODO: verify — $3,076.92 × 1.45%" },
+      { "wageTypeName": "StateSIT",         "value": 0.00,     "description": "Texas has no state income tax — confirmed $0" },
+      { "wageTypeName": "NetPay",           "value": 2525.00,  "description": "TODO: verify with PE" }
+    ]
+  }
+}
