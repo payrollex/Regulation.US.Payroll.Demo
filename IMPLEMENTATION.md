@@ -9,9 +9,9 @@
 | Tutorial | Status | Files | Notes |
 |:---|:---:|:---:|:---|
 | T0 Scaffold | ✅ Done | README, LICENSE, .gitignore, .editorconfig | |
-| T1 Bootstrap | 🔲 Open | ~15 JSON + 1 pecmd | Resolve Q-CA-OT first |
-| T2 Lifecycle | 🔲 Open | ~5 JSON + 1 pecmd | Depends on T1 |
-| T3 Payruns | 🔲 Open | ~5 pecmd + 1 scenario doc | Depends on T1 |
+| T1 Bootstrap | ✅ Done | Setup.json + CompanyCases (3) + Employees (10) + Bootstrap.pecmd | PayFrequency tenant-scoped; BirthYear (not DateOfBirth) |
+| T2 Lifecycle | ✅ Done | README + L1–L5 events + Lifecycle.pecmd | 5 lifecycle scenarios; FMLA via salary=0 |
+| T3 Payruns | ✅ Done | README + Scenarios (bonus + preview) + Reports params + Payruns.pecmd | ActualOutputFile pattern for assertions |
 | T4 Customizing | 🔲 Open | 1 regulation JSON + 3 case JSON + 1 pecmd | Standalone |
 | Tests | ✅ Stubs done | 8 × (README + et.json) + Run.Tests.pecmd | Values: TODO after first PE run |
 

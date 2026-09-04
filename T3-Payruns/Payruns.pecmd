@@ -1,0 +1,46 @@
+### T3-Payruns — Scenario Validation & Reports
+### Prerequisite: T1-Bootstrap must be completed first
+###
+### NOTE: Live payrun execution (monthly/biweekly/weekly jobs) is done via
+###       WebApp or REST API — there is no pecmd PayrunJobStart command.
+###       This script validates specific scenarios with PayrunEmployeePreviewTest
+###       and generates reports from completed payrun data.
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Scenario 1 — January baseline (re-run T1 tests as preview for quick check)
+### ─────────────────────────────────────────────────────────────────────────────
+# Sara: Monthly, company car + 401k + W-4 adjustments
+PayrunEmployeePreviewTest ../Tests/DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json /TestPrecision2
+
+# Jessica: TX no-SIT baseline
+PayrunEmployeePreviewTest ../Tests/DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json /TestPrecision2
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Scenario 2 — March: Jessica $10,000 performance bonus (supplemental wages)
+###   Step 1: import bonus case value (period-scoped, March biweekly)
+###   Step 2: run preview — observe WT 1100 + flat 22% FIT component
+###           /OkOnFail because payrollResults are empty (no assertions yet)
+###           Capture actual results with ActualOutputFile for later assertion
+### ─────────────────────────────────────────────────────────────────────────────
+PayrollImport Scenarios/March-Bonus-Jessica.json
+PayrunEmployeePreviewTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/March-Bonus.actual.json
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Reports — prerequisite: payruns for the target period must be complete
+### Run from repo root (paths relative to T3-Payruns)
+### ─────────────────────────────────────────────────────────────────────────────
+
+### Payslip — Sara Chen, January 2026 (Monthly payroll)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Reports/Payslip-Sara-January.parameters.json /pdf /shellopen
+
+### Payslip — Jessica Torres, March 2026 (Biweekly, includes bonus)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Reports/Payslip-Jessica-March.parameters.json /pdf /shellopen
+
+### Form 941 — Q1 2026 (run after Q1 payruns complete)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form941 culture:en-US parameterFile:Reports/Form941-Q1.parameters.json /pdf /shellopen
+
+### W-2 — full year 2026 (run after December payruns complete)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.W2 culture:en-US parameterFile:Reports/W2-2026.parameters.json /pdf /shellopen
+
+### Form 940 — annual FUTA 2026 (run after December payruns complete)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form940 culture:en-US parameterFile:Reports/Form940-2026.parameters.json /pdf /shellopen

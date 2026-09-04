@@ -1,79 +1,204 @@
-# T3 — Payruns & Reports
+# Tutorial 3 — Payruns & Reports
 
-> **Duration:** ~25 minutes  
-> **Role:** Provider / Automator  
-> **Prerequisite:** T1 Bootstrap completed
+Demonstrates how to execute payrolls, work with YTD accumulators,
+and generate statutory reports for Apex Digital Solutions LLC.
 
-Run all three Apex payrolls, explore payslips, track YTD cap dynamics, and generate
-year-end reports (W-2, Form 941, Form 940).
+## Prerequisites
 
----
-
-## What You Will Learn
-
-- Execute Monthly, Biweekly, and Weekly payruns
-- Read payslip structure: gross → deductions → taxes → net → employer side
-- Understand mid-year YTD cap events (SS, FUTA, 401k)
-- Process a supplemental wage (bonus at flat 22% FIT)
-- Apply a retroactive correction
-- Generate Form 941, Form 940, and W-2
+- T1-Bootstrap completed (`T1-Bootstrap/Bootstrap.pecmd`)
+- PE backend running
+- WebApp running (for live payrun execution)
 
 ---
 
-## January Payruns
+## Payrun Execution
 
-```bash
-# Monthly (executives)
-pecmd PayrunStart Apex.Payrun.Monthly /period 2026-01
+Payroll Engine executes payrun jobs via the **WebApp** or **REST API**.
+There is no pecmd command to start a live payrun job.
 
-# Biweekly (professionals) — period Jan 6–19
-pecmd PayrunStart Apex.Payrun.Biweekly /period 2026-01-06 2026-01-19
+**pecmd is used for:**
+- Importing case value scenarios (`PayrollImport`)
+- Validating results before/after execution (`PayrunEmployeePreviewTest`)
+- Generating reports (`Report`)
 
-# Weekly (hourly) — week Jan 5–11
-pecmd PayrunStart Apex.Payrun.Weekly /period 2026-01-05 2026-01-11
+**WebApp workflow (per period):**
+1. Open the payrun → select period → click **Start**
+2. Monitor job status → wait for **Complete**
+3. Review payslips, correct errors, re-run if needed
+4. Close the period
+
+---
+
+## Payrun Schedule — Apex Digital Solutions 2026
+
+| Payroll | Frequency | Periods/Year | Key months |
+|:---|:---|:---:|:---|
+| `Apex.Payrun.Monthly` | Monthly | 12 | Jan, Oct (SS cap), Dec (401k cap) |
+| `Apex.Payrun.Biweekly` | Biweekly | 26 | Mar (bonus), Dec (401k cap) |
+| `Apex.Payrun.Weekly` | Weekly | 52 | Jan, Jun, Dec |
+
+---
+
+## Scenario 1 — January: Baseline Payrun
+
+Run all three payrolls for January 2026. No YTD accumulators active yet.
+
+**Start dates:**
+| Payroll | Period Start | Period End |
+|:---|:---|:---|
+| Monthly | 2026-01-01 | 2026-01-31 |
+| Biweekly | 2026-01-06 | 2026-01-19 |
+| Weekly | 2026-01-05 | 2026-01-11 |
+
+**What to observe:**
+- Sara Chen: $20,000 salary + $450 company car → FITTaxable / FICATaxable split
+- Marcus Johnson: NY SIT + NJ SIT both appear on same payslip
+- Jessica Torres: TX SIT = $0
+- David Kim: PA SIT + Philadelphia EIT (PSD code resolution)
+- FUTA ER (WT 6700) begins accumulating toward $7,000 per-employee cap
+
+**Validate with pecmd:**
+```
+PayrunEmployeePreviewTest Tests/DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json /TestPrecision2
+PayrunEmployeePreviewTest Tests/DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json /TestPrecision2
 ```
 
 ---
 
-## YTD Cap Events to Watch
+## Scenario 2 — March: Supplemental Wages (Jessica Bonus)
 
-| Month | Event | Employee | Effect |
-|:---:|:---|:---|:---|
-| Jan–Feb | FUTA cap ($7,000) | All 10 | Employer FUTA → $0 after cap |
-| ~Oct | SS cap ($184,500) | Sara Chen, Carlos Rivera | Net pay increases ~$1,212/month |
-| Dec | 401k cap ($24,500) | Most employees | Pre-tax deduction stops, FIT taxable rises |
-| Dec | 401k cap ($32,500) | Robert Stevenson (age 58) | SECURE 2.0 cap |
+Jessica Torres receives a $10,000 Q1 performance bonus in the March payrun.
+Supplemental wages are taxed at the **22% flat FIT rate** (IRC §3402(g)(1)).
+TX has no SIT, so the only additional withholding is federal.
+
+**Step 1 — Import bonus case value:**
+```
+PayrollImport T3-Payruns/Scenarios/March-Bonus-Jessica.json
+```
+
+**Step 2 — Run the March biweekly payrun** (WebApp, period 2026-03-17 / 2026-03-30)
+
+**Step 3 — Validate:**
+```
+PayrunEmployeePreviewTest T3-Payruns/Scenarios/March-Bonus-Preview.et.json /TestPrecision2
+```
+
+**What to observe:**
+- WT 1100 (Supplemental Wages) = $10,000
+- WT 5100 (FIT) includes the flat 22% component on $10,000
+- WT 5300 (TX SIT) remains $0
 
 ---
 
-## Scripts
+## Scenario 3 — October: SS Wage Base Cap (Sara Chen)
 
-| Script | Description |
-|:---|:---|
-| `January.pecmd` | All three payrolls, January 2026 |
-| `March-Bonus.pecmd` | Jessica Torres Q1 bonus (supplemental wages) |
-| `October.pecmd` | Sara Chen — SS cap month |
-| `December.pecmd` | Robert Stevenson — 401k cap month |
-| `YearEnd.pecmd` | W-2, Form 941 Q4, Form 940 annual |
+Sara's annual salary is $240,000. The SS wage base (see `Data.Federal.FICA`
+lookup) is exhausted around October. Once exceeded, **WT 5200 (SS Employee)**
+drops to $0 for the remainder of the year, increasing her net pay.
 
----
+**What to observe in the October Monthly payrun:**
+- WT 5200 (SS Employee) ≠ $0 in September → $0 in October (or partial cap month)
+- WT 6600 (SS Employer) mirrors the cap on the employer side
+- Additional Medicare (0.9% on wages > $200,000 YTD MFJ) triggers independently
+  of SS cap — check WT 5220
 
-## Key Reports
-
-```bash
-# Individual payslip
-pecmd ReportGet Payslip /employee sara.chen@apexdigital.com /period 2026-01
-
-# Form 941 Q1
-pecmd ReportGet Form941 /period Q1-2026
-
-# Form 940 annual
-pecmd ReportGet Form940 /period 2026
-
-# W-2 Sara Chen
-pecmd ReportGet W2 /employee sara.chen@apexdigital.com /period 2026
+**Run and compare:**
+```
+# September (SS still running)
+PayrunEmployeePreviewTest T3-Payruns/Scenarios/October-SSCap-Preview.et.json /TestPrecision2
 ```
 
 ---
 
-> *TODO: full tutorial text — see IMPLEMENTATION.md Phase 3*
+## Scenario 4 — December: 401(k) Annual Cap (Robert Stevenson)
+
+Robert Stevenson (born 1967, age 59 in 2026) contributes a fixed
+`US.Pre401kAmount` per period. The 401(k) annual cap applies at year-end.
+
+**SECURE 2.0 catch-up tiers (see `Data.Federal.Tax` / `Data.FICA` lookups):**
+| Age range | Extra catch-up | Total limit |
+|:---|:---|:---|
+| Under 50 | — | Standard limit |
+| 50+ | +$7,500 | Standard + $7,500 |
+| 60–63 | +$11,250 (super catch-up) | Standard + $11,250 |
+
+Robert is 59 in 2026 (turns 59 on Nov 30) → standard + age-50 catch-up applies.
+Super catch-up (ages 60–63 per SECURE 2.0 §603) begins at age 60 in 2027.
+
+**What to observe in December:**
+- Pre-tax 401k deduction (WT 1200) stops when YTD reaches the annual cap
+- FIT taxable wages increase in the final period(s) after cap is hit
+- FICA taxable is unaffected (401k pre-tax reduces FIT but not FICA for employee)
+
+---
+
+## Reports
+
+All reports use the `US.Payroll` regulation (shared with `Apex.DigitalSolutions`
+via `RegulationShare`). Reports are parameterized by year, month, and employee.
+
+### Payslip
+
+Generate a payslip PDF for Sara Chen, January 2026:
+```
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
+  regulation:US.Payroll report:US.Payslip culture:en-US \
+  parameterFile:T3-Payruns/Reports/Payslip-Sara-January.parameters.json /pdf /shellopen
+```
+
+Generate a payslip PDF for Jessica Torres, March 2026 (with bonus):
+```
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
+  regulation:US.Payroll report:US.Payslip culture:en-US \
+  parameterFile:T3-Payruns/Reports/Payslip-Jessica-March.parameters.json /pdf /shellopen
+```
+
+### Form 941 — Quarterly Federal Tax Return
+
+Generate Form 941 for Q1 2026 (January–March):
+```
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
+  regulation:US.Payroll report:US.Form941 culture:en-US \
+  parameterFile:T3-Payruns/Reports/Form941-Q1.parameters.json /pdf /shellopen
+```
+
+### W-2 — Year-End
+
+Generate W-2s for all employees after December payruns are complete:
+```
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
+  regulation:US.Payroll report:US.W2 culture:en-US \
+  parameterFile:T3-Payruns/Reports/W2-2026.parameters.json /pdf /shellopen
+```
+
+### Form 940 — Annual FUTA Return
+
+```
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
+  regulation:US.Payroll report:US.Form940 culture:en-US \
+  parameterFile:T3-Payruns/Reports/Form940-2026.parameters.json /pdf /shellopen
+```
+
+---
+
+## YTD Accumulator Summary
+
+| Accumulator | Limit | Employee | Approximate Month |
+|:---|:---|:---|:---|
+| FUTA ($7k/employee) | per-employee | All | Feb |
+| SS wage base | `Data.Federal.FICA` lookup | Sara, Carlos | Oct / Dec |
+| 401k standard | `Data.Federal.Tax` lookup | All contributors | Dec |
+| 401k age-50+ | Standard + $7,500 | Robert (age 59) | Dec |
+| Additional Medicare | $200k MFJ YTD | Sara | Sep–Oct |
+
+> Exact cap amounts are defined in the `US.Payroll.Data.Federal.FICA` and
+> `US.Payroll.Data.Federal.Tax` regulation data lookups. PE enforces them
+> automatically — no custom code required.
+
+---
+
+## Running All T3 Scenarios
+
+```
+T3-Payruns/Payruns.pecmd
+```
