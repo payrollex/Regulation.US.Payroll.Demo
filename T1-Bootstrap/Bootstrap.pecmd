@@ -1,0 +1,42 @@
+# Apex Digital Solutions LLC — Bootstrap
+# Run from T1-Bootstrap/ directory
+# Prerequisite: PE backend running, regulation packages imported
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PREREQUISITE: Regulation packages (one-time, per PE instance)
+# Run Setup.Regulation.pecmd from the US.Payroll distribution package:
+#   PayrollImport <path>/US.Payroll.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Federal.Tax.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Federal.FICA.2026.json
+#   PayrollImport <path>/US.Payroll.Data.State.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Federal.Garnishment.2026.json
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Step 1: Tenant structure
+# Creates: tenant Apex.DigitalSolutions, admin user, Apex.Division,
+#          10 employees, 3 payrolls (Monthly/Biweekly/Weekly), 3 payruns
+PayrollImport Setup.json
+
+# Step 2: Company cases — pay frequency per payroll
+# Monthly (annualization factor 12), Biweekly (26), Weekly (52)
+PayrollImport CompanyCases/Monthly.json
+PayrollImport CompanyCases/Biweekly.json
+PayrollImport CompanyCases/Weekly.json
+
+# Step 3: Employee cases
+# Monthly payroll employees
+PayrollImport Employees/01-SaraChen.json
+PayrollImport Employees/02-RobertStevenson.json
+
+# Biweekly payroll employees
+PayrollImport Employees/03-MarcusJohnson.json
+PayrollImport Employees/04-PriyaPatel.json
+PayrollImport Employees/05-KevinWu.json
+PayrollImport Employees/06-JessicaTorres.json
+PayrollImport Employees/07-CarlosRivera.json
+PayrollImport Employees/08-LindaOkafor.json
+
+# Weekly payroll employees
+PayrollImport Employees/09-DavidKim.json
+PayrollImport Employees/10-AshleyPark.json

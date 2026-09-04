@@ -1,29 +1,97 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Weekly",
-  "employeeIdentifier": "david.kim@apexdigital.com",
-  "testName": "DEMO-TC07-US-David-Philadelphia",
-  "testDescription": "David Kim — Weekly January 2026 (standard 40h). Four tax lines: FIT + FICA + PA SIT 3.07% flat + Philadelphia Wage Tax 3.75% (PSD 510101 resident). PA local tax resolved via PSD code lookup.",
-  "period": "2026-01-05T00:00:00.0Z/2026-01-11T00:00:00.0Z",
-  "periodCases": [
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
     {
-      "caseName": "US.EmployeeWorkHours",
-      "values": [
-        { "caseFieldName": "US.RegularHours",  "value": "40", "start": "2026-01-05T00:00:00.0Z" },
-        { "caseFieldName": "US.OvertimeHours", "value": "0",  "start": "2026-01-05T00:00:00.0Z" }
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Weekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "david.kim@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3009", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1996",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "david.kim@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2024-01-08", "start": "2024-01-08T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "PA",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "PA",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "david.kim@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Hourly",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.HourlyRate",   "value": "32.00",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.RegularHours", "value": "40",      "start": "2026-01-05T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "david.kim@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus",         "value": "Single", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.LocalTaxJurisdiction", "value": "PHL",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentPSDCode",      "value": "510101", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkPSDCode",          "value": "510101", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC07-US-David-Philadelphia",
+          "payrunName": "Apex.Payrun.Weekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-05T00:00:00.0Z",
+          "evaluationDate": "2026-01-12T00:00:00.0Z",
+          "reason": "David Kim, Philadelphia PA, hourly $32/hr, 40h standard week. Four tax lines: FIT + FICA + PA SIT (3.07% flat) + Philadelphia Wage Tax (3.75% resident, PSD 510101). PALocalTaxAlgorithm resolves the rate from ResidentPSDCode=510101 (Philadelphia City). Gross=40*32=$1,280. PA SIT=1280*0.0307=$39.30. Philly EIT=1280*0.0375=$48.00.",
+          "employeeIdentifiers": [ "david.kim@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC07-US-David-Philadelphia",
+          "employeeIdentifier": "david.kim@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1010,  "value": 1280.00 },
+            { "wageTypeNumber": 5100,  "value": -95.00 },
+            { "wageTypeNumber": 5200,  "value": -79.36 },
+            { "wageTypeNumber": 5210,  "value": -18.56 },
+            { "wageTypeNumber": 5300,  "value": -39.30 },
+            { "wageTypeNumber": 5400,  "value": -48.00 },
+            { "wageTypeNumber": 6500,  "value": 999.00 }
+          ]
+        }
       ]
     }
-  ],
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularWages",     "value": 1280.00,  "description": "40h × $32" },
-      { "wageTypeName": "FederalIncomeTax", "value": -95.00,   "description": "TODO: verify — Single, weekly annualization ×52" },
-      { "wageTypeName": "SocialSecurityTax","value": -79.36,   "description": "$1,280 × 6.2%" },
-      { "wageTypeName": "MedicareTax",      "value": -18.56,   "description": "$1,280 × 1.45%" },
-      { "wageTypeName": "StateSIT",         "value": -39.30,   "description": "$1,280 × 3.07% PA flat rate" },
-      { "wageTypeName": "LocalTax",         "value": -48.00,   "description": "$1,280 × 3.75% Philadelphia EIT (PSD 510101 resident rate)" },
-      { "wageTypeName": "NetPay",           "value": 999.00,   "description": "TODO: verify with PE" }
-    ]
-  }
+  ]
 }

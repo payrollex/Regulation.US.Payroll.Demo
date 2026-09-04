@@ -1,0 +1,81 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3008", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1991",        "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2023-08-14", "start": "2023-08-14T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "65000",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Garnishment",
+                "values": [
+                  { "caseFieldName": "US.GarnishmentType",         "value": "ChildSupport", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentAmount",       "value": "500",          "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentIsSupporting", "value": "false",        "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentIsArrears",    "value": "false",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

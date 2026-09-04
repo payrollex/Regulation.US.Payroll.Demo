@@ -1,20 +1,105 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Biweekly",
-  "employeeIdentifier": "jessica.torres@apexdigital.com",
-  "testName": "DEMO-TC05-US-Jessica-TX",
-  "testDescription": "Jessica Torres — Biweekly January 2026. Texas has no state income tax: exactly 2 tax lines (FIT + FICA). Simplest payslip in the demo — use as baseline contrast with multi-state employees.",
-  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularSalary",    "value": 3076.92,  "description": "$80,000 / 26 pay periods" },
-      { "wageTypeName": "FITTaxableWages",  "value": 2643.84,  "description": "$3,076.92 − 401k $123.08 − health $310" },
-      { "wageTypeName": "FederalIncomeTax", "value": -117.00,  "description": "TODO: verify — MFJ, lower bracket" },
-      { "wageTypeName": "SocialSecurityTax","value": -190.77,  "description": "TODO: verify — $3,076.92 × 6.2% (health/401k interaction)" },
-      { "wageTypeName": "MedicareTax",      "value": -44.62,   "description": "TODO: verify — $3,076.92 × 1.45%" },
-      { "wageTypeName": "StateSIT",         "value": 0.00,     "description": "Texas has no state income tax — confirmed $0" },
-      { "wageTypeName": "NetPay",           "value": 2525.00,  "description": "TODO: verify with PE" }
-    ]
-  }
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3006", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1984",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2020-09-01", "start": "2020-09-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "TX",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "TX",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "80000",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "MarriedFilingJointly", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "4",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "310", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC05-US-Jessica-TX",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "Jessica Torres, TX, MFJ. Texas has no state income tax — WT 5300 must return $0. Simplest payslip in demo: only FIT + FICA. Gross=$80,000/26=$3,076.92. -401k 4%=-$123.08, -health=-$310 → FITTaxable=$2,643.84. FIT: MFJ lower bracket. Compare with Carlos (4 state lines) for impact demonstration.",
+          "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC05-US-Jessica-TX",
+          "employeeIdentifier": "jessica.torres@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 3076.92 },
+            { "wageTypeNumber": 5050,  "value": 2643.84 },
+            { "wageTypeNumber": 5100,  "value": -117.00 },
+            { "wageTypeNumber": 5200,  "value": -190.77 },
+            { "wageTypeNumber": 5210,  "value": -44.62 },
+            { "wageTypeNumber": 5300,  "value": 0.00 },
+            { "wageTypeNumber": 6500,  "value": 2525.00 }
+          ]
+        }
+      ]
+    }
+  ]
 }

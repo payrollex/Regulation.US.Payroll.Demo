@@ -1,36 +1,114 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Biweekly",
-  "employeeIdentifier": "kevin.wu@apexdigital.com",
-  "testName": "DEMO-TC04-US-Kevin-CADailyOT",
-  "testDescription": "Kevin Wu — Biweekly January 2026 (sprint week). CA Labor Code §510 daily OT: 3h on days >8h @ 1.5× = $270. CA SDI 1.3% uncapped (SB 951). Period case: CADay1-4Hours with 9/9/8/9/8.",
-  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
-  "periodCases": [
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
     {
-      "caseName": "US.EmployeeWorkHours",
-      "values": [
-        { "caseFieldName": "US.CADay1Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
-        { "caseFieldName": "US.CADay2Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
-        { "caseFieldName": "US.CADay3Hours", "value": "8", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
-        { "caseFieldName": "US.CADay4Hours", "value": "9", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" },
-        { "caseFieldName": "US.CADay5Hours", "value": "8", "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-12T00:00:00.0Z" }
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "kevin.wu@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3005", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1990",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "kevin.wu@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2023-03-15", "start": "2023-03-15T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "CA",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CA",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "kevin.wu@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",        "value": "Hourly",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.HourlyRate",     "value": "60.00",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay1Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-13T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay2Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-13T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay3Hours",    "value": "8",       "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-13T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay4Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-13T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay5Hours",    "value": "8",       "start": "2026-01-06T00:00:00.0Z", "end": "2026-01-13T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "kevin.wu@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "kevin.wu@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "5",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "220", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC04-US-Kevin-CADailyOT",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "Kevin Wu, CA hourly $60/hr, sprint week. CADay1=9h, CADay2=9h, CADay3=8h, CADay4=9h, CADay5=8h → 3 days with 9h = 3h CA daily OT (§510 Labor Code) at 1.5x=$90/hr = $270. Week2 standard 40h. Gross=$4,800+$270=$5,070. -401k 5%=$253.50, -health=$220 → FITTaxable=$4,596.50, FICATaxable=$4,850. CA SDI=1.3% on full $5,070=$65.91 (SB 951 — no wage base cap). CA SIT via EDD DE44 Method B.",
+          "employeeIdentifiers": [ "kevin.wu@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC04-US-Kevin-CADailyOT",
+          "employeeIdentifier": "kevin.wu@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1010,  "value": 4800.00 },
+            { "wageTypeNumber": 1020,  "value": 270.00 },
+            { "wageTypeNumber": 5000,  "value": 5070.00 },
+            { "wageTypeNumber": 5050,  "value": 4596.50 },
+            { "wageTypeNumber": 5051,  "value": 4850.00 },
+            { "wageTypeNumber": 5100,  "value": -608.00 },
+            { "wageTypeNumber": 5200,  "value": -300.70 },
+            { "wageTypeNumber": 5210,  "value": -70.33 },
+            { "wageTypeNumber": 5300,  "value": -280.00 },
+            { "wageTypeNumber": 6800,  "value": -65.91 },
+            { "wageTypeNumber": 6500,  "value": 3335.00 }
+          ]
+        }
       ]
     }
-  ],
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularWages",     "value": 4800.00,  "description": "80h × $60 (standard biweekly)" },
-      { "wageTypeName": "CADailyOvertime",  "value": 270.00,   "description": "3h × $90 (1.5×) — Mon+Tue+Thu each 1h over 8" },
-      { "wageTypeName": "GrossWagesTotal",  "value": 5070.00,  "description": "Regular + CA daily OT" },
-      { "wageTypeName": "FITTaxableWages",  "value": 4596.50,  "description": "$5,070 − 401k $253.50 − health $220" },
-      { "wageTypeName": "FICATaxableWages", "value": 4850.00,  "description": "$5,070 − health $220" },
-      { "wageTypeName": "FederalIncomeTax", "value": -608.00,  "description": "TODO: verify — Single, 22% bracket" },
-      { "wageTypeName": "SocialSecurityTax","value": -300.70,  "description": "$4,850 × 6.2%" },
-      { "wageTypeName": "MedicareTax",      "value": -70.33,   "description": "$4,850 × 1.45%" },
-      { "wageTypeName": "StateSIT",         "value": -280.00,  "description": "TODO: verify — CA EDD DE44 Method B" },
-      { "wageTypeName": "CASDI",            "value": -65.91,   "description": "$5,070 × 1.3% — SB 951 uncapped" },
-      { "wageTypeName": "NetPay",           "value": 3335.00,  "description": "TODO: verify with PE" }
-    ]
-  }
+  ]
 }

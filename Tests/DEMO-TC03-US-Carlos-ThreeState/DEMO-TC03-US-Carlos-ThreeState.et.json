@@ -1,22 +1,110 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Biweekly",
-  "employeeIdentifier": "carlos.rivera@apexdigital.com",
-  "testName": "DEMO-TC03-US-Carlos-ThreeState",
-  "testDescription": "Carlos Rivera — Biweekly January 2026. Three-state allocation NY(60%)/NJ(25%)/CT(15%). WT 5310 MultiStateWithholding produces 4 state/local tax lines on one payslip.",
-  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularSalary",           "value": 7115.38,  "description": "$185,000 / 26 pay periods" },
-      { "wageTypeName": "FederalIncomeTax",         "value": -1250.00, "description": "TODO: verify — Single, approaching 32% bracket" },
-      { "wageTypeName": "SocialSecurityTax",        "value": -441.15,  "description": "$7,115.38 × 6.2%" },
-      { "wageTypeName": "MedicareTax",              "value": -103.17,  "description": "$7,115.38 × 1.45%" },
-      { "wageTypeName": "MultiStateWithholding_NY", "value": -370.00,  "description": "TODO: verify — WT 5310 slot 1: NY 60% share ($111k annual)" },
-      { "wageTypeName": "MultiStateWithholding_NJ", "value": -95.00,   "description": "TODO: verify — WT 5310 slot 2: NJ 25% share ($46,250 annual)" },
-      { "wageTypeName": "MultiStateWithholding_CT", "value": -76.00,   "description": "TODO: verify — WT 5310 slot 3: CT 15% share ($27,750 annual)" },
-      { "wageTypeName": "LocalTax",                 "value": -200.00,  "description": "TODO: verify — NYC local on NY-allocated share only" },
-      { "wageTypeName": "NetPay",                   "value": 4480.00,  "description": "TODO: verify with PE" }
-    ]
-  }
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3007", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1982",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2019-11-18", "start": "2019-11-18T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "185000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.MultiStateEmployment",
+                "values": [
+                  { "caseFieldName": "US.StateAllocationCount", "value": "3",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AllocationPercent1",   "value": "0.6",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState2",           "value": "NJ",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AllocationPercent2",   "value": "0.25", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState3",           "value": "CT",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AllocationPercent3",   "value": "0.15", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC03-US-Carlos-ThreeState",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "Carlos Rivera, $185k/yr, NYC resident, 3-state allocation NY(60%)/NJ(25%)/CT(15%). StateAllocationCount=3 activates WT 5310 MultiStateWithholding instead of WT 5300. Gross=$7,115.38/period. Four state/local lines on one payslip: NY SIT (60% share), NJ SIT (25% share), CT SIT (15% share), NYC local (on NY share only). NY-allocated $111k graduated, NJ-allocated $46,250 graduated, CT-allocated $27,750 at near-flat 6.99%. NY resident credit for NJ/CT taxes at year-end.",
+          "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC03-US-Carlos-ThreeState",
+          "employeeIdentifier": "carlos.rivera@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 7115.38 },
+            { "wageTypeNumber": 5100,  "value": -1250.00 },
+            { "wageTypeNumber": 5200,  "value": -441.15 },
+            { "wageTypeNumber": 5210,  "value": -103.17 },
+            { "wageTypeNumber": 5310,  "value": -541.00 },
+            { "wageTypeNumber": 5400,  "value": -200.00 },
+            { "wageTypeNumber": 6500,  "value": 4480.00 }
+          ]
+        }
+      ]
+    }
+  ]
 }

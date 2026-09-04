@@ -1,24 +1,127 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Monthly",
-  "employeeIdentifier": "sara.chen@apexdigital.com",
-  "testName": "DEMO-TC01-US-Sara-Monthly",
-  "testDescription": "Sara Chen (CFO) — Monthly January 2026. Validates company car fringe (WT 1320), three taxable wage bases (FIT < FICA < FICA), W-4 Step3/4c, Additional Medicare not yet triggered.",
-  "period": "2026-01-01T00:00:00.0Z/2026-01-31T00:00:00.0Z",
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularSalary",        "value": 20000.00,   "description": "Monthly salary" },
-      { "wageTypeName": "CompanyCarValue",       "value": 450.00,     "description": "§61 company car fringe — increases both FIT and FICA taxable wages" },
-      { "wageTypeName": "FITTaxableWages",       "value": 17950.00,   "description": "Gross + car − 401k − health − HSA" },
-      { "wageTypeName": "FICATaxableWages",      "value": 19550.00,   "description": "Gross + car − health − HSA (401k does NOT reduce FICA)" },
-      { "wageTypeName": "FederalIncomeTax",      "value": -2645.00,   "description": "TODO: verify with PE — includes $500 W-4 Step4c extra" },
-      { "wageTypeName": "SocialSecurityTax",     "value": -1212.10,   "description": "$19,550 × 6.2%" },
-      { "wageTypeName": "MedicareTax",           "value": -283.48,    "description": "$19,550 × 1.45%" },
-      { "wageTypeName": "AdditionalMedicareTax", "value": 0.00,       "description": "YTD January < $200k threshold — not triggered" },
-      { "wageTypeName": "StateSIT",              "value": -940.00,    "description": "TODO: verify with PE — NY graduated on $17,950" },
-      { "wageTypeName": "LocalTax",              "value": -590.00,    "description": "TODO: verify with PE — NYC city graduated on $17,950" },
-      { "wageTypeName": "NetPay",                "value": 14290.00,   "description": "TODO: verify with PE" }
-    ]
-  }
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3001", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1975",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2015-03-01", "start": "2015-03-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "240000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "MarriedFilingJointly", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step2",      "value": "false",                "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",      "value": "4000",                 "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4a",     "value": "0",                    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4b",     "value": "0",                    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4c",     "value": "500",                  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "8",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "600", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHSAAmount",    "value": "300", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.BenefitsInKind",
+                "values": [
+                  { "caseFieldName": "US.CompanyCarValue", "value": "450", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC01-US-Sara-Monthly",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-01T00:00:00.0Z",
+          "evaluationDate": "2026-02-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO), Monthly January 2026. Company car +$450 (WT 1320) → GrossBase → increases both FIT and FICA taxable wages. 401k 8% on $20,000 = $1,600 reduces FIT/NY/NYC but NOT FICA. Three taxable bases: FITTaxable=$17,950 (Gross+Car-401k-H-HSA), FICATaxable=$19,550 (Gross+Car-H-HSA). W4Step3=$4,000/yr → $333/month FIT reduction. W4Step4c=$500 extra. Additional Medicare (0.9%) NOT triggered in January (YTD < $200k). NY graduated SIT + NYC city tax.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC01-US-Sara-Monthly",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 20000.00 },
+            { "wageTypeNumber": 1320,  "value": 450.00 },
+            { "wageTypeNumber": 5050,  "value": 17950.00 },
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5100,  "value": -2645.00 },
+            { "wageTypeNumber": 5200,  "value": -1212.10 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5220,  "value": 0.00 },
+            { "wageTypeNumber": 5300,  "value": -940.00 },
+            { "wageTypeNumber": 5400,  "value": -590.00 },
+            { "wageTypeNumber": 6500,  "value": 14290.00 }
+          ]
+        }
+      ]
+    }
+  ]
 }

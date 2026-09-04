@@ -1,71 +1,191 @@
 # T1 — Bootstrap a Company
 
-> **Duration:** ~20 minutes  
-> **Role:** Provider / Automator  
-> **Prerequisite:** Payroll Engine Backend running, `pecmd` installed, regulation packages available
-
-Set up **Apex Digital Solutions LLC** from zero to "ready for first payrun"
-using the `pecmd` CLI.
+Bootstrap **Apex Digital Solutions LLC** from zero to first payrun in under 20 minutes.
 
 ---
 
-## What You Will Learn
+## What You Will Build
 
-- Create a tenant for a US company
-- Import and layer US regulation packages
-- Configure three payrolls with different pay frequencies (Monthly / Biweekly / Weekly)
-- Onboard 10 employees across 6 states with diverse tax profiles
+```
+Tenant: Apex.DigitalSolutions
+├── User: apex.admin@apexdigital.com (TenantAdministrator)
+├── Division: Apex.Division
+├── Payroll: Apex.Payroll.Monthly    [Sara, Robert — executives]
+├── Payroll: Apex.Payroll.Biweekly   [Marcus, Priya, Kevin, Jessica, Carlos, Linda]
+└── Payroll: Apex.Payroll.Weekly     [David, Ashley — hourly staff]
+```
+
+Three payrolls, one tenant, one EIN — this is how PE models multiple pay frequencies
+for a single legal entity.
 
 ---
 
-## Run
+## Prerequisites
+
+- Payroll Engine backend running (see [payrollengine.org](https://payrollengine.org))
+- `pecmd` configured with your backend URL
+- US.Payroll regulation packages imported (see note below)
+
+### Regulation Packages
+
+The US regulation packages must be imported once per PE instance. They are distributed
+separately (commercial). If your PE instance already has them, skip this step.
 
 ```bash
+PayrollImport US.Payroll.2026.json
+PayrollImport US.Payroll.Data.Federal.Tax.2026.json
+PayrollImport US.Payroll.Data.Federal.FICA.2026.json
+PayrollImport US.Payroll.Data.State.2026.json
+PayrollImport US.Payroll.Data.Local.Tax.2026.json
+PayrollImport US.Payroll.Data.Federal.Garnishment.2026.json
+```
+
+---
+
+## Quick Run
+
+```bash
+cd T1-Bootstrap
 pecmd Bootstrap.pecmd
 ```
 
-Or step by step — see the sections below.
+Done. Apex Digital Solutions is ready.
 
 ---
 
-## Step 1 — Import Regulation Packages
+## Step-by-Step Walkthrough
 
-> *TODO: full tutorial text — see IMPLEMENTATION.md Phase 1*
+### Step 1 — Tenant Structure (`Setup.json`)
 
-## Step 2 — Create Tenant Structure
+Creates the full tenant scaffolding in one Exchange file:
 
-> *TODO: full tutorial text*
-
-## Step 3 — Set Company Cases
-
-> *TODO: full tutorial text*
-
-## Step 4 — Onboard Employees
-
-> *TODO: full tutorial text*
-
-## Step 5 — Verify
-
-> *TODO: full tutorial text*
-
----
-
-## Files
-
-| File | Description |
+| Object | What it creates |
 |:---|:---|
-| `Setup.json` | Tenant, users, division, 10 employees, 3 payrolls, 3 payruns |
-| `CompanyCases/Monthly.json` | Company case for Monthly payroll (`US.PayFrequency = Monthly`) |
-| `CompanyCases/Biweekly.json` | Company case for Biweekly payroll |
-| `CompanyCases/Weekly.json` | Company case for Weekly payroll |
-| `Employees/01-SaraChen.json` | CFO — NYC, company car, 401k, SECURE 2.0 comparable |
-| `Employees/02-RobertStevenson.json` | VP — age 58, SECURE 2.0 catch-up |
-| `Employees/03-MarcusJohnson.json` | Sr. Engineer — NJ→NY commuter |
-| `Employees/04-PriyaPatel.json` | PM — CT→NY commuter, Head of Household |
-| `Employees/05-KevinWu.json` | Cloud Architect — CA hourly, daily OT |
-| `Employees/06-JessicaTorres.json` | Account Executive — TX, no SIT |
-| `Employees/07-CarlosRivera.json` | Principal Consultant — three-state NY/NJ/CT |
-| `Employees/08-LindaOkafor.json` | HR Coordinator — NYC, garnishment |
-| `Employees/09-DavidKim.json` | IT Support — Philadelphia EIT |
-| `Employees/10-AshleyPark.json` | QA Engineer — CA 7th-day OT, SDI uncapped |
-| `Bootstrap.pecmd` | Full setup script |
+| Tenant | `Apex.DigitalSolutions` (en-US) |
+| User | `apex.admin@apexdigital.com` (TenantAdministrator) |
+| Division | `Apex.Division` |
+| Employees | 10 employees (no case data yet — just identity records) |
+| Payrolls | `Apex.Payroll.Monthly` · `Apex.Payroll.Biweekly` · `Apex.Payroll.Weekly` |
+| Regulation layers | Same 6 layers on all 3 payrolls (L1, priority 1–11) |
+| Payruns | One payrun per payroll |
+
+```bash
+pecmd PayrollImport Setup.json
+```
+
+#### Why Three Payrolls?
+
+`US.PayFrequency` is a **company-level** case value — it cannot differ between employees
+in the same payroll. Three payrolls = three different IRS Pub 15-T annualization factors
+(12 · 26 · 52). Same EIN, same regulation layers, same tenant.
+
+---
+
+### Step 2 — Company Cases (`CompanyCases/`)
+
+Each payroll needs its own `US.Company` case with the pay frequency set:
+
+| File | PayFrequency | Factor |
+|:---|:---|:---:|
+| `CompanyCases/Monthly.json` | `Monthly` | 12 |
+| `CompanyCases/Biweekly.json` | `BiWeekly` | 26 |
+| `CompanyCases/Weekly.json` | `Weekly` | 52 |
+
+All three share: EIN `27-1234567`, CompanyState `NY`, SUIRate `2.1%`, FUTACreditReductionState `false`.
+
+```bash
+pecmd PayrollImport CompanyCases/Monthly.json
+pecmd PayrollImport CompanyCases/Biweekly.json
+pecmd PayrollImport CompanyCases/Weekly.json
+```
+
+---
+
+### Step 3 — Employee Cases (`Employees/`)
+
+Each file sets all required cases for one employee. Cases are submitted in this order:
+
+1. `US.PersonalData` — SSN, DateOfBirth
+2. `US.Employment` — HireDate, WorkState, ResidentState, WorkLocality (if NYC)
+3. `US.Remuneration` — PayType (`Salary` / `Hourly`), AnnualSalary or HourlyRate
+4. `US.TaxData` — FilingStatus, W-4 fields, local tax jurisdiction (PA)
+5. `US.PreTaxDeductions` — 401k, health, HSA
+6. Optional: `US.BenefitsInKind`, `US.MultiStateEmployment`, `US.Garnishment`
+
+#### Employee Overview
+
+| File | Employee | Payroll | Key cases |
+|:---|:---|:---|:---|
+| `01-SaraChen.json` | Sara Chen | Monthly | PersonalData · Employment(NYC) · Remuneration($240k) · TaxData(MFJ W4Step3=$4k W4Step4c=$500) · PreTax(401k8% H$600 HSA$300) · BenefitsInKind(Car$450) |
+| `02-RobertStevenson.json` | Robert Stevenson | Monthly | PersonalData(DOB 1967) · Employment(NY) · Remuneration($115k) · TaxData(MFJ W4Step3=$2k) · PreTax(401k$2708.33/mo H$475) |
+| `03-MarcusJohnson.json` | Marcus Johnson | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=NJ) · Remuneration($150k) · TaxData(Single) · PreTax(401k6% H$200) |
+| `04-PriyaPatel.json` | Priya Patel | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=CT) · Remuneration($95k) · TaxData(HoH W4Step3=$2k) · PreTax(401k4% H$180) |
+| `05-KevinWu.json` | Kevin Wu | Biweekly | PersonalData · Employment(CA) · Remuneration(Hourly $60/hr) · TaxData(Single) · PreTax(401k5% H$220) |
+| `06-JessicaTorres.json` | Jessica Torres | Biweekly | PersonalData · Employment(TX) · Remuneration($80k) · TaxData(MFJ) · PreTax(401k4% H$310 family) |
+| `07-CarlosRivera.json` | Carlos Rivera | Biweekly | PersonalData · Employment(NY/NYC) · Remuneration($185k) · TaxData(Single) · MultiStateEmployment(NY60%/NJ25%/CT15%) |
+| `08-LindaOkafor.json` | Linda Okafor | Biweekly | PersonalData · Employment(NYC) · Remuneration($65k) · TaxData(Single) · Garnishment(ChildSupport $500/period) |
+| `09-DavidKim.json` | David Kim | Weekly | PersonalData · Employment(PA) · Remuneration(Hourly $32/hr) · TaxData(Single PHL PSD=510101) |
+| `10-AshleyPark.json` | Ashley Park | Weekly | PersonalData · Employment(CA) · Remuneration(Hourly $42/hr) · TaxData(Single) |
+
+```bash
+pecmd PayrollImport Employees/01-SaraChen.json
+# ... (or run Bootstrap.pecmd for all at once)
+```
+
+---
+
+## Validation
+
+After Bootstrap, verify the setup:
+
+```bash
+# Preview payruns (no payrun created yet — just validates setup)
+pecmd PayrunPreviewTest Tests/DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
+```
+
+Expected results:
+- Monthly preview: 2 employees (Sara, Robert), no errors
+- Biweekly preview: 6 employees (Marcus, Priya, Kevin, Jessica, Carlos, Linda), no errors
+- Weekly preview: 2 employees (David, Ashley), no errors
+
+Run the automated test suite:
+
+```bash
+cd ../Tests
+pecmd PayrunEmployeeTest Run.Tests.pecmd
+```
+
+---
+
+## Key Design Decisions
+
+### Pay Frequency per Payroll
+
+`US.PayFrequency` drives the IRS Pub 15-T annualization factor for FIT calculation.
+Since it is a company-level case value, it must be the same for all employees in a payroll.
+Three payrolls give three distinct annualization factors in one tenant.
+
+### MultiState via CaseSlot (Carlos)
+
+Carlos's three-state allocation uses the `US.MultiStateEmployment` case with
+`US.StateAllocationCount = 3`. This activates WT 5310 (`MultiStateWithholding`) instead
+of the standard WT 5300 (`StateWithholding`). The allocation percentages are decimals
+(0.6, 0.25, 0.15) — not whole numbers.
+
+### Garnishment (Linda)
+
+The `US.Garnishment` case activates WT 6505. The CCPA limit check (60% of disposable
+earnings for child support without arrears) is computed automatically by the regulation.
+
+### PA Local Tax (David)
+
+`US.LocalTaxJurisdiction = PHL` activates WT 5400 (`LocalTaxWithholding`).
+The `US.ResidentPSDCode` and `US.WorkPSDCode` (`510101` = Philadelphia City) resolve
+the 3.75% resident rate from the local tax data satellite.
+
+---
+
+## Next Steps
+
+- [T2 — Employee Lifecycle](../T2-Lifecycle/README.md): New hire, salary change, FMLA, state relocation
+- [T3 — Payruns & Reports](../T3-Payruns/README.md): Run all three payrolls, YTD caps, W-2, Form 941

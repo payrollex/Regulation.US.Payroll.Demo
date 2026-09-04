@@ -1,22 +1,107 @@
 {
-  "$schema": "../../Schemas/PayrollEngine.CaseTest.schema.json",
-  "tenantIdentifier": "Apex.DigitalSolutions",
-  "payrollName": "Apex.Payroll.Biweekly",
-  "employeeIdentifier": "marcus.johnson@apexdigital.com",
-  "testName": "DEMO-TC02-US-Marcus-NJtoNY",
-  "testDescription": "Marcus Johnson — Biweekly January 2026. NJ resident / NY work state, no reciprocity. Both NY (WT 5300) and NJ (WT 5301) withholding appear on the same payslip.",
-  "period": "2026-01-06T00:00:00.0Z/2026-01-19T00:00:00.0Z",
-  "results": {
-    "wageTypeResults": [
-      { "wageTypeName": "RegularSalary",    "value": 5769.23,  "description": "$150,000 / 26 pay periods" },
-      { "wageTypeName": "FITTaxableWages",  "value": 5223.08,  "description": "Gross − 401k − health" },
-      { "wageTypeName": "FICATaxableWages", "value": 5369.23,  "description": "Gross − health (401k not deducted from FICA)" },
-      { "wageTypeName": "FederalIncomeTax", "value": -780.00,  "description": "TODO: verify with PE — Single, Pub 15-T biweekly annualization ×26" },
-      { "wageTypeName": "SocialSecurityTax","value": -332.89,  "description": "$5,369.23 × 6.2%" },
-      { "wageTypeName": "MedicareTax",      "value": -77.85,   "description": "$5,369.23 × 1.45%" },
-      { "wageTypeName": "StateSIT",         "value": -306.00,  "description": "TODO: verify — NY work-state graduated withholding" },
-      { "wageTypeName": "ResidentSIT",      "value": -180.00,  "description": "TODO: verify — NJ resident graduated withholding (WT 5301)" },
-      { "wageTypeName": "NetPay",           "value": 3843.00,  "description": "TODO: verify with PE" }
-    ]
-  }
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3003", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1988",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2021-01-04", "start": "2021-01-04T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NJ",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "150000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "6",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "200", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC02-US-Marcus-NJtoNY",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity agreement. PE withholds NY SIT (WT 5300) as primary work-state withholding AND NJ SIT (WT 5310 split-state) as resident-state withholding on same payslip. $150k/26=$5,769.23 gross, -401k 6%=-$346.15, -health=-$200 → FITTaxable=$5,223.08, FICATaxable=$5,369.23. Both NY and NJ tax lines appear on the biweekly payslip. NJ gives resident credit at year-end — not double taxation.",
+          "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC02-US-Marcus-NJtoNY",
+          "employeeIdentifier": "marcus.johnson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 5769.23 },
+            { "wageTypeNumber": 5050,  "value": 5223.08 },
+            { "wageTypeNumber": 5051,  "value": 5369.23 },
+            { "wageTypeNumber": 5100,  "value": -780.00 },
+            { "wageTypeNumber": 5200,  "value": -332.89 },
+            { "wageTypeNumber": 5210,  "value": -77.85 },
+            { "wageTypeNumber": 5300,  "value": -306.00 },
+            { "wageTypeNumber": 5310,  "value": -180.00 },
+            { "wageTypeNumber": 6500,  "value": 3843.00 }
+          ]
+        }
+      ]
+    }
+  ]
 }
