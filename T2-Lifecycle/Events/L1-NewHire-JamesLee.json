@@ -1,0 +1,86 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-03-17T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "employees": [
+        {
+          "identifier": "james.lee@apexdigital.com",
+          "firstName": "James",
+          "lastName": "Lee",
+          "divisions": [ "Apex.Division" ]
+        }
+      ],
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",       "value": "111-22-3011", "created": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1993",        "created": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2026-03-17", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "CA",         "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CA",         "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "130000", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "5",   "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "220", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
