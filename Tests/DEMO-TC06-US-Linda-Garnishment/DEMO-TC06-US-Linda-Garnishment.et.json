@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "linda.okafor@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "linda.okafor@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -39,7 +39,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "linda.okafor@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -51,7 +51,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "linda.okafor@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
@@ -62,7 +62,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "linda.okafor@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Garnishment",
                 "values": [
@@ -84,7 +84,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Linda Okafor, NYC Single, $65k/yr. Child support garnishment $500/biweekly. CCPA limit (15 USC §1673): ChildSupport not in arrears, not supporting another family → limit = 60% of disposable earnings. Disposable = gross − mandatory deductions (FIT+FICA+SIT+local). ~$2,048 disposable. 60% limit = $1,229 ≥ $500 → full $500 deducted. WT 6505 Garnishment = $500. Net after garnishment ≈ $1,548.",
+          "reason": "Linda Okafor, NY Single, $65k/yr, biweekly. No pre-tax deductions. Gross=$65,000÷26=$2,500 (WT 1000). FICATaxable=$2,500 (no health). SS $2,500×6.2%=$155 (WT 5200). Medicare $2,500×1.45%=$36.25 (WT 5210). FIT: annual $65,000-$16,100=$48,900 → 10% to $12,400=$1,240 + 12% on $36,500=$4,380 = $5,620÷26=$216.15 (WT 5100). NY SIT: $65,000-$8,400=$56,600 → 5.4% bracket → $586+$42,700×5.4%=$2,891.80÷26=$111.22 (WT 5300). ChildSupport garnishment $500: CCPA 60% limit (not arrears, not supporting)=$1,981.38×60%=$1,188.83≥$500 → full $500 (WT 6505). WT 6505 not in NetPay collector. Net=$1,981.38.",
           "employeeIdentifiers": [ "linda.okafor@apexdigital.com" ]
         }
       ],
@@ -94,13 +94,12 @@
           "employeeIdentifier": "linda.okafor@apexdigital.com",
           "wageTypeResults": [
             { "wageTypeNumber": 1000,  "value": 2500.00 },
-            { "wageTypeNumber": 5100,  "value": -133.00 },
+            { "wageTypeNumber": 5100,  "value": -216.15 },
             { "wageTypeNumber": 5200,  "value": -155.00 },
             { "wageTypeNumber": 5210,  "value": -36.25 },
-            { "wageTypeNumber": 5300,  "value": -73.00 },
-            { "wageTypeNumber": 5400,  "value": -56.00 },
+            { "wageTypeNumber": 5300,  "value": -111.22 },
             { "wageTypeNumber": 6505,  "value": -500.00 },
-            { "wageTypeNumber": 6500,  "value": 1548.00 }
+            { "wageTypeNumber": 6500,  "value": 1981.38 }
           ]
         }
       ]

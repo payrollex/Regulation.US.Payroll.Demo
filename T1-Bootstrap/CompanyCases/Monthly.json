@@ -12,14 +12,14 @@
           "cases": [
             {
               "userIdentifier": "apex.admin@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.Company",
                 "values": [
                   { "caseFieldName": "US.EIN",                       "value": "27-1234567",                 "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.CompanyLegalName",          "value": "Apex Digital Solutions LLC", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.CompanyState",              "value": "NY",                         "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.PayFrequency",              "value": "BiWeekly",                   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PayFrequency",              "value": "Monthly",                    "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.SUIRate",                   "value": "0.021",                      "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.FUTACreditReductionState",  "value": "false",                      "start": "2026-01-01T00:00:00.0Z" }
                 ]

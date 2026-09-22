@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "robert.stevenson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "robert.stevenson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -38,7 +38,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "robert.stevenson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -50,11 +50,11 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "robert.stevenson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
-                  { "caseFieldName": "US.FilingStatus", "value": "MarriedFilingJointly", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.FilingStatus", "value": "MFJ", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.W4Step3",      "value": "2000",                 "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
@@ -62,7 +62,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "robert.stevenson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [

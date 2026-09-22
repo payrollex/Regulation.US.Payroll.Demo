@@ -7,27 +7,25 @@
 ###       and generates reports from completed payrun data.
 
 ### ─────────────────────────────────────────────────────────────────────────────
-### Scenario 1 — January baseline (re-run T1 tests as preview for quick check)
+### Scenario 1 — January baseline
+### Run the full T1 integration test suite (imports cases + runs payrun + verifies)
 ### ─────────────────────────────────────────────────────────────────────────────
-# Sara: Monthly, company car + 401k + W-4 adjustments
-PayrunEmployeePreviewTest ../Tests/DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json /TestPrecision2
-
-# Jessica: TX no-SIT baseline
-PayrunEmployeePreviewTest ../Tests/DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json /TestPrecision2
+# See Tests/Run.Tests.pecmd for the full test suite (8 employees, Jan 2026).
+# Run that file directly for the baseline:
+#   pecmd Tests/Run.Tests.pecmd
 
 ### ─────────────────────────────────────────────────────────────────────────────
 ### Scenario 2 — March: Jessica $10,000 performance bonus (supplemental wages)
-###   Step 1: import bonus case value (period-scoped, March biweekly)
-###   Step 2: run preview — observe WT 1100 + flat 22% FIT component
-###           /OkOnFail because payrollResults are empty (no assertions yet)
-###           Capture actual results with ActualOutputFile for later assertion
+###   PayrunEmployeeTest is self-contained: imports cases from et.json,
+###   runs payrun job, compares results. No separate PayrollImport needed.
+###   /OkOnFail because payrollResults are empty (no assertions yet).
+###   Actual results written to March-Bonus.actual.json for later assertion.
 ### ─────────────────────────────────────────────────────────────────────────────
-PayrollImport Scenarios/March-Bonus-Jessica.json
-PayrunEmployeePreviewTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/March-Bonus.actual.json
+PayrunEmployeeTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/March-Bonus.actual.json
 
 ### ─────────────────────────────────────────────────────────────────────────────
 ### Reports — prerequisite: payruns for the target period must be complete
-### Run from repo root (paths relative to T3-Payruns)
+### All paths are relative to T3-Payruns/ (pecmd working directory)
 ### ─────────────────────────────────────────────────────────────────────────────
 
 ### Payslip — Sara Chen, January 2026 (Monthly payroll)

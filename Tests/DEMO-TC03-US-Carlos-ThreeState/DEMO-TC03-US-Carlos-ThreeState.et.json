@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -39,7 +39,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -51,7 +51,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
@@ -62,7 +62,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.MultiStateEmployment",
                 "values": [
@@ -86,7 +86,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Carlos Rivera, $185k/yr, NYC resident, 3-state allocation NY(60%)/NJ(25%)/CT(15%). StateAllocationCount=3 activates WT 5310 MultiStateWithholding instead of WT 5300. Gross=$7,115.38/period. Four state/local lines on one payslip: NY SIT (60% share), NJ SIT (25% share), CT SIT (15% share), NYC local (on NY share only). NY-allocated $111k graduated, NJ-allocated $46,250 graduated, CT-allocated $27,750 at near-flat 6.99%. NY resident credit for NJ/CT taxes at year-end.",
+          "reason": "Carlos Rivera, $185k/yr, NY resident/work primary, 3-state allocation NY(60%)/NJ(25%)/CT(15%). Gross=$7,115.38/period. No pre-tax deductions. FIT: annual $185k-$16,100 StdDed=$168,900 → 24% bracket → $33,134/yr ÷ 26=$1,274.38 (WT 5100). WT 5310 MultiState slots: Slot1 NY 60% annualAlloc $111k-$8,400=$102,600 → bracket 7.03%→$5,550.74/yr÷26=$213.49. Slot2 NJ 25% annualAlloc $46,250: NJ $62.81 < NY($1,879.30) → credit diff → slot $1,879.30/yr÷26=$72.28. Slot3 CT 15% annualAlloc $27,750: CT $998.75 > NY($880.30) → CT dominates → $998.75/yr÷26=$38.41. Total WT 5310=$324.18. WorkLocality=NYC but no LocalTaxJurisdiction → WT 5400=null.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],
@@ -96,12 +96,11 @@
           "employeeIdentifier": "carlos.rivera@apexdigital.com",
           "wageTypeResults": [
             { "wageTypeNumber": 1000,  "value": 7115.38 },
-            { "wageTypeNumber": 5100,  "value": -1250.00 },
+            { "wageTypeNumber": 5100,  "value": -1274.38 },
             { "wageTypeNumber": 5200,  "value": -441.15 },
             { "wageTypeNumber": 5210,  "value": -103.17 },
-            { "wageTypeNumber": 5310,  "value": -541.00 },
-            { "wageTypeNumber": 5400,  "value": -200.00 },
-            { "wageTypeNumber": 6500,  "value": 4480.00 }
+            { "wageTypeNumber": 5310,  "value": -324.18 },
+            { "wageTypeNumber": 6500,  "value": 4972.50 }
           ]
         }
       ]

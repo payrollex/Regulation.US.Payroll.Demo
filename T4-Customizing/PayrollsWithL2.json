@@ -1,0 +1,54 @@
+{
+  "$schema": "../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "Update",
+          "divisionName": "Apex.Division.Monthly",
+          "layers": [
+            { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
+            { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
+            { "level": 1, "priority": 8,  "regulationName": "US.Payroll.Data.Federal.FICA" },
+            { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
+            { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
+            { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+          ]
+        },
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "Update",
+          "divisionName": "Apex.Division.Biweekly",
+          "layers": [
+            { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
+            { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
+            { "level": 1, "priority": 8,  "regulationName": "US.Payroll.Data.Federal.FICA" },
+            { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
+            { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
+            { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+          ]
+        },
+        {
+          "name": "Apex.Payroll.Weekly",
+          "updateMode": "Update",
+          "divisionName": "Apex.Division.Weekly",
+          "layers": [
+            { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
+            { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
+            { "level": 1, "priority": 8,  "regulationName": "US.Payroll.Data.Federal.FICA" },
+            { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
+            { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
+            { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+          ]
+        }
+      ]
+    }
+  ]
+}

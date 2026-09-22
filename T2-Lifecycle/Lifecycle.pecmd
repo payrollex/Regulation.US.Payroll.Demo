@@ -4,20 +4,20 @@
 
 # L1: New hire — James Lee (CA Software Engineer, March 17)
 #     Adds employee record + initial case values in one import
-PayrollImport T2-Lifecycle/Events/L1-NewHire-JamesLee.json
+PayrollImport Events/L1-NewHire-JamesLee.json
 
 # L2: Salary change — Marcus Johnson $150k → $165k (March 15)
 #     Single case value update; PE prorates the straddled biweekly period
-PayrollImport T2-Lifecycle/Events/L2-SalaryChange-Marcus.json
+PayrollImport Events/L2-SalaryChange-Marcus.json
 
 # L3: FMLA leave — Linda Okafor, unpaid (April 7)
 #     AnnualSalary → 0; garnishment CCPA cap yields $0 deduction during leave
-PayrollImport T2-Lifecycle/Events/L3-FMLALeave-Linda.json
+PayrollImport Events/L3-FMLALeave-Linda.json
 
 # L4: State transfer — Jessica Torres TX → CA (July 1)
 #     WorkState + ResidentState update; CA SIT/SDI begin from this date
-PayrollImport T2-Lifecycle/Events/L4-StateChange-Jessica.json
+PayrollImport Events/L4-StateChange-Jessica.json
 
 # L5: Return from leave — Linda Okafor (July 1)
 #     AnnualSalary restored to $65,000; garnishment deduction resumes
-PayrollImport T2-Lifecycle/Events/L5-ReEntry-Linda.json
+PayrollImport Events/L5-ReEntry-Linda.json

@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "ashley.park@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Weekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "ashley.park@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Weekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -38,7 +38,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "ashley.park@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Weekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -50,7 +50,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "ashley.park@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Weekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [

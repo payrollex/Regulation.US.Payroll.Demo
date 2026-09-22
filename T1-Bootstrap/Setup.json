@@ -23,27 +23,26 @@
         }
       ],
       "divisions": [
-        {
-          "name": "Apex.Division",
-          "culture": "en-US"
-        }
+        { "name": "Apex.Division.Monthly",  "culture": "en-US" },
+        { "name": "Apex.Division.Biweekly", "culture": "en-US" },
+        { "name": "Apex.Division.Weekly",   "culture": "en-US" }
       ],
       "employees": [
-        { "identifier": "sara.chen@apexdigital.com",        "firstName": "Sara",    "lastName": "Chen",       "divisions": [ "Apex.Division" ] },
-        { "identifier": "robert.stevenson@apexdigital.com", "firstName": "Robert",  "lastName": "Stevenson",  "divisions": [ "Apex.Division" ] },
-        { "identifier": "marcus.johnson@apexdigital.com",   "firstName": "Marcus",  "lastName": "Johnson",    "divisions": [ "Apex.Division" ] },
-        { "identifier": "priya.patel@apexdigital.com",      "firstName": "Priya",   "lastName": "Patel",      "divisions": [ "Apex.Division" ] },
-        { "identifier": "kevin.wu@apexdigital.com",         "firstName": "Kevin",   "lastName": "Wu",         "divisions": [ "Apex.Division" ] },
-        { "identifier": "jessica.torres@apexdigital.com",   "firstName": "Jessica", "lastName": "Torres",     "divisions": [ "Apex.Division" ] },
-        { "identifier": "carlos.rivera@apexdigital.com",    "firstName": "Carlos",  "lastName": "Rivera",     "divisions": [ "Apex.Division" ] },
-        { "identifier": "linda.okafor@apexdigital.com",     "firstName": "Linda",   "lastName": "Okafor",     "divisions": [ "Apex.Division" ] },
-        { "identifier": "david.kim@apexdigital.com",        "firstName": "David",   "lastName": "Kim",        "divisions": [ "Apex.Division" ] },
-        { "identifier": "ashley.park@apexdigital.com",      "firstName": "Ashley",  "lastName": "Park",       "divisions": [ "Apex.Division" ] }
+        { "identifier": "sara.chen@apexdigital.com",        "firstName": "Sara",    "lastName": "Chen",       "divisions": [ "Apex.Division.Monthly"  ] },
+        { "identifier": "robert.stevenson@apexdigital.com", "firstName": "Robert",  "lastName": "Stevenson",  "divisions": [ "Apex.Division.Monthly"  ] },
+        { "identifier": "marcus.johnson@apexdigital.com",   "firstName": "Marcus",  "lastName": "Johnson",    "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "priya.patel@apexdigital.com",      "firstName": "Priya",   "lastName": "Patel",      "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "kevin.wu@apexdigital.com",         "firstName": "Kevin",   "lastName": "Wu",         "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "jessica.torres@apexdigital.com",   "firstName": "Jessica", "lastName": "Torres",     "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "carlos.rivera@apexdigital.com",    "firstName": "Carlos",  "lastName": "Rivera",     "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "linda.okafor@apexdigital.com",     "firstName": "Linda",   "lastName": "Okafor",     "divisions": [ "Apex.Division.Biweekly" ] },
+        { "identifier": "david.kim@apexdigital.com",        "firstName": "David",   "lastName": "Kim",        "divisions": [ "Apex.Division.Weekly"   ] },
+        { "identifier": "ashley.park@apexdigital.com",      "firstName": "Ashley",  "lastName": "Park",       "divisions": [ "Apex.Division.Weekly"   ] }
       ],
       "payrolls": [
         {
           "name": "Apex.Payroll.Monthly",
-          "divisionName": "Apex.Division",
+          "divisionName": "Apex.Division.Monthly",
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -55,7 +54,7 @@
         },
         {
           "name": "Apex.Payroll.Biweekly",
-          "divisionName": "Apex.Division",
+          "divisionName": "Apex.Division.Biweekly",
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -67,7 +66,7 @@
         },
         {
           "name": "Apex.Payroll.Weekly",
-          "divisionName": "Apex.Division",
+          "divisionName": "Apex.Division.Weekly",
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },

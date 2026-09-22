@@ -1,0 +1,12 @@
+# Apex Digital Solutions LLC — T4 Customizing
+# Run from T4-Customizing/ directory
+# Prerequisite: T1 Bootstrap completed
+
+# Step 1: Create the L2 Apex.Payroll regulation in Apex.DigitalSolutions tenant
+PayrollImport Apex.Payroll.2026.json
+
+# Step 2: Add L2 layer to all three payrolls
+PayrollImport PayrollsWithL2.json
+
+# Step 3: Set transit benefit for NYC-based employees (Sara, Carlos, Linda)
+PayrollImport CaseValues/TransitBenefit-NYC.json

@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -38,7 +38,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -50,7 +50,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
@@ -61,11 +61,11 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
-                  { "caseFieldName": "US.Pre401kPercent",  "value": "6",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.06", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.PreHealthAmount", "value": "200", "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
@@ -81,7 +81,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity agreement. PE withholds NY SIT (WT 5300) as primary work-state withholding AND NJ SIT (WT 5310 split-state) as resident-state withholding on same payslip. $150k/26=$5,769.23 gross, -401k 6%=-$346.15, -health=-$200 → FITTaxable=$5,223.08, FICATaxable=$5,369.23. Both NY and NJ tax lines appear on the biweekly payslip. NJ gives resident credit at year-end — not double taxation.",
+          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity. Multi-state goes through WT 5310 (not WT 5300). $150k/26=$5,769.23 gross. 401k 6%=$346.15. Health=$200. FITTaxable=$5,223.08 (WT 5050). FICATaxable=$5,569.23 (WT 5051, health only, no HSA). FIT (WT 5100): annual $135,800 - Single StdDed $16,100 = $119,700 → 24% bracket → $21,326/yr ÷ 26 = $820.23. SS $5,569.23×6.2%=$345.29 (WT 5200). Medicare $5,569.23×1.45%=$80.75 (WT 5210). WT 5310: NY work-state annual $135,800-$8,400=$127,400 → NY bracket 7 → $7,393/yr ÷ 26=$284.35; NJ resident credit offsets NJ tax → $0 NJ. WT 5300 null (multi-state bypasses single-state WT). Net $3,692.46.",
           "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
         }
       ],
@@ -92,13 +92,12 @@
           "wageTypeResults": [
             { "wageTypeNumber": 1000,  "value": 5769.23 },
             { "wageTypeNumber": 5050,  "value": 5223.08 },
-            { "wageTypeNumber": 5051,  "value": 5369.23 },
-            { "wageTypeNumber": 5100,  "value": -780.00 },
-            { "wageTypeNumber": 5200,  "value": -332.89 },
-            { "wageTypeNumber": 5210,  "value": -77.85 },
-            { "wageTypeNumber": 5300,  "value": -306.00 },
-            { "wageTypeNumber": 5310,  "value": -180.00 },
-            { "wageTypeNumber": 6500,  "value": 3843.00 }
+            { "wageTypeNumber": 5051,  "value": 5569.23 },
+            { "wageTypeNumber": 5100,  "value": -820.23 },
+            { "wageTypeNumber": 5200,  "value": -345.29 },
+            { "wageTypeNumber": 5210,  "value": -80.75 },
+            { "wageTypeNumber": 5310,  "value": -284.35 },
+            { "wageTypeNumber": 6500,  "value": 3692.46 }
           ]
         }
       ]

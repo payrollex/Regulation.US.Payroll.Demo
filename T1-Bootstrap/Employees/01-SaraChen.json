@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -39,7 +39,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -51,27 +51,28 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
-                  { "caseFieldName": "US.FilingStatus", "value": "MarriedFilingJointly", "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.W4Step2",      "value": "false",                "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.W4Step3",      "value": "4000",                 "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.W4Step4a",     "value": "0",                    "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.W4Step4b",     "value": "0",                    "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.W4Step4c",     "value": "500",                  "start": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.FilingStatus",         "value": "MFJ",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step2",             "value": "false",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",             "value": "4000",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4a",            "value": "0",      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4b",            "value": "0",      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4c",            "value": "500",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.LocalTaxJurisdiction","value": "NY-NYC", "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
-                  { "caseFieldName": "US.Pre401kPercent",  "value": "8",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.08", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.PreHealthAmount", "value": "600", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.PreHSAAmount",    "value": "300", "start": "2026-01-01T00:00:00.0Z" }
                 ]
@@ -80,7 +81,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "sara.chen@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Monthly",
               "case": {
                 "caseName": "US.BenefitsInKind",
                 "values": [

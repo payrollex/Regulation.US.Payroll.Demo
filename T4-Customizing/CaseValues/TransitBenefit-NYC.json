@@ -1,0 +1,57 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "Apex.Benefits",
+                "values": [
+                  { "caseFieldName": "Apex.TransitBenefitMonthly", "value": "315", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "Apex.Benefits",
+                "values": [
+                  { "caseFieldName": "Apex.TransitBenefitMonthly", "value": "300", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "Apex.Benefits",
+                "values": [
+                  { "caseFieldName": "Apex.TransitBenefitMonthly", "value": "315", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

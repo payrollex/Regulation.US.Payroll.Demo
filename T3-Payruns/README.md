@@ -6,6 +6,12 @@ and generate statutory reports for Apex Digital Solutions LLC.
 ## Prerequisites
 
 - T1-Bootstrap completed (`T1-Bootstrap/Bootstrap.pecmd`)
+- **Committed payrun data** in DB — run the integration test suite first:
+  ```
+  pecmd Tests/Run.Tests.pecmd /TestPrecision2
+  ```
+  `PayrunEmployeeTest` commits real payrun results. Reports need this data.
+  After a fresh Delete+Bootstrap, this step must be repeated.
 - PE backend running
 - WebApp running (for live payrun execution)
 
@@ -57,11 +63,12 @@ Run all three payrolls for January 2026. No YTD accumulators active yet.
 - David Kim: PA SIT + Philadelphia EIT (PSD code resolution)
 - FUTA ER (WT 6700) begins accumulating toward $7,000 per-employee cap
 
-**Validate with pecmd:**
+**Validate with pecmd (run from repo root):**
 ```
-PayrunEmployeePreviewTest Tests/DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json /TestPrecision2
-PayrunEmployeePreviewTest Tests/DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json /TestPrecision2
+Tests/Run.Tests.pecmd
 ```
+Each test imports its own case data, executes a payrun job, and asserts the
+expected wage type values (self-contained — works regardless of prior Bootstrap state).
 
 ---
 
@@ -71,17 +78,21 @@ Jessica Torres receives a $10,000 Q1 performance bonus in the March payrun.
 Supplemental wages are taxed at the **22% flat FIT rate** (IRC §3402(g)(1)).
 TX has no SIT, so the only additional withholding is federal.
 
-**Step 1 — Import bonus case value:**
+**Option A — Validate via pecmd** (self-contained, imports cases + runs payrun):
 ```
-PayrollImport T3-Payruns/Scenarios/March-Bonus-Jessica.json
+# from T3-Payruns/
+PayrunEmployeeTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/March-Bonus.actual.json
 ```
+`/OkOnFail` because `payrollResults` are intentionally empty — actual values are
+written to `March-Bonus.actual.json` for review. Add assertions once verified.
 
-**Step 2 — Run the March biweekly payrun** (WebApp, period 2026-03-17 / 2026-03-30)
-
-**Step 3 — Validate:**
-```
-PayrunEmployeePreviewTest T3-Payruns/Scenarios/March-Bonus-Preview.et.json /TestPrecision2
-```
+**Option B — Live payrun via WebApp**
+1. Import the bonus case value first:
+   ```
+   PayrollImport Scenarios/March-Bonus-Jessica.json
+   ```
+2. Run the March biweekly payrun via WebApp (period 2026-03-17 / 2026-03-30)
+3. Open Jessica's payslip to verify WT 1100 and the 22% FIT component
 
 **What to observe:**
 - WT 1100 (Supplemental Wages) = $10,000

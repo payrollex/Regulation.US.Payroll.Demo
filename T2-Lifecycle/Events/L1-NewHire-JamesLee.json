@@ -10,7 +10,7 @@
           "identifier": "james.lee@apexdigital.com",
           "firstName": "James",
           "lastName": "Lee",
-          "divisions": [ "Apex.Division" ]
+          "divisions": [ "Apex.Division.Biweekly" ]
         }
       ],
       "payrolls": [
@@ -21,7 +21,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "james.lee@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -33,7 +33,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "james.lee@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -46,7 +46,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "james.lee@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
@@ -58,7 +58,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "james.lee@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
@@ -69,11 +69,11 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "james.lee@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
-                  { "caseFieldName": "US.Pre401kPercent",  "value": "5",   "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.05", "start": "2026-03-17T00:00:00.0Z" },
                   { "caseFieldName": "US.PreHealthAmount", "value": "220", "start": "2026-03-17T00:00:00.0Z" }
                 ]
               }

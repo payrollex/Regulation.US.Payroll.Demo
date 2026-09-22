@@ -13,7 +13,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "kevin.wu@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
@@ -25,7 +25,7 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "kevin.wu@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Employment",
                 "values": [
@@ -38,19 +38,20 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "kevin.wu@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.Remuneration",
                 "values": [
-                  { "caseFieldName": "US.PayType",    "value": "Hourly", "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.HourlyRate", "value": "60.00",  "start": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.PayType",      "value": "Hourly", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.HourlyRate",  "value": "60.00",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.RegularHours","value": "80",     "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "kevin.wu@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
@@ -61,11 +62,11 @@
             {
               "userIdentifier": "apex.admin@apexdigital.com",
               "employeeIdentifier": "kevin.wu@apexdigital.com",
-              "divisionName": "Apex.Division",
+              "divisionName": "Apex.Division.Biweekly",
               "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
-                  { "caseFieldName": "US.Pre401kPercent",  "value": "5",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.Pre401kAmount",   "value": "240",  "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.PreHealthAmount", "value": "220", "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }

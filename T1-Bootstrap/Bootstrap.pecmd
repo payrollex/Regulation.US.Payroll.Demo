@@ -13,6 +13,9 @@
 #   PayrollImport <path>/US.Payroll.Data.Federal.Garnishment.2026.json
 # ─────────────────────────────────────────────────────────────────────────────
 
+# Step 0: Clean slate — remove any prior demo tenant (safe to run on a fresh DB)
+TenantDelete Apex.DigitalSolutions /trydelete
+
 # Step 1: Tenant structure
 # Creates: tenant Apex.DigitalSolutions, admin user, Apex.Division,
 #          10 employees, 3 payrolls (Monthly/Biweekly/Weekly), 3 payruns
