@@ -10,3 +10,6 @@ PayrollImport PayrollsWithL2.json
 
 # Step 3: Set transit benefit for NYC-based employees (Sara, Carlos, Linda)
 PayrollImport CaseValues/TransitBenefit-NYC.json
+
+# Step 4: Set WFH equipment stipend for remote employees (Kevin, Jessica)
+PayrollImport CaseValues/WFHStipend-Remote.json

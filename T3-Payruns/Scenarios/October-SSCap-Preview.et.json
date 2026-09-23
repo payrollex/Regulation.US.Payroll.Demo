@@ -1,0 +1,110 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",      "value": "111-22-3001", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1975",       "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2015-03-01", "start": "2015-03-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "240000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus",          "value": "MFJ",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step2",               "value": "false",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",               "value": "4000",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4a",              "value": "0",      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4b",              "value": "0",      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4c",              "value": "500",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.LocalTaxJurisdiction",  "value": "NY-NYC", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.08", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "600",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHSAAmount",    "value": "300",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.BenefitsInKind",
+                "values": [
+                  { "caseFieldName": "US.CompanyCarValue", "value": "450", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-T3-Sara-OctoberSSCap",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-10-01T00:00:00.0Z",
+          "evaluationDate": "2026-11-01T00:00:00.0Z",
+          "reason": "Sara Chen, Monthly October 2026. SS wage base cap scenario. FICA taxable wages: $19,550/month. YTD FICA through Sep (9 months) = $175,950. SS wage base for 2026 is defined in the US.Payroll.Data.Federal.FICA lookup. Observe: WT 5200 (SS Employee) drops to $0 or a partial amount when YTD FICA wages exceed the SS wage base. WT 5220 (Additional Medicare) triggers independently at $250,000 YTD FICA (MFJ threshold). WT 6600 (SS Employer) mirrors the cap on the employer side.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": []
+    }
+  ]
+}
