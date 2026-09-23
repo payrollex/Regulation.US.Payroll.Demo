@@ -28,6 +28,30 @@ PayrunEmployeeTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail Actu
 ### All paths are relative to T3-Payruns/ (pecmd working directory)
 ### ─────────────────────────────────────────────────────────────────────────────
 
+### ─────────────────────────────────────────────────────────────────────────────
+### Scenario 3 — October: Social Security wage base cap (Sara Chen)
+###   SS wage base 2026: $184,500 (SSA COLA Oct 2025).
+###   Sara's FICA taxable: $19,550/month → YTD through Sep = $175,950.
+###   October cap: $184,500 - $175,950 = $8,550 remaining → WT 5200 = $530.10.
+###   From November: WT 5200 = $0. WT 5220 (Add'l Medicare) triggers independently.
+###   Prerequisite: payruns Jan–Sep must be completed in the live system.
+### ─────────────────────────────────────────────────────────────────────────────
+PayrunEmployeeTest Scenarios/October-SSCap-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/October-SSCap.actual.json
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Scenario 4 — December: 401(k) annual cap (Robert Stevenson, age 59)
+###   Annual limit 2026: $24,500 standard + $8,000 age-50+ catch-up = $32,500.
+###   Fixed $2,708.33/month × 12 = $32,499.96 — just under the cap (no truncation).
+###   Super catch-up ($11,250, ages 60-63 per SECURE 2.0 §603) starts 2027.
+###   Prerequisite: payruns Jan–Nov must be completed in the live system.
+### ─────────────────────────────────────────────────────────────────────────────
+PayrunEmployeeTest Scenarios/December-401kCap-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/December-401kCap.actual.json
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Reports — prerequisite: payruns for the target period must be complete
+### All paths are relative to T3-Payruns/ (pecmd working directory)
+### ─────────────────────────────────────────────────────────────────────────────
+
 ### Payslip — Sara Chen, January 2026 (Monthly payroll)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Reports/Payslip-Sara-January.parameters.json /pdf /shellopen
 
