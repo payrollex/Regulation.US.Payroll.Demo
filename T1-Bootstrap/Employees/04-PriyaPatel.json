@@ -54,7 +54,7 @@
               "case": {
                 "caseName": "US.TaxData",
                 "values": [
-                  { "caseFieldName": "US.FilingStatus", "value": "HeadOfHousehold", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.FilingStatus", "value": "HoH", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.W4Step3",      "value": "2000",            "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }

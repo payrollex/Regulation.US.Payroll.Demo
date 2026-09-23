@@ -1,0 +1,105 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",      "value": "111-22-3002", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1967",       "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2018-07-15", "start": "2018-07-15T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "115000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "MFJ",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",      "value": "2000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kAmount",   "value": "2708.33", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "475",     "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC09-US-Robert-Monthly",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-01T00:00:00.0Z",
+          "evaluationDate": "2026-02-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, age 59 in 2026), Monthly January 2026. Annual $115k/12=$9,583.33 gross. Pre401kAmount $2,708.33 (fixed, age-50+ catch-up eligible — SECURE 2.0). Health $475. FITTaxable=$6,400.00 (WT 5050). FICATaxable=$9,108.33 (WT 5051, 401k does not reduce FICA). FIT: annual $76,800 - MFJ StdDed $32,200 = $44,600 → 10%×$24,800 + 12%×$19,800 = $4,856/yr → $404.67/mo - W4Step3 $166.67 = $238.00. SS 6.2%×$9,108.33=$564.72. Medicare 1.45%×$9,108.33=$132.07. No additional Medicare in Jan (YTD<$250k MFJ). NY SIT: annual $76,800 - NY StdDed = graduated; observe monthly value. No local tax.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC09-US-Robert-Monthly",
+          "employeeIdentifier": "robert.stevenson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000, "value": 9583.33 },
+            { "wageTypeNumber": 5050, "value": 6400.00 },
+            { "wageTypeNumber": 5051, "value": 9108.33 },
+            { "wageTypeNumber": 5100, "value": -238.00 },
+            { "wageTypeNumber": 5200, "value": -564.72 },
+            { "wageTypeNumber": 5210, "value": -132.07 }
+          ]
+        }
+      ]
+    }
+  ]
+}

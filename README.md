@@ -61,12 +61,13 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 
 ---
 
-## Reference Documents
+## Key Design Decisions
 
-| Document | Description |
+| Decision | Why |
 |:---|:---|
-| [US.Payroll-DemoCompany.md](US.Payroll-DemoCompany.md) | Full company profile: all 10 employees, case data, payrun snapshots, year-end reports, article scenarios |
-| [US.Payroll-TutorialPlan.md](US.Payroll-TutorialPlan.md) | Tutorial outlines: step-by-step content for each tutorial, key scenarios, cross-tutorial map |
+| One division per pay frequency | `US.PayFrequency` is a division-level case value — it must be unique per division. Three payrolls × three divisions = three annualization factors (12/26/52) in one tenant. |
+| L2 regulation for customization | `Apex.Payroll` extends `US.Payroll` without modifying it. Any future update to `US.Payroll` is automatically inherited. |
+| Integration tests as documentation | Each `*.et.json` in `Tests/` documents the expected payslip values with a full calculation trace in the `reason` field. |
 
 ---
 
@@ -86,17 +87,15 @@ Each test folder has a `README.md` with the scenario description and assertion t
 
 ## Quick Start
 
+Run the full setup from the repo root — this bootstraps the tenant,
+imports all employee data, sets up T4 customizing, and runs all 8 integration tests:
+
 ```bash
-# Start with T1 — Bootstrap
-cd T1-Bootstrap
-pecmd Exchange Setup.json
-pecmd Exchange CompanyCases/Monthly.json
-pecmd Exchange CompanyCases/Biweekly.json
-pecmd Exchange CompanyCases/Weekly.json
-pecmd Exchange Employees/all-employees.json
+Setup.cmd
 ```
 
-Then continue with [T1-Bootstrap/README.md](T1-Bootstrap/README.md) for step-by-step guidance.
+Or step through the tutorials manually, starting with
+[T1-Bootstrap/README.md](T1-Bootstrap/README.md).
 
 ---
 

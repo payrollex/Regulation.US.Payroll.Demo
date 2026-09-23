@@ -1,0 +1,102 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",      "value": "111-22-3004", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1985",       "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2022-06-01", "start": "2022-06-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CT",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "95000",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "HoH",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",      "value": "2000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.04", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "180",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC10-US-Priya-CTtoNY",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "Priya Patel (Project Manager), CT resident working in NY, Biweekly Jan 6-19 2026. Annual $95k/26=$3,653.85 gross. 401k 4%×$3,653.85=$146.15. Health $180. FITTaxable=$3,327.70. FICATaxable=$3,473.85. Filing HoH with W4Step3 $2,000. CT has no reciprocity with NY — NY SIT applies on work income (WT 5310 MultiState), CT SIT on resident income. Observe: WT 5300 is null (multi-state path), WT 5310 contains the net multi-state withholding (NY tax less CT credit for taxes paid to NY).",
+          "employeeIdentifiers": [ "priya.patel@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC10-US-Priya-CTtoNY",
+          "employeeIdentifier": "priya.patel@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000, "value": 3653.85 },
+            { "wageTypeNumber": 5050, "value": 3327.70 },
+            { "wageTypeNumber": 5051, "value": 3473.85 }
+          ]
+        }
+      ]
+    }
+  ]
+}

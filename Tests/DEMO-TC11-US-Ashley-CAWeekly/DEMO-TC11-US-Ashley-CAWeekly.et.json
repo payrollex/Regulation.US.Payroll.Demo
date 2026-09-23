@@ -1,0 +1,92 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Weekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "ashley.park@apexdigital.com",
+              "divisionName": "Apex.Division.Weekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",      "value": "111-22-3010", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1994",       "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "ashley.park@apexdigital.com",
+              "divisionName": "Apex.Division.Weekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2025-06-02", "start": "2025-06-02T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "CA",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CA",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "ashley.park@apexdigital.com",
+              "divisionName": "Apex.Division.Weekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",       "value": "Hourly", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.HourlyRate",    "value": "42.00",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.RegularHours",  "value": "40",     "start": "2026-01-05T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "ashley.park@apexdigital.com",
+              "divisionName": "Apex.Division.Weekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC11-US-Ashley-CAWeekly",
+          "payrunName": "Apex.Payrun.Weekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-05T00:00:00.0Z",
+          "evaluationDate": "2026-01-12T00:00:00.0Z",
+          "reason": "Ashley Park (QA Engineer), CA, Single, Weekly Jan 5-11 2026. Hourly $42 × 40 regular hours = $1,680.00 gross. No pre-tax deductions. FITTaxable=$1,680.00. FICATaxable=$1,680.00. SS 6.2%×$1,680=$104.16. Medicare 1.45%×$1,680=$24.36. FIT: annual $87,360 - Single StdDed $16,100 = $71,260 → graduated; weekly amount to verify. CA SIT applies (CA does not conform to §132 transit exemption but no transit benefit set here). CA SDI also applies (WT 6800). No overtime in this baseline week.",
+          "employeeIdentifiers": [ "ashley.park@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC11-US-Ashley-CAWeekly",
+          "employeeIdentifier": "ashley.park@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1010, "value": 1680.00 },
+            { "wageTypeNumber": 5050, "value": 1680.00 },
+            { "wageTypeNumber": 5051, "value": 1680.00 },
+            { "wageTypeNumber": 5200, "value": -104.16 },
+            { "wageTypeNumber": 5210, "value": -24.36 }
+          ]
+        }
+      ]
+    }
+  ]
+}

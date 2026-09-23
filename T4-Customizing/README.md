@@ -68,4 +68,15 @@ The same L2 pattern supports:
 
 ---
 
-> *TODO: full tutorial text — see IMPLEMENTATION.md Phase 4*
+## Verify
+
+After completing all four steps, run the L2 integration test to confirm
+that the §132 transit benefit correctly reduces FIT and FICA taxable wages:
+
+```bash
+cd ../Tests
+pecmd PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-L2.et.json
+```
+
+Expected: WT 1250 returns `−$300.00` (Carlos, biweekly transit benefit),
+WT 5050 (FIT taxable) and WT 5051 (FICA taxable) each reduced by $300.

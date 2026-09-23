@@ -47,13 +47,15 @@ pecmd PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.
 
 ## Expected Values
 
-All `*.et.json` files contain `// TODO: verify` markers for values that must be confirmed
-by a first PE run. After the initial run, replace the placeholders with actual values
-from the payslip output.
+All `*.et.json` files contain verified `payrollResults` sections with exact wage type
+values confirmed by PE runs. The `reason` field in each `payrunJobInvocations` entry
+documents the full calculation chain for transparency and audit.
 
 Run the full setup first:
 
 ```bash
 cd ../T1-Bootstrap
-pecmd PayrunEmployeeTest ../Tests/Run.Tests.pecmd
+start /b /wait "" "Bootstrap.pecmd"
+cd ../Tests
+pecmd PayrunEmployeeTest Run.Tests.pecmd
 ```

@@ -9,14 +9,14 @@ Bootstrap **Apex Digital Solutions LLC** from zero to first payrun in under 20 m
 ```
 Tenant: Apex.DigitalSolutions
 ├── User: apex.admin@apexdigital.com (TenantAdministrator)
-├── Division: Apex.Division
-├── Payroll: Apex.Payroll.Monthly    [Sara, Robert — executives]
-├── Payroll: Apex.Payroll.Biweekly   [Marcus, Priya, Kevin, Jessica, Carlos, Linda]
-└── Payroll: Apex.Payroll.Weekly     [David, Ashley — hourly staff]
+├── Division: Apex.Division.Monthly   → Payroll: Apex.Payroll.Monthly   [Sara, Robert]
+├── Division: Apex.Division.Biweekly  → Payroll: Apex.Payroll.Biweekly  [Marcus, Priya, Kevin, Jessica, Carlos, Linda]
+└── Division: Apex.Division.Weekly    → Payroll: Apex.Payroll.Weekly    [David, Ashley]
 ```
 
 Three payrolls, one tenant, one EIN — this is how PE models multiple pay frequencies
-for a single legal entity.
+for a single legal entity. Each payroll has its own division because `US.PayFrequency`
+is a division-level case value and must be unique per division.
 
 ---
 
@@ -116,15 +116,15 @@ Each file sets all required cases for one employee. Cases are submitted in this 
 
 | File | Employee | Payroll | Key cases |
 |:---|:---|:---|:---|
-| `01-SaraChen.json` | Sara Chen | Monthly | PersonalData · Employment(NYC) · Remuneration($240k) · TaxData(MFJ W4Step3=$4k W4Step4c=$500) · PreTax(401k8% H$600 HSA$300) · BenefitsInKind(Car$450) |
+| `01-SaraChen.json` | Sara Chen | Monthly | PersonalData · Employment(NYC) · Remuneration($240k) · TaxData(MFJ W4Step3=$4k W4Step4c=$500 LocalJurisdiction=NY-NYC) · PreTax(401k8% H$600 HSA$300) · BenefitsInKind(Car$450) |
 | `02-RobertStevenson.json` | Robert Stevenson | Monthly | PersonalData(DOB 1967) · Employment(NY) · Remuneration($115k) · TaxData(MFJ W4Step3=$2k) · PreTax(401k$2708.33/mo H$475) |
 | `03-MarcusJohnson.json` | Marcus Johnson | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=NJ) · Remuneration($150k) · TaxData(Single) · PreTax(401k6% H$200) |
 | `04-PriyaPatel.json` | Priya Patel | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=CT) · Remuneration($95k) · TaxData(HoH W4Step3=$2k) · PreTax(401k4% H$180) |
-| `05-KevinWu.json` | Kevin Wu | Biweekly | PersonalData · Employment(CA) · Remuneration(Hourly $60/hr) · TaxData(Single) · PreTax(401k5% H$220) |
+| `05-KevinWu.json` | Kevin Wu | Biweekly | PersonalData · Employment(CA) · Remuneration(Hourly $60/hr 80hrs) · TaxData(Single) · PreTax(401kAmount$253.50 H$220) |
 | `06-JessicaTorres.json` | Jessica Torres | Biweekly | PersonalData · Employment(TX) · Remuneration($80k) · TaxData(MFJ) · PreTax(401k4% H$310 family) |
 | `07-CarlosRivera.json` | Carlos Rivera | Biweekly | PersonalData · Employment(NY/NYC) · Remuneration($185k) · TaxData(Single) · MultiStateEmployment(NY60%/NJ25%/CT15%) |
 | `08-LindaOkafor.json` | Linda Okafor | Biweekly | PersonalData · Employment(NYC) · Remuneration($65k) · TaxData(Single) · Garnishment(ChildSupport $500/period) |
-| `09-DavidKim.json` | David Kim | Weekly | PersonalData · Employment(PA) · Remuneration(Hourly $32/hr) · TaxData(Single PHL PSD=510101) |
+| `09-DavidKim.json` | David Kim | Weekly | PersonalData · Employment(PA) · Remuneration(Hourly $32/hr) · TaxData(Single PA-Philadelphia PSD=510101) |
 | `10-AshleyPark.json` | Ashley Park | Weekly | PersonalData · Employment(CA) · Remuneration(Hourly $42/hr) · TaxData(Single) |
 
 ```bash
@@ -179,9 +179,9 @@ earnings for child support without arrears) is computed automatically by the reg
 
 ### PA Local Tax (David)
 
-`US.LocalTaxJurisdiction = PHL` activates WT 5400 (`LocalTaxWithholding`).
+`US.LocalTaxJurisdiction = PA-Philadelphia` activates WT 5400 (`LocalTaxWithholding`).
 The `US.ResidentPSDCode` and `US.WorkPSDCode` (`510101` = Philadelphia City) resolve
-the 3.75% resident rate from the local tax data satellite.
+the 3.74% resident rate from the `US.Payroll.Data.Local.Tax` data satellite.
 
 ---
 

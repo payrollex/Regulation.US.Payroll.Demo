@@ -19,19 +19,18 @@ Validates the full monthly payslip for a high-earning NYC executive:
 
 | Wage Type | Expected | Notes |
 |:---|---:|:---|
-| Gross salary (WT 1000) | $20,000.00 | |
+| Gross salary (WT 1000) | $20,000.00 | $240k ÷ 12 |
 | Company car fringe (WT 1320) | $450.00 | §61 imputed income |
 | FIT taxable wages (WT 5050) | $17,950.00 | Gross+Car−401k−Health−HSA |
-| FICA taxable wages (WT 5051) | $19,550.00 | Gross+Car−Health−HSA |
-| Federal income tax (WT 5100) | ~$2,645 | incl. $500 Step4c extra |
+| FICA taxable wages (WT 5051) | $19,550.00 | Gross+Car−Health−HSA (401k does not reduce FICA) |
+| Federal income tax (WT 5100) | −$2,144.00 | Base FIT only — W-4 Step 3 credit applied |
+| Additional FIT / Step 4c (WT 5110) | −$500.00 | W-4 Step 4c extra withholding |
 | Social Security (WT 5200) | −$1,212.10 | $19,550 × 6.2% |
 | Medicare (WT 5210) | −$283.48 | $19,550 × 1.45% |
-| Add'l Medicare (WT 5220) | $0.00 | YTD < $200k threshold |
-| NY SIT (WT 5300) | ~−$940 | NYS-50-T graduated |
-| NYC local (WT 5400) | ~−$590 | NYC city graduated |
-| Net pay (WT 6500) | ~$14,290 | |
-
-> Values marked `~` are illustrative. Replace with actual PE output after first run.
+| Add'l Medicare (WT 5220) | $0.00 | YTD < $250k MFJ threshold in January |
+| NY SIT (WT 5300) | −$1,069.28 | NYS-50-T graduated; annual base $215,400 − $8,400 = $207,000 |
+| NYC local (WT 5400) | −$719.00 | NYC city graduated; annual base $215,400 − $5,000 = $210,400 |
+| Net pay (WT 6500) | $12,022.14 | |
 
 ## Run
 

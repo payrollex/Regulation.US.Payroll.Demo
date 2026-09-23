@@ -26,9 +26,21 @@ PayrunEmployeeTest DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json
 PayrunEmployeeTest DEMO-TC06-US-Linda-Garnishment/DEMO-TC06-US-Linda-Garnishment.et.json
 
 # DEMO-TC07 — David Kim: Philadelphia weekly
-# PA SIT (3.07%) + Philadelphia EIT (3.75%) — PSD code resolution
+# PA SIT (3.07%) + Philadelphia EIT (3.74%) — PSD code resolution
 PayrunEmployeeTest DEMO-TC07-US-David-Philadelphia/DEMO-TC07-US-David-Philadelphia.et.json
 
 # DEMO-TC08 — L2 §132 transit benefit (requires T4-Customizing completed)
 # Carlos with $300/period transit — confirms L2 reduces FIT/FICA taxable wages
 PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-L2.et.json
+
+# DEMO-TC09 — Robert Stevenson: Monthly, age-50+ 401k catch-up, SECURE 2.0
+# Fixed Pre401kAmount; FIT/FICA taxable split; NY SIT pending verification
+PayrunEmployeeTest DEMO-TC09-US-Robert-Monthly/DEMO-TC09-US-Robert-Monthly.et.json
+
+# DEMO-TC10 — Priya Patel: CT resident working in NY, HoH, no reciprocity
+# Multi-state path (WT 5310); CT SIT + NY credit; FIT/FICA/SIT pending verification
+PayrunEmployeeTest DEMO-TC10-US-Priya-CTtoNY/DEMO-TC10-US-Priya-CTtoNY.et.json
+
+# DEMO-TC11 — Ashley Park: CA hourly weekly baseline (40 hrs, no OT)
+# FIT/CA SIT/CA SDI pending verification; SS and Medicare pre-calculated
+PayrunEmployeeTest DEMO-TC11-US-Ashley-CAWeekly/DEMO-TC11-US-Ashley-CAWeekly.et.json
