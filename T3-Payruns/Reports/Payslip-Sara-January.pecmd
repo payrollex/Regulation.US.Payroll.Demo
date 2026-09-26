@@ -1,0 +1,5 @@
+# Payslip — Sara Chen, January 2026
+# Payroll: Apex.Payroll.Monthly
+# Prerequisite: January Monthly payrun completed
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Payslip-Sara-January.parameters.json targetFile:Payslip-Sara-January.pdf /pdf /shellopen

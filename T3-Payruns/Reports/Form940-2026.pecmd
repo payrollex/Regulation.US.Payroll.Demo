@@ -1,0 +1,7 @@
+# Form 940 — Employer's Annual Federal Unemployment (FUTA) Tax Return, 2026
+# FUTA 0.6% net rate on first $7,000 per employee (after 5.4% SUTA credit)
+# Prerequisite: all December 2026 payruns completed
+# Note: FUTA wage base ($7,000/employee) is exhausted early in the year
+#   for most employees — most FUTA liability falls in Q1
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form940 culture:en-US parameterFile:Form940-2026.parameters.json /pdf /shellopen

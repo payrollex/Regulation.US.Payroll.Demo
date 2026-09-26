@@ -6,28 +6,32 @@ and generate statutory reports for Apex Digital Solutions LLC.
 ## Prerequisites
 
 - T1-Bootstrap completed (`T1-Bootstrap/Bootstrap.pecmd`)
-- **Committed payrun data** in DB — run the integration test suite first:
+- T4-Customizing completed (`T4-Customizing/Customize.pecmd`)
+- **January 2026 payrun seed** executed — creates persistent payrun results for reports:
   ```
-  pecmd Tests/Run.Tests.pecmd /TestPrecision2
+  # from T3-Payruns/
+  PayrollImport Payruns-January.json
   ```
-  `PayrunEmployeeTest` commits real payrun results. Reports need this data.
-  After a fresh Delete+Bootstrap, this step must be repeated.
+  Or run `Setup.cmd` from the repo root — Step 6 handles this automatically.
 - PE backend running
-- WebApp running (for live payrun execution)
 
 ---
 
 ## Payrun Execution
 
-Payroll Engine executes payrun jobs via the **WebApp** or **REST API**.
-There is no pecmd command to start a live payrun job.
+Payroll Engine executes payrun jobs via the **`PayrollImport`** command (exchange file),
+the **WebApp**, or the **REST API**.
 
-**pecmd is used for:**
+**`Payruns-January.json`** (this folder) seeds persistent January 2026 results for all
+three payrolls and all 10 employees via `payrunJobInvocations` at the tenant level.
+It is called automatically by `Setup.cmd` Step 6 after T4-Customizing.
+
+**pecmd is also used for:**
 - Importing case value scenarios (`PayrollImport`)
 - Validating results before/after execution (`PayrunEmployeePreviewTest`)
 - Generating reports (`Report`)
 
-**WebApp workflow (per period):**
+**WebApp workflow (for subsequent periods / manual runs):**
 1. Open the payrun → select period → click **Start**
 2. Monitor job status → wait for **Complete**
 3. Review payslips, correct errors, re-run if needed
@@ -148,59 +152,66 @@ Super catch-up (ages 60–63 per SECURE 2.0 §603) begins at age 60 in 2027.
 All reports use the `US.Payroll` regulation (shared with `Apex.DigitalSolutions`
 via `RegulationShare`). Reports are parameterized by year, month, and employee.
 
+Each report has a dedicated `.pecmd` file in `Reports/`. Run from the `Reports/` directory:
+
+| File | Report | Output file | Prerequisite |
+|:---|:---|:---|:---|
+| `Payslip-Sara-January.pecmd` | Sara Chen payslip, Jan 2026 | `Payslip-Sara-January.pdf` | January Monthly payrun complete |
+| `Payslip-Jessica-March.pecmd` | Jessica Torres payslip, Mar 2026 (incl. bonus) | `Payslip-Jessica-March.pdf` | March Biweekly payrun complete |
+| `Form941-Q1.pecmd` | Form 941 Q1 2026 | timestamp-based | All Jan–Mar payruns complete |
+| `W2-2026.pecmd` | W-2 all employees, 2026 | timestamp-based | All December payruns complete |
+| `Form940-2026.pecmd` | Form 940 annual FUTA, 2026 | timestamp-based | All December payruns complete |
+| `Reports.pecmd` | All five reports combined | see above | See individual prerequisites above |
+
+Each payslip uses `targetFile:` to write a fixed, employee-named PDF. Running the command a second time overwrites the previous file. All other reports use the default timestamp-based filename.
+
+```bash
+cd T3-Payruns/Reports
+
+# Single report
+start /b /wait "" "Payslip-Sara-January.pecmd"
+
+# All reports
+start /b /wait "" "Reports.pecmd"
+```
+
 ### Payslip
 
-Generate a payslip PDF for Sara Chen, January 2026:
-```
-Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
-  regulation:US.Payroll report:US.Payslip culture:en-US \
-  parameterFile:T3-Payruns/Reports/Payslip-Sara-January.parameters.json /pdf /shellopen
-```
-
-Generate a payslip PDF for Jessica Torres, March 2026 (with bonus):
-```
-Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
-  regulation:US.Payroll report:US.Payslip culture:en-US \
-  parameterFile:T3-Payruns/Reports/Payslip-Jessica-March.parameters.json /pdf /shellopen
-```
+| Parameter | Sara — January | Jessica — March |
+|:---|:---|:---|
+| Employee | `sara.chen@apexdigital.com` | `jessica.torres@apexdigital.com` |
+| Payroll | `Apex.Payroll.Monthly` | `Apex.Payroll.Biweekly` |
+| Month | 1 | 3 |
+| Output file | `Payslip-Sara-January.pdf` | `Payslip-Jessica-March.pdf` |
+| Key feature | Car fringe · 401k · NYC local | $10k bonus at 22% flat FIT |
 
 ### Form 941 — Quarterly Federal Tax Return
 
-Generate Form 941 for Q1 2026 (January–March):
-```
-Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
-  regulation:US.Payroll report:US.Form941 culture:en-US \
-  parameterFile:T3-Payruns/Reports/Form941-Q1.parameters.json /pdf /shellopen
-```
+Q1 2026 (January–March). Covers FIT withheld + SS/Medicare EE and ER
+across all three payrolls. Parameter file: `Form941-Q1.parameters.json`.
 
 ### W-2 — Year-End
 
-Generate W-2s for all employees after December payruns are complete:
-```
-Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
-  regulation:US.Payroll report:US.W2 culture:en-US \
-  parameterFile:T3-Payruns/Reports/W2-2026.parameters.json /pdf /shellopen
-```
+All employees, full year 2026. Run after December year-end close.
+YTD accumulators must be final before generating.
 
 ### Form 940 — Annual FUTA Return
 
-```
-Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com \
-  regulation:US.Payroll report:US.Form940 culture:en-US \
-  parameterFile:T3-Payruns/Reports/Form940-2026.parameters.json /pdf /shellopen
-```
+Full year 2026. Net FUTA rate: 0.6% (gross 6.0% minus 5.4% SUTA credit
+for non-credit-reduction states). Wage base: $7,000/employee — exhausted
+in Q1 for most Apex employees.
 
 ---
 
 ## YTD Accumulator Summary
 
-| Accumulator | Limit | Employee | Approximate Month |
+| Accumulator | 2026 Limit | Employee | Approximate Month |
 |:---|:---|:---|:---|
-| FUTA ($7k/employee) | per-employee | All | Feb |
-| SS wage base | `Data.Federal.FICA` lookup | Sara, Carlos | Oct / Dec |
-| 401k standard | `Data.Federal.Tax` lookup | All contributors | Dec |
-| 401k age-50+ | Standard + $7,500 | Robert (age 59) | Dec |
-| Additional Medicare | $200k MFJ YTD | Sara | Sep–Oct |
+| FUTA wage base | $7,000/employee | All | Feb |
+| SS wage base | $184,500 | Sara, Carlos | Oct |
+| 401k standard | $24,500 | All contributors | Dec |
+| 401k age-50+ catch-up | $32,500 (standard + $8,000) | Robert (age 59) | Dec |
+| Additional Medicare | $250,000 YTD (MFJ) | Sara | Sep–Oct |
 
 > Exact cap amounts are defined in the `US.Payroll.Data.Federal.FICA` and
 > `US.Payroll.Data.Federal.Tax` regulation data lookups. PE enforces them

@@ -1,0 +1,6 @@
+# W-2 — Wage and Tax Statement, full year 2026
+# Generates W-2s for all employees in the tenant
+# Prerequisite: all December 2026 payruns completed (all three payrolls)
+# Note: run after year-end close — YTD accumulators must be final
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.W2 culture:en-US parameterFile:W2-2026.parameters.json /pdf /shellopen

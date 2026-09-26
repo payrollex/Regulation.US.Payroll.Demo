@@ -1,0 +1,5 @@
+# Payslip — Jessica Torres, March 2026 (incl. $10,000 Q1 bonus)
+# Payroll: Apex.Payroll.Biweekly
+# Prerequisite: March Biweekly payrun completed + bonus case value imported
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Payslip-Jessica-March.parameters.json targetFile:Payslip-Jessica-March.pdf /pdf /shellopen

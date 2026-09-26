@@ -1,0 +1,31 @@
+# Apex Digital Solutions LLC — All Reports 2026
+# Run from T3-Payruns/Reports/ directory
+#
+# Prerequisites per report group:
+#   Payslips  → target month payruns completed
+#   Form 941  → Q1 payruns completed (Jan + Feb + Mar)
+#   W-2       → all December payruns completed (year-end close)
+#   Form 940  → all December payruns completed (year-end close)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Payslips
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Sara Chen — January 2026 (Monthly: company car, 401k, W-4 extras, NYC local)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Payslip-Sara-January.parameters.json targetFile:Payslip-Sara-January.pdf /pdf /shellopen
+
+# Jessica Torres — March 2026 (Biweekly: $10,000 supplemental bonus, 22% flat FIT)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Payslip-Jessica-March.parameters.json targetFile:Payslip-Jessica-March.pdf /pdf /shellopen
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Federal quarterly / annual filings
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Form 941 — Q1 2026 (FIT + SS/Medicare EE and ER, all three payrolls)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form941 culture:en-US parameterFile:Form941-Q1.parameters.json /pdf /shellopen
+
+# W-2 — full year 2026 (all employees, after December year-end close)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.W2 culture:en-US parameterFile:W2-2026.parameters.json /pdf /shellopen
+
+# Form 940 — annual FUTA 2026 (0.6% net, $7,000 wage base, after year-end close)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form940 culture:en-US parameterFile:Form940-2026.parameters.json /pdf /shellopen

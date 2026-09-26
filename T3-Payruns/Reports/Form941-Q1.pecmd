@@ -1,0 +1,6 @@
+# Form 941 — Quarterly Federal Tax Return, Q1 2026 (January – March)
+# Covers: FIT withheld, SS EE/ER, Medicare EE/ER for all employees
+# Prerequisite: all three January, February, March payruns completed
+#   (Monthly × 3, Biweekly × 6 or 7, Weekly × 13)
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form941 culture:en-US parameterFile:Form941-Q1.parameters.json /pdf /shellopen

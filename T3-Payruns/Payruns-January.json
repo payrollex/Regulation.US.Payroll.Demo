@@ -1,0 +1,55 @@
+{
+  "$schema": "../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrunJobInvocations": [
+        {
+          "name": "Apex-Monthly-January-2026",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-01T00:00:00.0Z",
+          "evaluationDate": "2026-02-01T00:00:00.0Z",
+          "reason": "January 2026 Monthly payrun — Sara Chen (NY/NYC, CFO $240k), Robert Stevenson (TX, VP $180k). Demo seed data for reports.",
+          "employeeIdentifiers": [
+            "sara.chen@apexdigital.com",
+            "robert.stevenson@apexdigital.com"
+          ]
+        },
+        {
+          "name": "Apex-Biweekly-January-2026",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-06T00:00:00.0Z",
+          "evaluationDate": "2026-01-20T00:00:00.0Z",
+          "reason": "January 2026 Biweekly payrun (Jan 6-19) — Marcus Johnson (NJ→NY), Priya Patel (CT→NY, HoH), Kevin Wu (CA daily OT), Jessica Torres (TX), Carlos Rivera (CA+NV+WA), Linda Okafor (NJ, garnishment). Demo seed data for reports.",
+          "employeeIdentifiers": [
+            "marcus.johnson@apexdigital.com",
+            "priya.patel@apexdigital.com",
+            "kevin.wu@apexdigital.com",
+            "jessica.torres@apexdigital.com",
+            "carlos.rivera@apexdigital.com",
+            "linda.okafor@apexdigital.com"
+          ]
+        },
+        {
+          "name": "Apex-Weekly-January-2026",
+          "payrunName": "Apex.Payrun.Weekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-05T00:00:00.0Z",
+          "evaluationDate": "2026-01-12T00:00:00.0Z",
+          "reason": "January 2026 Weekly payrun (Jan 5-11) — David Kim (PA/Philadelphia local tax), Ashley Park (CA, hourly OT). Demo seed data for reports.",
+          "employeeIdentifiers": [
+            "david.kim@apexdigital.com",
+            "ashley.park@apexdigital.com"
+          ]
+        }
+      ]
+    }
+  ]
+}
