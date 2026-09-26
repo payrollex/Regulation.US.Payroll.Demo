@@ -5,6 +5,48 @@ on [Payroll Engine](https://payrollengine.org).
 
 ---
 
+## Dependency: Regulation.US.Payroll
+
+This demo requires **[Regulation.US.Payroll](https://github.com/Payroll-Engine/Regulation.US.Payroll)**
+to be checked out as a sibling folder:
+
+```
+Repos/
+  Regulation.US.Payroll/      ← required
+  Regulation.US.Payroll.Demo/ ← this repo
+```
+
+`Setup.cmd` calls `Regulation.US.Payroll\2026\Setup.Tests.pecmd` in Step 1 to install
+all US.Payroll packages and data regulations into the running PE backend before the demo
+tenant is created. The demo tenant (`Apex.DigitalSolutions`) then consumes
+`US.Payroll` as a shared regulation — no separate package import is needed.
+
+> If the backend is already loaded with a current `US.Payroll` installation you can
+> skip Step 1 and run the remaining setup steps manually from the tutorial READMEs.
+
+---
+
+## What This Demo Covers
+
+| Topic | Where |
+|:---|:---|
+| **Multiple payroll frequencies** — monthly, biweekly, and weekly payrolls in one tenant, each with the correct annualization factor (12 / 26 / 52) | T1, T3 |
+| **W-4 2020+** — Steps 2–4, additional withholding, Head of Household filing status | T1, T2 |
+| **Federal income tax** — progressive marginal rates, supplemental flat rate (22%), bonus withholding | T3 |
+| **FICA** — Social Security wage base cap ($184,500), Additional Medicare Tax (0.9% above $200k) | T3 |
+| **Multi-state withholding** — six states (NY, NJ, CT, CA, TX, PA) with NY City and Philadelphia local tax | T1, T3 |
+| **Commuter withholding** — NJ→NY reciprocity gap, CT→NY credit method, three-state allocation | T1, T3 |
+| **California specifics** — daily overtime (8h/day), 7th-day double-time, SDI uncapped | T3 |
+| **Pre-tax benefits** — §401(k) traditional + SECURE 2.0 age-50+ / age-60–63 catch-up, §125 health premium, §223 HSA | T1, T3 |
+| **Fringe benefits** — company car (IRS Annual Lease Value method, Box 1 inclusion) | T1, T3 |
+| **Garnishment** — child support order, disposable earnings calculation, CCPA cap | T1, T3 |
+| **Employee lifecycle** — new hire, mid-period salary change, FMLA leave, state relocation, re-entry | T2 |
+| **YTD caps and FUTA** — SS wage base, FUTA $7,000/employee base, 401(k) limits, Additional Medicare threshold | T3 |
+| **Statutory reports** — W-2 (all boxes), Form 941 (quarterly), Form 940 (annual FUTA), State W-2 | T3 |
+| **Tenant customizing** — L2 regulation extending US.Payroll without modifying it (§132 transit benefit, WFH stipend) | T4 |
+
+---
+
 ## Demo Company: Apex Digital Solutions LLC
 
 A fictional IT consulting company that exercises the full breadth of US payroll complexity:
