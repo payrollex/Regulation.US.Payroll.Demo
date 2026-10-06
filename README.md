@@ -36,7 +36,7 @@ tenant is created. The demo tenant (`Apex.DigitalSolutions`) then consumes
 | **FICA** — Social Security wage base cap ($184,500), Additional Medicare Tax (0.9% above $200k) | T3 |
 | **Multi-state withholding** — six states (NY, NJ, CT, CA, TX, PA) with NY City and Philadelphia local tax | T1, T3 |
 | **Commuter withholding** — NJ→NY reciprocity gap, CT→NY credit method, three-state allocation | T1, T3 |
-| **California specifics** — daily overtime (8h/day), 7th-day double-time, SDI uncapped | T3 |
+| **California specifics** — daily overtime (8h/day), SDI uncapped (7th-day double-time is supported by the regulation, not shown in the demo) | Tests (TC04, TC11) |
 | **Pre-tax benefits** — §401(k) traditional + SECURE 2.0 age-50+ / age-60–63 catch-up, §125 health premium, §223 HSA | T1, T3 |
 | **Fringe benefits** — company car (IRS Annual Lease Value method, Box 1 inclusion) | T1, T3 |
 | **Garnishment** — child support order, disposable earnings calculation, CCPA cap | T1, T3 |
@@ -55,7 +55,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 |:---|:---|
 | Pay frequencies | Monthly · Biweekly · Weekly (3 payrolls) |
 | Pay types | Salaried · Hourly |
-| States | NY (incl. NYC local) · NJ · CT · CA · TX · PA (incl. Philadelphia EIT) |
+| States | NY (incl. NYC local) · NJ · CT · CA · TX · PA (incl. Philadelphia Wage Tax) |
 | Multi-state | NJ→NY commuter · CT→NY commuter · Three-state allocation (NY/NJ/CT) |
 | Benefits | 401(k) · §125 health · §223 HSA · Company car fringe |
 | Special | SECURE 2.0 catch-up · Garnishment · Supplemental wages · CA daily OT |
@@ -69,12 +69,12 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 | 2 | Robert Stevenson | VP Engineering | Monthly | Age 58 · SECURE 2.0 catch-up |
 | 3 | Marcus Johnson | Sr. Software Eng. | Biweekly | NJ→NY commuter · no reciprocity |
 | 4 | Priya Patel | Project Manager | Biweekly | CT→NY commuter · Head of Household |
-| 5 | Kevin Wu | Cloud Architect | Biweekly | CA hourly · daily overtime · SDI/PFL |
+| 5 | Kevin Wu | Cloud Architect | Biweekly | CA hourly · daily overtime · SDI |
 | 6 | Jessica Torres | Account Executive | Biweekly | TX · no SIT · Q1 bonus |
 | 7 | Carlos Rivera | Principal Consultant | Biweekly | Three-state allocation NY/NJ/CT |
-| 8 | Linda Okafor | HR Coordinator | Biweekly | NYC · garnishment (child support) |
+| 8 | Linda Okafor | HR Coordinator | Biweekly | NY · garnishment (child support) |
 | 9 | David Kim | IT Support Tech | Weekly | Philadelphia · local EIT · OT |
-| 10 | Ashley Park | QA Engineer | Weekly | CA hourly · 7th-day OT · SDI uncapped |
+| 10 | Ashley Park | QA Engineer | Weekly | CA hourly · SDI uncapped |
 
 ---
 
@@ -115,7 +115,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 
 ## Tests
 
-The [`Tests/`](Tests/) folder contains 8 integration tests — one per key demo scenario.
+The [`Tests/`](Tests/) folder contains 11 integration tests (102 asserted wage type results) — one per key demo scenario.
 Run them after T1-Bootstrap to validate your setup and confirm expected payslip values.
 
 ```bash
@@ -130,7 +130,7 @@ Each test folder has a `README.md` with the scenario description and assertion t
 ## Quick Start
 
 Run the full setup from the repo root — this bootstraps the tenant,
-imports all employee data, sets up T4 customizing, and runs all 8 integration tests:
+imports all employee data, sets up T4 customizing, and runs all 11 integration tests:
 
 ```bash
 Setup.cmd

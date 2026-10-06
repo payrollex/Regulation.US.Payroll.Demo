@@ -82,7 +82,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Priya Patel (Project Manager), CT resident working in NY, Biweekly Jan 6-19 2026. Annual $95k/26=$3,653.85 gross. 401k 4%×$3,653.85=$146.15. Health $180. FITTaxable=$3,327.70. FICATaxable=$3,473.85. Filing HoH with W4Step3 $2,000. CT has no reciprocity with NY — NY SIT applies on work income (WT 5310 MultiState), CT SIT on resident income. Observe: WT 5300 is null (multi-state path), WT 5310 contains the net multi-state withholding (NY tax less CT credit for taxes paid to NY).",
+          "reason": "Priya Patel (Project Manager), CT resident working in NY, Biweekly Jan 6-19 2026. Annual $95k/26=$3,653.85 gross. 401k 4%×$3,653.85=$146.15. Health $180. FITTaxable=$3,327.70. FICATaxable=$3,473.85. Filing HoH with W4Step3 $2,000. CT has no reciprocity with NY — NY SIT applies on work income (WT 5310 MultiState), CT SIT on resident income. WT 5300 is null (multi-state path); WT 5310 = $155.92 combined NY work-state + CT resident withholding (CT credit for taxes paid to NY). FIT: annual $3,327.70×26 = $86,520.20 - HoH StdDed $24,150 = $62,370.20 → 10%×$17,700 + 12%×$44,670.20 = $7,130.42 - Step 3 $2,000 = $5,130.42 ÷ 26 = $197.32 (WT 5100). SS 6.2%×$3,473.85 = $215.38. Medicare 1.45%×$3,473.85 = $50.37. NY PFL (WT 5620): 0.432%×$3,473.85 = $15.01. Net = $3,653.85 - $146.15 - $180 - $197.32 - $215.38 - $50.37 - $155.92 - $15.01 = $2,693.70.",
           "employeeIdentifiers": [ "priya.patel@apexdigital.com" ]
         }
       ],
@@ -91,9 +91,17 @@
           "payrunJobName": "DEMO-TC10-US-Priya-CTtoNY",
           "employeeIdentifier": "priya.patel@apexdigital.com",
           "wageTypeResults": [
-            { "wageTypeNumber": 1000, "value": 3653.85 },
-            { "wageTypeNumber": 5050, "value": 3327.70 },
-            { "wageTypeNumber": 5051, "value": 3473.85 }
+            { "wageTypeNumber": 1000,  "value": 3653.85 },
+            { "wageTypeNumber": 1200,  "value": -146.15 },
+            { "wageTypeNumber": 1210,  "value": -180.00 },
+            { "wageTypeNumber": 5050,  "value": 3327.70 },
+            { "wageTypeNumber": 5051,  "value": 3473.85 },
+            { "wageTypeNumber": 5100,  "value": -197.32 },
+            { "wageTypeNumber": 5200,  "value": -215.38 },
+            { "wageTypeNumber": 5210,  "value": -50.37 },
+            { "wageTypeNumber": 5310,  "value": -155.92 },
+            { "wageTypeNumber": 5620,  "value": -15.01 },
+            { "wageTypeNumber": 6500,  "value": 2693.70 }
           ]
         }
       ]

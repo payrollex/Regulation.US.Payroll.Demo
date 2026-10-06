@@ -1,12 +1,12 @@
 # Run all demo integration tests
-# Prerequisite: T1-Bootstrap must be completed first
+# Prerequisite: T1-Bootstrap and T4-Customizing must be completed first
 
 # DEMO-TC01 — Sara Chen: Monthly, January 2026
-# Company car · 401k · W-4 Step3/4c · Additional Medicare trigger
+# NYC · company car (taxed, not paid out) · 401k · W-4 Steps 3/4c · NY PFL
 PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
 
-# DEMO-TC02 — Marcus Johnson: NJ→NY split-state withholding
-# Biweekly, both NY and NJ on same payslip (no reciprocity)
+# DEMO-TC02 — Marcus Johnson: NJ→NY commuter, no reciprocity
+# Multi-state path WT 5310; NJ resident tax fully credited
 PayrunEmployeeTest DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json
 
 # DEMO-TC03 — Carlos Rivera: Three-state allocation NY/NJ/CT
@@ -14,33 +14,32 @@ PayrunEmployeeTest DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json
 PayrunEmployeeTest DEMO-TC03-US-Carlos-ThreeState/DEMO-TC03-US-Carlos-ThreeState.et.json
 
 # DEMO-TC04 — Kevin Wu: CA daily overtime, sprint week
-# CADay1-5Hours with daily OT trigger (§510 Labor Code)
+# CADay1-5Hours with daily OT (§510 Labor Code) · CA SDI WT 5600
 PayrunEmployeeTest DEMO-TC04-US-Kevin-CADailyOT/DEMO-TC04-US-Kevin-CADailyOT.et.json
 
-# DEMO-TC05 — Jessica Torres: TX no-SIT baseline
-# Also covers Q1 supplemental wage at flat 22%
+# DEMO-TC05 — Jessica Torres: TX baseline, no state income tax
 PayrunEmployeeTest DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json
 
 # DEMO-TC06 — Linda Okafor: Child support garnishment
-# CCPA limit validation (60% disposable earnings)
+# CCPA limit 60% of disposable earnings · garnishment WT 5900 before net pay
 PayrunEmployeeTest DEMO-TC06-US-Linda-Garnishment/DEMO-TC06-US-Linda-Garnishment.et.json
 
 # DEMO-TC07 — David Kim: Philadelphia weekly
-# PA SIT (3.07%) + Philadelphia EIT (3.74%) — PSD code resolution
+# PA SIT (3.07%) + Philadelphia Wage Tax (3.74%) — PSD code resolution · PA UC WT 5630
 PayrunEmployeeTest DEMO-TC07-US-David-Philadelphia/DEMO-TC07-US-David-Philadelphia.et.json
 
-# DEMO-TC08 — L2 §132 transit benefit (requires T4-Customizing completed)
-# Carlos with $300/period transit — confirms L2 reduces FIT/FICA taxable wages
+# DEMO-TC08 — L2 §132(f) transit benefit (requires T4-Customizing completed)
+# Carlos elects $400/month: $340 limit pre-tax (WT 1250), excess post-tax (WT 5520)
 PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-L2.et.json
 
 # DEMO-TC09 — Robert Stevenson: Monthly, age-50+ 401k catch-up, SECURE 2.0
-# Fixed Pre401kAmount; FIT/FICA taxable split; NY SIT pending verification
+# Fixed Pre401kAmount; FIT/FICA taxable split; NY SIT + NY PFL
 PayrunEmployeeTest DEMO-TC09-US-Robert-Monthly/DEMO-TC09-US-Robert-Monthly.et.json
 
-# DEMO-TC10 — Priya Patel: CT resident working in NY, HoH, no reciprocity
-# Multi-state path (WT 5310); CT SIT + NY credit; FIT/FICA/SIT pending verification
+# DEMO-TC10 — Priya Patel: CT resident working in NY, Head of Household, no reciprocity
+# Multi-state path (WT 5310); CT resident tax with credit for NY tax
 PayrunEmployeeTest DEMO-TC10-US-Priya-CTtoNY/DEMO-TC10-US-Priya-CTtoNY.et.json
 
 # DEMO-TC11 — Ashley Park: CA hourly weekly baseline (40 hrs, no OT)
-# FIT/CA SIT/CA SDI pending verification; SS and Medicare pre-calculated
+# FIT ×52 annualization · CA SIT · CA SDI WT 5600
 PayrunEmployeeTest DEMO-TC11-US-Ashley-CAWeekly/DEMO-TC11-US-Ashley-CAWeekly.et.json

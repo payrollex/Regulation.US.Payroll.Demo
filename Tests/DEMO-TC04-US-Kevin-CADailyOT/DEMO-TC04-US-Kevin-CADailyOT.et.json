@@ -45,7 +45,11 @@
                   { "caseFieldName": "US.PayType",        "value": "Hourly",  "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.HourlyRate",     "value": "60.00",   "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.RegularHours",   "value": "80",      "start": "2026-01-06T00:00:00.0Z" },
-                  { "caseFieldName": "US.OvertimeHours",  "value": "3",       "start": "2026-01-06T00:00:00.0Z" }
+                  { "caseFieldName": "US.CADay1Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay2Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay3Hours",    "value": "8",       "start": "2026-01-06T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay4Hours",    "value": "9",       "start": "2026-01-06T00:00:00.0Z" },
+                  { "caseFieldName": "US.CADay5Hours",    "value": "8",       "start": "2026-01-06T00:00:00.0Z" }
                 ]
               }
             },
@@ -83,7 +87,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Kevin Wu, CA hourly $60/hr, biweekly. RegularHours=80h → $4,800 (WT 1010). OvertimeHours=3h → 3x$60x1.5=$270 (WT 1020, FLSA §207). Gross=$5,070 (WT 5000). Pre401kAmount=$253.50, health=$220 → FITTaxable=$4,596.50 (WT 5050). FICATaxable=$5,070-$220=$4,850 (WT 5051). FIT: annual $119,509-$16,100=$103,409 → 22% bracket → $17,461.98/yr÷26=$671.61 (WT 5100). SS $4,850×6.2%=$300.70 (WT 5200). Medicare $4,850×1.45%=$70.33 (WT 5210). CA SIT: annual $119,509-$5,540=$113,969 → 10.23% bracket → $7,741.53-$168.30 PE credit = $7,573.23/yr÷26=$291.28 (WT 5300). CA SDI: WT 5051×1.3%=$4,850×1.3%=$63.05 (WT 6800, SB 951 uncapped). WT 6800 not in NetPay. Net $3,262.58.",
+          "reason": "Kevin Wu, CA hourly $60/hr, biweekly. Sprint week CADay1-5Hours = 9/9/8/9/8 (43h), second week 40h. RegularHours=80h straight time → $4,800 (WT 1010). CA daily OT (Labor Code §510, >8h/day): Mon/Tue/Thu 1h each = 3h × $60 × 1.5 = $270 (WT 1020, CA path; weekly OT 3h already covered by the daily premium). No federal OvertimeHours entered - WT 1020 comes from the CA path only. Gross=$5,070 (WT 5000). Pre401kAmount=$253.50, health=$220 → FITTaxable=$4,596.50 (WT 5050). FICATaxable=$5,070-$220=$4,850 (WT 5051). FIT: annual $119,509-$16,100=$103,409 → 22% bracket → $17,461.98/yr÷26=$671.61 (WT 5100). SS $4,850×6.2%=$300.70 (WT 5200). Medicare $4,850×1.45%=$70.33 (WT 5210). CA SIT: annual $119,509-$5,540=$113,969 → 10.23% bracket → $7,741.53-$168.30 PE credit = $7,573.23/yr÷26=$291.28 (WT 5300). CA SDI (WT 5600): $4,850×1.3%=$63.05 (SB 951, no wage cap). Net = $5,070 - $253.50 - $220 - $671.61 - $300.70 - $70.33 - $291.28 - $63.05 = $3,199.53.",
           "employeeIdentifiers": [ "kevin.wu@apexdigital.com" ]
         }
       ],
@@ -101,8 +105,8 @@
             { "wageTypeNumber": 5200,  "value": -300.70 },
             { "wageTypeNumber": 5210,  "value": -70.33 },
             { "wageTypeNumber": 5300,  "value": -291.28 },
-            { "wageTypeNumber": 6800,  "value": -63.05 },
-            { "wageTypeNumber": 6500,  "value": 3262.58 }
+            { "wageTypeNumber": 5600,  "value": -63.05 },
+            { "wageTypeNumber": 6500,  "value": 3199.53 }
           ]
         }
       ]

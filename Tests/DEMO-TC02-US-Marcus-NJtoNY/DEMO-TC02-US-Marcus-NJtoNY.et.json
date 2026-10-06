@@ -81,7 +81,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity. Multi-state goes through WT 5310 (not WT 5300). $150k/26=$5,769.23 gross. 401k 6%=$346.15. Health=$200. FITTaxable=$5,223.08 (WT 5050). FICATaxable=$5,569.23 (WT 5051, health only, no HSA). FIT (WT 5100): annual $135,800 - Single StdDed $16,100 = $119,700 → 24% bracket → $21,326/yr ÷ 26 = $820.23. SS $5,569.23×6.2%=$345.29 (WT 5200). Medicare $5,569.23×1.45%=$80.75 (WT 5210). WT 5310: NY work-state annual $135,800-$8,400=$127,400 → NY bracket 7 → $7,393/yr ÷ 26=$284.35; NJ resident credit offsets NJ tax → $0 NJ. WT 5300 null (multi-state bypasses single-state WT). Net $3,692.46.",
+          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity. Multi-state goes through WT 5310 (not WT 5300). $150k/26=$5,769.23 gross. 401k 6%=$346.15. Health=$200. FITTaxable=$5,223.08 (WT 5050). FICATaxable=$5,569.23 (WT 5051, health only, no HSA). FIT (WT 5100): annual $135,800 - Single StdDed $16,100 = $119,700 → 24% bracket → $21,326/yr ÷ 26 = $820.23. SS $5,569.23×6.2%=$345.29 (WT 5200). Medicare $5,569.23×1.45%=$80.75 (WT 5210). WT 5310: NY work-state annual $135,800-$8,400=$127,400 → NY bracket 7 → $7,393/yr ÷ 26=$284.35; NJ resident credit offsets NJ tax → $0 NJ. WT 5300 null (multi-state bypasses single-state WT). NY PFL (WT 5620): 0.432%×$5,569.23=$24.06 (work state NY). Net $3,668.40.",
           "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
         }
       ],
@@ -97,7 +97,8 @@
             { "wageTypeNumber": 5200,  "value": -345.29 },
             { "wageTypeNumber": 5210,  "value": -80.75 },
             { "wageTypeNumber": 5310,  "value": -284.35 },
-            { "wageTypeNumber": 6500,  "value": 3692.46 }
+            { "wageTypeNumber": 5620,  "value": -24.06 },
+            { "wageTypeNumber": 6500,  "value": 3668.40 }
           ]
         }
       ]

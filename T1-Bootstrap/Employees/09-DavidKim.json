@@ -56,7 +56,7 @@
                 "caseName": "US.TaxData",
                 "values": [
                   { "caseFieldName": "US.FilingStatus",         "value": "Single", "start": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.LocalTaxJurisdiction", "value": "PHL",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.LocalTaxJurisdiction", "value": "PA-Philadelphia", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.ResidentPSDCode",      "value": "510101", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.WorkPSDCode",          "value": "510101", "start": "2026-01-01T00:00:00.0Z" }
                 ]

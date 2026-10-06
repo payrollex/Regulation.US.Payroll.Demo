@@ -120,7 +120,7 @@ Each file sets all required cases for one employee. Cases are submitted in this 
 | `02-RobertStevenson.json` | Robert Stevenson | Monthly | PersonalData(DOB 1967) · Employment(NY) · Remuneration($115k) · TaxData(MFJ W4Step3=$2k) · PreTax(401k$2708.33/mo H$475) |
 | `03-MarcusJohnson.json` | Marcus Johnson | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=NJ) · Remuneration($150k) · TaxData(Single) · PreTax(401k6% H$200) |
 | `04-PriyaPatel.json` | Priya Patel | Biweekly | PersonalData · Employment(WorkState=NY ResidentState=CT) · Remuneration($95k) · TaxData(HoH W4Step3=$2k) · PreTax(401k4% H$180) |
-| `05-KevinWu.json` | Kevin Wu | Biweekly | PersonalData · Employment(CA) · Remuneration(Hourly $60/hr 80hrs) · TaxData(Single) · PreTax(401kAmount$253.50 H$220) |
+| `05-KevinWu.json` | Kevin Wu | Biweekly | PersonalData · Employment(CA) · Remuneration(Hourly $60/hr 80hrs) · TaxData(Single) · PreTax(401kAmount$240 H$220) |
 | `06-JessicaTorres.json` | Jessica Torres | Biweekly | PersonalData · Employment(TX) · Remuneration($80k) · TaxData(MFJ) · PreTax(401k4% H$310 family) |
 | `07-CarlosRivera.json` | Carlos Rivera | Biweekly | PersonalData · Employment(NY/NYC) · Remuneration($185k) · TaxData(Single) · MultiStateEmployment(NY60%/NJ25%/CT15%) |
 | `08-LindaOkafor.json` | Linda Okafor | Biweekly | PersonalData · Employment(NYC) · Remuneration($65k) · TaxData(Single) · Garnishment(ChildSupport $500/period) |
@@ -174,8 +174,9 @@ of the standard WT 5300 (`StateWithholding`). The allocation percentages are dec
 
 ### Garnishment (Linda)
 
-The `US.Garnishment` case activates WT 6505. The CCPA limit check (60% of disposable
-earnings for child support without arrears) is computed automatically by the regulation.
+The `US.Garnishment` case activates WT 5900 (`Garnishment`). The CCPA limit check (60% of
+disposable earnings for child support without arrears) is computed automatically by the
+regulation, and the garnishment is deducted before net pay (WT 6500).
 
 ### PA Local Tax (David)
 

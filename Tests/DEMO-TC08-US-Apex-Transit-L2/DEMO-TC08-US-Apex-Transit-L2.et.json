@@ -82,7 +82,7 @@
               "case": {
                 "caseName": "Apex.Benefits",
                 "values": [
-                  { "caseFieldName": "Apex.TransitBenefitMonthly", "value": "300", "start": "2026-02-01T00:00:00.0Z" }
+                  { "caseFieldName": "Apex.TransitBenefitMonthly", "value": "400", "start": "2026-02-01T00:00:00.0Z" }
                 ]
               }
             }
@@ -97,7 +97,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-02-03T00:00:00.0Z",
           "evaluationDate": "2026-02-17T00:00:00.0Z",
-          "reason": "Carlos Rivera with L2 Apex.Benefits transit benefit ($300/period). L2 regulation adds WT 1250 PreTransitBenefit which reduces BOTH FIT taxable wages (WT 5050) AND FICA taxable wages (WT 5051) by $300. IRC §132(f) exempts commuter transit from FIT, FICA, and state taxes. Without L2: FIT/FICA taxable=$7,115.38. With L2: FIT/FICA taxable=$6,815.38 (-$300). FIT savings ~$96/period, SS savings ~$18.60/period. Validates T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
+          "reason": "Carlos Rivera, biweekly, L2 Apex.Benefits monthly transit election $400. IRC §132(f) monthly limit $340 (lookup US.FederalTaxParameters.TransitMonthlyLimit, Rev. Proc. 2025-32). Pre-tax part WT 1250 = $340 × 12 / 26 = $156.92; excess WT 5520 (post-tax) = $60 × 12 / 26 = $27.69. FIT/FICA taxable = $7,115.38 - $156.92 = $6,958.46 (WT 5050/5051). FIT: annual $180,919.96 - $16,100 = $164,819.96 → $17,966 + 24% × $59,119.96 = $32,154.79 ÷ 26 = $1,236.72. SS 6.2% × $6,958.46 = $431.42. Medicare 1.45% × $6,958.46 = $100.90. State withholding (WT 5310 $324.18) is unchanged: US.Payroll does not model state conformity for WT 1250. NY PFL (WT 5620): 0.432% × $6,958.46 = $30.06. Net = $7,115.38 - $156.92 - $27.69 - $1,236.72 - $431.42 - $100.90 - $324.18 - $30.06 = $4,807.49. Validates the T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],
@@ -107,11 +107,16 @@
           "employeeIdentifier": "carlos.rivera@apexdigital.com",
           "wageTypeResults": [
             { "wageTypeNumber": 1000,  "value": 7115.38 },
-            { "wageTypeNumber": 1250,  "value": -300.00 },
-            { "wageTypeNumber": 5050,  "value": 6815.38 },
-            { "wageTypeNumber": 5051,  "value": 6815.38 },
-            { "wageTypeNumber": 5200,  "value": -422.55 },
-            { "wageTypeNumber": 5210,  "value": -98.82 }
+            { "wageTypeNumber": 1250,  "value": -156.92 },
+            { "wageTypeNumber": 5050,  "value": 6958.46 },
+            { "wageTypeNumber": 5051,  "value": 6958.46 },
+            { "wageTypeNumber": 5100,  "value": -1236.72 },
+            { "wageTypeNumber": 5200,  "value": -431.42 },
+            { "wageTypeNumber": 5210,  "value": -100.90 },
+            { "wageTypeNumber": 5310,  "value": -324.18 },
+            { "wageTypeNumber": 5520,  "value": -27.69 },
+            { "wageTypeNumber": 5620,  "value": -30.06 },
+            { "wageTypeNumber": 6500,  "value": 4807.49 }
           ]
         }
       ]

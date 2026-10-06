@@ -73,7 +73,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-05T00:00:00.0Z",
           "evaluationDate": "2026-01-12T00:00:00.0Z",
-          "reason": "David Kim, Philadelphia PA, hourly $32/hr, weekly. Gross=40×$32=$1,280 (WT 1010). No pre-tax deductions. FICATaxable=$1,280. SS $1,280×6.2%=$79.36 (WT 5200). Medicare $1,280×1.45%=$18.56 (WT 5210). FIT: annual $66,560-$16,100=$50,460 → 10% to $12,400=$1,240 + 12% on $38,000=$4,560 + 22% on $60=$13.20 = $5,813.20÷52=$111.79 (WT 5100). PA SIT $1,280×3.07%=$39.30 (WT 5300). Philadelphia Wage Tax (PA-Philadelphia, resident 3.74%) $1,280×3.74%=$47.87 (WT 5400). Net=$983.12.",
+          "reason": "David Kim, Philadelphia PA, hourly $32/hr, weekly. Gross=40×$32=$1,280 (WT 1010). No pre-tax deductions. FICATaxable=$1,280. SS $1,280×6.2%=$79.36 (WT 5200). Medicare $1,280×1.45%=$18.56 (WT 5210). FIT: annual $66,560-$16,100=$50,460 → 10% to $12,400=$1,240 + 12% on $38,000=$4,560 + 22% on $60=$13.20 = $5,813.20÷52=$111.79 (WT 5100). PA SIT $1,280×3.07%=$39.30 (WT 5300). Philadelphia Wage Tax (PA-Philadelphia, resident 3.74%) $1,280×3.74%=$47.87 (WT 5400). PA employee UC (WT 5630): 0.07%×$1,280=$0.90. Net=$982.22.",
           "employeeIdentifiers": [ "david.kim@apexdigital.com" ]
         }
       ],
@@ -88,7 +88,8 @@
             { "wageTypeNumber": 5210,  "value": -18.56 },
             { "wageTypeNumber": 5300,  "value": -39.30 },
             { "wageTypeNumber": 5400,  "value": -47.87 },
-            { "wageTypeNumber": 6500,  "value": 983.12 }
+            { "wageTypeNumber": 5630,  "value": -0.90 },
+            { "wageTypeNumber": 6500,  "value": 982.22 }
           ]
         }
       ]

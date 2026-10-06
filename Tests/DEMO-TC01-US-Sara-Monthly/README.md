@@ -8,8 +8,10 @@
 
 Validates the full monthly payslip for a high-earning NYC executive:
 
-- Company car fringe (+$450) → increases **both** FIT and FICA taxable wages
+- Company car fringe (+$450) → increases **both** FIT and FICA taxable wages, but is
+  **not paid out** (imputed income is deducted again from net pay)
 - 401(k) 8% (−$1,600) → reduces FIT/NY/NYC but **not** FICA
+- NY Paid Family Leave (0.432%) deducted from net pay
 - Three different taxable wage bases on one payslip (FIT ≠ FICA ≠ Gross)
 - W-4 Step 3 child credits ($4,000/yr → $333/month tax reduction)
 - W-4 Step 4c extra withholding ($500/month)
@@ -27,10 +29,11 @@ Validates the full monthly payslip for a high-earning NYC executive:
 | Additional FIT / Step 4c (WT 5110) | −$500.00 | W-4 Step 4c extra withholding |
 | Social Security (WT 5200) | −$1,212.10 | $19,550 × 6.2% |
 | Medicare (WT 5210) | −$283.48 | $19,550 × 1.45% |
-| Add'l Medicare (WT 5220) | $0.00 | YTD < $250k MFJ threshold in January |
+| Add'l Medicare (WT 5220) | — | Not triggered: YTD Medicare wages < $200,000 (employer threshold, any filing status) |
 | NY SIT (WT 5300) | −$1,069.28 | NYS-50-T graduated; annual base $215,400 − $8,400 = $207,000 |
 | NYC local (WT 5400) | −$719.00 | NYC city graduated; annual base $215,400 − $5,000 = $210,400 |
-| Net pay (WT 6500) | $12,022.14 | |
+| NY PFL (WT 5620) | −$84.46 | $19,550 × 0.432% |
+| Net pay (WT 6500) | $11,487.68 | $20,450 − $450 car (not paid out) − $2,500 pre-tax − $5,927.86 taxes − $84.46 PFL |
 
 ## Run
 

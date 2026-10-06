@@ -12,50 +12,57 @@ expected payroll results for each key scenario.
 
 - Payroll Engine backend running and accessible
 - Tutorial T1-Bootstrap completed (`Tests/` assumes Apex tenant and all employee cases exist)
+- Tutorial T4-Customizing completed (required by DEMO-TC08)
 - `pecmd` configured with the correct backend URL
 
 ---
 
 ## Test Inventory
 
-| Test | Employee | Payroll | Key Feature |
-|:---|:---|:---|:---|
-| [DEMO-TC01](DEMO-TC01-US-Sara-Monthly/) | Sara Chen | Monthly | Company car · 401k · W-4 Step3/4c · Add'l Medicare |
-| [DEMO-TC02](DEMO-TC02-US-Marcus-NJtoNY/) | Marcus Johnson | Biweekly | NJ→NY split-state withholding |
-| [DEMO-TC03](DEMO-TC03-US-Carlos-ThreeState/) | Carlos Rivera | Biweekly | Three-state allocation NY/NJ/CT |
-| [DEMO-TC04](DEMO-TC04-US-Kevin-CADailyOT/) | Kevin Wu | Biweekly | CA daily overtime (§510 sprint week) |
-| [DEMO-TC05](DEMO-TC05-US-Jessica-TX/) | Jessica Torres | Biweekly | TX no-SIT baseline + supplemental bonus |
-| [DEMO-TC06](DEMO-TC06-US-Linda-Garnishment/) | Linda Okafor | Biweekly | Child support garnishment · CCPA limit |
-| [DEMO-TC07](DEMO-TC07-US-David-Philadelphia/) | David Kim | Weekly | PA SIT + Philadelphia EIT (PSD codes) |
-| [DEMO-TC08](DEMO-TC08-US-Apex-Transit-L2/) | All / Carlos | Biweekly | L2 §132 transit benefit (T4-Customizing) |
+| Test | Employee | Payroll | Key Feature | Net pay |
+|:---|:---|:---|:---|---:|
+| [DEMO-TC01](DEMO-TC01-US-Sara-Monthly/) | Sara Chen | Monthly | NYC · company car (taxed, not paid out) · W-4 Steps 3/4(c) · NY PFL | $11,487.68 |
+| [DEMO-TC02](DEMO-TC02-US-Marcus-NJtoNY/) | Marcus Johnson | Biweekly | NJ→NY commuter, no reciprocity | $3,668.40 |
+| [DEMO-TC03](DEMO-TC03-US-Carlos-ThreeState/) | Carlos Rivera | Biweekly | Three-state allocation NY/NJ/CT | $4,941.76 |
+| [DEMO-TC04](DEMO-TC04-US-Kevin-CADailyOT/) | Kevin Wu | Biweekly | CA daily overtime (§510 sprint week) · CA SDI | $3,199.53 |
+| [DEMO-TC05](DEMO-TC05-US-Jessica-TX/) | Jessica Torres | Biweekly | TX baseline, no state income tax | $2,282.60 |
+| [DEMO-TC06](DEMO-TC06-US-Linda-Garnishment/) | Linda Okafor | Biweekly | Child support garnishment · CCPA 60% limit | $1,470.58 |
+| [DEMO-TC07](DEMO-TC07-US-David-Philadelphia/) | David Kim | Weekly | PA SIT + Philadelphia Wage Tax (PSD codes) · PA UC | $982.22 |
+| [DEMO-TC08](DEMO-TC08-US-Apex-Transit-L2/) | Carlos Rivera | Biweekly | L2 §132(f) transit benefit with monthly limit | $4,807.49 |
+| [DEMO-TC09](DEMO-TC09-US-Robert-Monthly/) | Robert Stevenson | Monthly | Age-50+ 401(k) catch-up · W-4 Step 3 | $5,131.78 |
+| [DEMO-TC10](DEMO-TC10-US-Priya-CTtoNY/) | Priya Patel | Biweekly | CT→NY commuter · Head of Household | $2,693.70 |
+| [DEMO-TC11](DEMO-TC11-US-Ashley-CAWeekly/) | Ashley Park | Weekly | CA hourly weekly baseline · CA SDI | $1,247.46 |
+
+11 tests, 102 asserted wage type results.
 
 ---
 
 ## Run All Tests
 
 ```bash
-pecmd PayrunEmployeeTest Run.Tests.pecmd
+pecmd Run.Tests.pecmd /TestPrecision2
 ```
 
 Or run individual tests:
 
 ```bash
-pecmd PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
+pecmd PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json /TestPrecision2
 ```
 
 ---
 
 ## Expected Values
 
-All `*.et.json` files contain verified `payrollResults` sections with exact wage type
-values confirmed by PE runs. The `reason` field in each `payrunJobInvocations` entry
-documents the full calculation chain for transparency and audit.
+All `*.et.json` files contain verified `payrollResults` with exact wage type values.
+Federal, FICA, state program, garnishment and net pay values were recalculated by hand
+from the case data. State and local withholding values (NY, CA, CT, PA) come from
+US.Payroll, where they are covered by its regression tests — NY and CA also against the
+official NYS-50-T and DE 44 examples. The `reason` field in each `payrunJobInvocations` entry documents
+the full calculation chain.
 
 Run the full setup first:
 
 ```bash
-cd ../T1-Bootstrap
-start /b /wait "" "Bootstrap.pecmd"
-cd ../Tests
-pecmd PayrunEmployeeTest Run.Tests.pecmd
+cd ..
+Setup.cmd
 ```

@@ -8,9 +8,8 @@
       "regulations": [
         {
           "name": "Apex.Payroll",
-          "namespace": "Apex",
-          "updateMode": "Update",
-          "description": "Apex Digital Solutions LLC — Level 2 regulation extending US.Payroll with company-specific benefits: §132(f) commuter transit pre-tax benefit (WT 1250) and WFH equipment stipend (WT 1260). No modification of the base US.Payroll regulation required.",
+         "updateMode": "Update",
+          "description": "Apex Digital Solutions LLC — Level 2 regulation extending US.Payroll with company-specific benefits: §132(f) commuter transit benefit (WT 1250 pre-tax up to the monthly limit, WT 5520 post-tax excess) and WFH equipment stipend (WT 1260). No modification of the base US.Payroll regulation required.",
           "validFrom": "2026-01-01T00:00:00Z",
           "cases": [
             {
@@ -21,8 +20,8 @@
               "fields": [
                 {
                   "name": "Apex.TransitBenefitMonthly",
-                  "nameLocalizations": { "en-US": "Transit Benefit (per period)" },
-                  "description": "Pre-tax commuter transit benefit per pay period. IRC §132(f): FIT-exempt, FICA-exempt, and SIT-exempt for states that conform (NY, NJ, MA, WA, ...). 2026 IRS limit $315/month. Reduces WT 5050 (FITTaxable) and WT 5051 (FICATaxable) via L1 extensibility slot WT 1250.",
+                  "nameLocalizations": { "en-US": "Transit Benefit (monthly election)" },
+                  "description": "Monthly commuter transit salary-reduction election. IRC §132(f): excluded from FIT and FICA up to the monthly limit (FederalTaxParameters.TransitMonthlyLimit, $340 for 2026); the excess is taxable and withheld after tax. Converted to the pay period as monthly × 12 / periods per year. WT 1250 = excluded part (pre-tax), WT 5520 = excess (post-tax).",
                   "valueType": "Money",
                   "timeType": "CalendarPeriod",
                   "order": 1
@@ -41,31 +40,42 @@
           "wageTypes": [
             {
               "wageTypeNumber": 1250,
-              "name": "PreTransitBenefit",
+              "name": "Apex.PreTransitBenefit",
               "nameLocalizations": { "en-US": "§132 Transit Benefit (Pre-Tax)" },
-              "description": "Pre-tax commuter transit benefit. IRC §132(f): employer-provided transit passes and vanpool benefits are excluded from FIT, FICA, SIT (for conforming states), and FUTA. 2026 monthly limit $315. Reads Apex.TransitBenefitMonthly via USCalculateTransitBenefit action defined in Apex.WageTypeValueFunction. Reduces FIT and FICA taxable bases via WT 1250 extensibility slot in USComputeFitTaxable / USComputeFicaTaxable. Returns negative value.",
+              "description": "Pre-tax commuter transit benefit. IRC §132(f): excluded from FIT and FICA up to the monthly limit (FederalTaxParameters.TransitMonthlyLimit). Monthly election capped at the limit and converted to the pay period. Fills the WT 1250 extensibility slot read by USComputeFitTaxable / USComputeFicaTaxable. Returns a negative value. State conformity is not modeled by US.Payroll (CA does not conform).",
               "clusters": [ "US" ],
               "collectors": [ "US.EmployeeDeductions" ],
               "valueActions": [
-                "USCalculateTransitBenefit('Apex.TransitBenefitMonthly')"
+                "ApexCalculateTransitPreTax('Apex.TransitBenefitMonthly', 'US.PayFrequency', 'US.FederalTaxParameters')"
               ]
             },
             {
               "wageTypeNumber": 1260,
-              "name": "WFHStipend",
+              "name": "Apex.WFHStipend",
               "nameLocalizations": { "en-US": "WFH Equipment Stipend (Taxable)" },
               "description": "Taxable WFH equipment stipend. Added to gross pay — increases all taxable wage bases (FIT, FICA, SIT, FUTA). Reads Apex.WFHStipend case field. Returns positive value contributing to GrossWages collector.",
               "clusters": [ "US" ],
               "collectors": [ "US.GrossWages" ],
               "valueActions": [
-                "USCalculateWFHStipend('Apex.WFHStipend')"
+                "ApexCalculateWFHStipend('Apex.WFHStipend')"
+              ]
+            },
+            {
+              "wageTypeNumber": 5520,
+              "name": "Apex.TransitExcessPostTax",
+              "nameLocalizations": { "en-US": "Transit Benefit Excess (Post-Tax)" },
+              "description": "Part of the monthly transit election above the IRC §132(f) monthly limit. Taxable, withheld after tax and converted to the pay period. Numbered below NetPay (WT 6500) so the deduction is included in net pay. Returns a negative value.",
+              "clusters": [ "US" ],
+              "collectors": [ "US.EmployeeDeductions" ],
+              "valueActions": [
+                "ApexCalculateTransitExcess('Apex.TransitBenefitMonthly', 'US.PayFrequency', 'US.FederalTaxParameters')"
               ]
             }
           ],
           "scripts": [
             {
               "name": "Apex.WageTypeValueFunction",
-              "value": "using System;\n#pragma warning disable IDE0130\nnamespace PayrollEngine.Client.Scripting.Function;\n#pragma warning restore IDE0130\n\npublic partial class WageTypeValueFunction\n{\n    // WT 1250 — §132(f) Commuter Transit Benefit (Pre-Tax)\n    // IRC §132(f): employer-provided transit passes/vanpool are FIT-exempt, FICA-exempt,\n    // and SIT-exempt for most states (NY, NJ, MA, WA, CT conform; CA does NOT).\n    // Reads Apex.TransitBenefitMonthly (Money/CalendarPeriod) directly as per-period amount.\n    // 2026 monthly exclusion limit: $315 (IRS Rev. Proc. 2025-20).\n    // Returns negative value subtracted from FIT and FICA taxable wages\n    // via WT 1250 extensibility slot in USComputeFitTaxable / USComputeFicaTaxable.\n    [ActionParameter(\"transitField\", \"CaseField Apex.TransitBenefitMonthly — pre-tax transit benefit per period\")]\n    [WageTypeValueAction(\"USCalculateTransitBenefit\",\n        \"Pre-tax §132(f) commuter transit benefit. Reads Apex.TransitBenefitMonthly and returns \"\n        + \"negative value. Reduces FIT and FICA taxable wages via WT 1250 extensibility slot. \"\n        + \"Returns null when field is zero or not set.\")]\n    public ActionValue USCalculateTransitBenefit(string transitField)\n    {\n        var amount = GetCaseValue<decimal?>(transitField) ?? 0m;\n        if (amount <= 0m) return null;\n        return -Math.Round(amount, 2);\n    }\n\n    // WT 1260 — WFH Equipment Stipend (Taxable Fringe Benefit)\n    // Fully taxable — included in FIT, FICA, SIT, FUTA.\n    // No federal or state exclusion applies to a flat WFH stipend\n    // (IRC §62(a)(2)(A) accountable plan rules not met for flat payments).\n    // Reads Apex.WFHStipend (Money/CalendarPeriod) and returns positive value.\n    [ActionParameter(\"stipendField\", \"CaseField Apex.WFHStipend — per-period WFH stipend amount\")]\n    [WageTypeValueAction(\"USCalculateWFHStipend\",\n        \"Returns WFH equipment stipend as taxable gross income. Reads Apex.WFHStipend field directly. \"\n        + \"Returns null when not set or zero. Positive value adds to GrossWages.\")]\n    public ActionValue USCalculateWFHStipend(string stipendField)\n    {\n        var amount = GetCaseValue<decimal?>(stipendField) ?? 0m;\n        if (amount <= 0m) return null;\n        return Math.Round(amount, 2);\n    }\n}"
+              "value": "using System;\nusing System.Globalization;\n#pragma warning disable IDE0130\nnamespace PayrollEngine.Client.Scripting.Function;\n#pragma warning restore IDE0130\n\npublic partial class WageTypeValueFunction\n{\n    // WT 1250 / WT 5520 — §132(f) commuter transit benefit\n    // Apex.TransitBenefitMonthly is the monthly salary-reduction election.\n    // Excluded from FIT and FICA up to the monthly limit (lookup US.FederalTaxParameters,\n    // key TransitMonthlyLimit); the excess is taxable and withheld after tax.\n    // Both parts are converted to the pay period: monthly × 12 / periods per year.\n    [ActionParameter(\"transitField\", \"CaseField Apex.TransitBenefitMonthly — monthly transit election\")]\n    [ActionParameter(\"payFrequencyField\", \"CaseField US.PayFrequency — Weekly/BiWeekly/SemiMonthly/Monthly\")]\n    [ActionParameter(\"lookupName\", \"Lookup US.FederalTaxParameters with key TransitMonthlyLimit\")]\n    [WageTypeValueAction(\"ApexCalculateTransitPreTax\",\n        \"Pre-tax §132(f) transit benefit: monthly election capped at the monthly limit, \"\n        + \"converted to the pay period. Negative value; reduces FIT and FICA taxable wages \"\n        + \"via the WT 1250 extensibility slot. Returns null when no election is set.\")]\n    public ActionValue ApexCalculateTransitPreTax(string transitField, string payFrequencyField, string lookupName)\n    {\n        var monthly = GetCaseValue<decimal?>(transitField) ?? 0m;\n        if (monthly <= 0m) return null;\n        var excluded = Math.Min(monthly, ApexTransitMonthlyLimit(lookupName));\n        if (excluded <= 0m) return null;\n        return -ApexMonthlyToPeriod(excluded, payFrequencyField);\n    }\n\n    [ActionParameter(\"transitField\", \"CaseField Apex.TransitBenefitMonthly — monthly transit election\")]\n    [ActionParameter(\"payFrequencyField\", \"CaseField US.PayFrequency — Weekly/BiWeekly/SemiMonthly/Monthly\")]\n    [ActionParameter(\"lookupName\", \"Lookup US.FederalTaxParameters with key TransitMonthlyLimit\")]\n    [WageTypeValueAction(\"ApexCalculateTransitExcess\",\n        \"Post-tax part of the transit election above the §132(f) monthly limit, \"\n        + \"converted to the pay period. Negative value. Returns null when the election \"\n        + \"does not exceed the limit.\")]\n    public ActionValue ApexCalculateTransitExcess(string transitField, string payFrequencyField, string lookupName)\n    {\n        var monthly = GetCaseValue<decimal?>(transitField) ?? 0m;\n        var excess = monthly - ApexTransitMonthlyLimit(lookupName);\n        if (monthly <= 0m || excess <= 0m) return null;\n        return -ApexMonthlyToPeriod(excess, payFrequencyField);\n    }\n\n    private decimal ApexTransitMonthlyLimit(string lookupName)\n    {\n        var value = GetLookup<string>(lookupName, \"TransitMonthlyLimit\");\n        if (decimal.TryParse(value, NumberStyles.Number, CultureInfo.InvariantCulture, out var limit))\n            return limit;\n        // without a limit nothing is excluded: the whole election is treated as taxable\n        LogWarning($\"Apex transit: TransitMonthlyLimit not found in lookup {lookupName}.\");\n        return 0m;\n    }\n\n    private decimal ApexMonthlyToPeriod(decimal monthlyAmount, string payFrequencyField)\n    {\n        var periods = (GetCaseValue<string>(payFrequencyField) ?? \"Monthly\") switch\n        {\n            \"Weekly\" => 52m,\n            \"BiWeekly\" => 26m,\n            \"SemiMonthly\" => 24m,\n            _ => 12m\n        };\n        return Math.Round(monthlyAmount * 12m / periods, 2, MidpointRounding.AwayFromZero);\n    }\n\n    // WT 1260 — WFH Equipment Stipend (Taxable Fringe Benefit)\n    // Fully taxable — included in FIT, FICA, SIT, FUTA.\n    // No federal or state exclusion applies to a flat WFH stipend\n    // (IRC §62(a)(2)(A) accountable plan rules not met for flat payments).\n    [ActionParameter(\"stipendField\", \"CaseField Apex.WFHStipend — per-period WFH stipend amount\")]\n    [WageTypeValueAction(\"ApexCalculateWFHStipend\",\n        \"Returns WFH equipment stipend as taxable gross income. Reads Apex.WFHStipend field directly. \"\n        + \"Returns null when not set or zero. Positive value adds to GrossWages.\")]\n    public ActionValue ApexCalculateWFHStipend(string stipendField)\n    {\n        var amount = GetCaseValue<decimal?>(stipendField) ?? 0m;\n        if (amount <= 0m) return null;\n        return Math.Round(amount, 2);\n    }\n}"
             }
           ]
         }

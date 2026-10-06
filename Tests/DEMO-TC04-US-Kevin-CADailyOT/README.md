@@ -2,38 +2,45 @@
 
 **Payroll:** Apex.Payroll.Biweekly  
 **Period:** 2026-01-06 / 2026-01-19  
-**Employee:** Kevin Wu (Cloud Architect, CA remote, hourly $60)
+**Employee:** Kevin Wu (Cloud Architect, CA, hourly $60, Single)
 
 ## Scenario
 
-Validates CA Labor Code §510 daily overtime calculation:
+Validates CA Labor Code §510 daily overtime. Kevin works a sprint week followed by a
+standard week:
 
-- Mon: 9h → 1h daily OT @ $90 (1.5×)
-- Tue: 9h → 1h daily OT @ $90
-- Thu: 9h → 1h daily OT @ $90
-- Week 2: 40h standard (no OT trigger)
-- CA SDI (1.3%, uncapped per SB 951) applied on full gross
-- No 7th-day trigger in this period (5-day weeks)
+| Day (sprint week) | Hours | Daily OT (> 8h) |
+|:---|---:|---:|
+| Mon | 9 | 1 |
+| Tue | 9 | 1 |
+| Wed | 8 | — |
+| Thu | 9 | 1 |
+| Fri | 8 | — |
 
-Case fields set for this period:
-`CADay1Hours=9, CADay2Hours=9, CADay3Hours=8, CADay4Hours=9, CADay5Hours=8`
+- Case fields: `US.CADay1Hours`–`US.CADay5Hours` = 9 / 9 / 8 / 9 / 8, `US.RegularHours` = 80
+  (straight time of both weeks)
+- No federal `US.OvertimeHours` is entered — WT 1020 comes from the CA path only
+- Daily OT: 3h × $60 × 1.5 = $270; the 3 weekly OT hours (43h) are already covered by the daily premium
+- CA SDI 1.3% on SDI wages without a wage cap (SB 951)
 
 ## Key Assertions
 
 | Wage Type | Expected | Notes |
 |:---|---:|:---|
-| Regular wages (WT 1000) | $4,800.00 | 80h × $60 |
-| CA daily overtime (WT 1020) | $270.00 | 3h × $90 (1.5×) |
+| Hourly wages (WT 1010) | $4,800.00 | 80h × $60 |
+| Overtime (WT 1020) | $270.00 | CA daily OT 3h × $90 |
 | Gross (WT 5000) | $5,070.00 | |
-| FIT taxable wages (WT 5050) | $4,596.50 | −401k −health |
-| CA SIT (WT 5300) | ~−$280 | EDD DE44 Method B |
-| CA SDI (WT 5410) | −$65.91 | $5,070 × 1.3% — **no wage base cap** |
-| Net pay (WT 6500) | ~$3,335 | |
-
-> Values marked `~` are illustrative. Replace with actual PE output after first run.
+| FIT taxable wages (WT 5050) | $4,596.50 | − 401(k) $253.50 − health $220 |
+| FICA taxable wages (WT 5051) | $4,850.00 | − health $220 |
+| Federal income tax (WT 5100) | −$671.61 | Single, annualized ×26 |
+| Social Security (WT 5200) | −$300.70 | $4,850 × 6.2% |
+| Medicare (WT 5210) | −$70.33 | $4,850 × 1.45% |
+| CA SIT (WT 5300) | −$291.28 | EDD Method B |
+| CA SDI (WT 5600) | −$63.05 | $4,850 × 1.3%, no wage cap |
+| Net pay (WT 6500) | $3,199.53 | |
 
 ## Run
 
 ```bash
-pecmd PayrunEmployeeTest DEMO-TC04-US-Kevin-CADailyOT.et.json
+pecmd PayrunEmployeeTest DEMO-TC04-US-Kevin-CADailyOT/DEMO-TC04-US-Kevin-CADailyOT.et.json
 ```

@@ -12,7 +12,7 @@ setlocal
 ::   5. T4 Customizing  (L2 Apex.Payroll — transit benefit, WFH stipend)
 ::   6. Seed payruns    (January 2026 — all employees, persistent results)
 ::   7. March payruns   (Biweekly Jan 20–Mar 30 + Jessica bonus case)
-::   8. Tests           (TC01-TC08 integration tests, /TestPrecision2)
+::   8. Tests           (TC01-TC11 integration tests, /TestPrecision2)
 ::
 :: Seed payruns (Step 6) create persistent payrun results used by reports.
 :: March payruns (Step 7) extend biweekly history to reach the March bonus period.
@@ -150,7 +150,7 @@ echo.
 :: ─────────────────────────────────────────────────────────────────────────────
 :: Step 8: Integration tests
 :: ─────────────────────────────────────────────────────────────────────────────
-echo [8/8] Integration tests (TC01-TC08, /TestPrecision2)...
+echo [8/8] Integration tests (TC01-TC11, /TestPrecision2)...
 pushd Tests
 start /b /wait "" "Run.Tests.pecmd" /TestPrecision2
 set _ERR=%ERRORLEVEL%

@@ -2,43 +2,32 @@
 
 **Payroll:** Apex.Payroll.Weekly  
 **Period:** 2026-01-05 / 2026-01-11  
-**Employee:** Ashley Park (QA Engineer, CA, Single, $42/hr)
+**Employee:** Ashley Park (QA Engineer, CA, hourly $42, Single)
 
 ## Scenario
 
-Validates the weekly baseline payslip for a CA hourly employee with standard hours:
+Weekly baseline for a California hourly employee:
 
-- Hourly $42/hr × 40 regular hours = $1,680.00 gross
-- No pre-tax deductions (no 401k, no health)
-- CA SIT applies (graduated, DE-4 Single)
-- CA SDI withheld (WT 6800) — no wage base cap at this level
-- No overtime in this baseline week (standard 5-day, 8-hour week)
+- 40 regular hours, no overtime, no pre-tax deductions → gross = FIT = FICA wages
+- Weekly annualization ×52
+- CA SIT (EDD Method B) and CA SDI 1.3% without a wage cap
 
 ## Key Assertions
 
 | Wage Type | Expected | Notes |
 |:---|---:|:---|
-| Hourly wages (WT 1010) | $1,680.00 | 40 hrs × $42 (WT 1000 is null for hourly employees) |
-| FIT taxable wages (WT 5050) | $1,680.00 | No pre-tax deductions |
-| FICA taxable wages (WT 5051) | $1,680.00 | No pre-tax deductions |
-| Federal income tax (WT 5100) | verify | Single graduated on annual $71,260 |
+| Hourly wages (WT 1010) | $1,680.00 | 40h × $42 |
+| FIT taxable wages (WT 5050) | $1,680.00 | |
+| FICA taxable wages (WT 5051) | $1,680.00 | |
+| Federal income tax (WT 5100) | −$199.79 | Single, $10,389.20 ÷ 52 |
 | Social Security (WT 5200) | −$104.16 | $1,680 × 6.2% |
 | Medicare (WT 5210) | −$24.36 | $1,680 × 1.45% |
-| CA SIT (WT 5200/5300) | verify | CA DE-4 Single graduated |
-| CA SDI (WT 6800) | verify | CA SDI rate on $1,680 |
-| Net pay (WT 6500) | verify | |
-
-> FIT, CA SIT, CA SDI, and net pay are pending first PE run.
-> Run with `/OkOnFail ActualOutputFile:...` to capture actual values.
-
-## 7th-Day OT Extension
-
-The bootstrap profile for Ashley notes "7th-day OT". A separate scenario with
-`US.OvertimeHours` or CA-specific daily/7th-day case fields can be added once
-this baseline test passes.
+| CA SIT (WT 5300) | −$82.39 | EDD Method B |
+| CA SDI (WT 5600) | −$21.84 | $1,680 × 1.3% |
+| Net pay (WT 6500) | $1,247.46 | |
 
 ## Run
 
 ```bash
-pecmd PayrunEmployeeTest DEMO-TC11-US-Ashley-CAWeekly.et.json
+pecmd PayrunEmployeeTest DEMO-TC11-US-Ashley-CAWeekly/DEMO-TC11-US-Ashley-CAWeekly.et.json
 ```
