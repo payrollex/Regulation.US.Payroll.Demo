@@ -19,7 +19,8 @@ Validates a company-specific benefit added by the L2 regulation without modifyin
   through the WT 1250 extensibility slot of US.Payroll
 - Excess (WT 5520): $60 × 12 / 26 = $27.69 — taxable, withheld after tax
 - WT 5520 is numbered below NetPay (WT 6500), so the deduction is included in net pay
-- State withholding is unchanged: US.Payroll does not model state conformity for WT 1250
+- State wage base per state: NY and CT exclude the transit salary reduction ($6,958.46),
+  NJ taxes it ($7,115.38; N.J.S.A. 54A:6-23.c, TB-24(R))
 
 ## Key Assertions
 
@@ -32,10 +33,10 @@ Validates a company-specific benefit added by the L2 regulation without modifyin
 | Federal income tax (WT 5100) | −$1,274.38 | −$1,236.72 | 24% × $156.92 saved |
 | Social Security (WT 5200) | −$441.15 | −$431.42 | |
 | Medicare (WT 5210) | −$103.17 | −$100.90 | |
-| Multi-state withholding (WT 5310) | −$324.18 | −$324.18 | unchanged |
+| Multi-state withholding (WT 5310) | −$365.14 | −$354.76 | NY slot $209.58 + NJ slot $72.22 + CT slot $72.96 |
 | Transit excess post-tax (WT 5520) | — | −$27.69 | $60 × 12 / 26 |
 | NY PFL (WT 5620) | −$30.74 | −$30.06 | |
-| Net pay (WT 6500) | $4,941.76 | $4,807.49 | |
+| Net pay (WT 6500) | $4,900.80 | $4,776.91 | |
 
 ## Run
 

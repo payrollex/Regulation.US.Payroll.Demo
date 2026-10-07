@@ -35,9 +35,9 @@ standard week:
 | Federal income tax (WT 5100) | −$671.61 | Single, annualized ×26 |
 | Social Security (WT 5200) | −$300.70 | $4,850 × 6.2% |
 | Medicare (WT 5210) | −$70.33 | $4,850 × 1.45% |
-| CA SIT (WT 5300) | −$291.28 | EDD Method B |
+| CA SIT (WT 5300) | −$297.10 | EDD Method B annualized, no DE 4 (single, 0 allowances): ($4,596.50 × 26 − $5,706) → $7,724.55 ÷ 26 |
 | CA SDI (WT 5600) | −$63.05 | $4,850 × 1.3%, no wage cap |
-| Net pay (WT 6500) | $3,199.53 | |
+| Net pay (WT 6500) | $3,193.71 | |
 
 ## Run
 

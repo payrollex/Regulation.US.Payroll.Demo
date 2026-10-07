@@ -10,8 +10,8 @@ Validates a child support order under the CCPA limit (15 USC §1673(b)):
 
 - Order: $500 per period, Linda does not support another family, no arrears → 60% limit
 - Disposable earnings = gross − legally required deductions (FIT, FICA, NY SIT, NY PFL)
-  = $2,500 − $216.15 − $155.00 − $36.25 − $111.22 − $10.80 = **$1,970.58**
-- Limit: 60% × $1,970.58 = $1,182.35 ≥ $500 → the full order is withheld
+  = $2,500 − $216.15 − $155.00 − $36.25 − $113.28 − $10.80 = **$1,968.52**
+- Limit: 60% × $1,968.52 = $1,181.11 ≥ $500 → the full order is withheld
 - Garnishment (WT 5900) runs before net pay and reduces it
 - No NYC local tax: no `US.LocalTaxJurisdiction` is set for Linda
 
@@ -23,10 +23,10 @@ Validates a child support order under the CCPA limit (15 USC §1673(b)):
 | Federal income tax (WT 5100) | −$216.15 | Single, 12% bracket |
 | Social Security (WT 5200) | −$155.00 | $2,500 × 6.2% |
 | Medicare (WT 5210) | −$36.25 | $2,500 × 1.45% |
-| NY SIT (WT 5300) | −$111.22 | NYS-50-T |
+| NY SIT (WT 5300) | −$113.28 | NYS-50-T-NYS Table II-D biweekly, no IT-2104: $2,500 − $284.60 → $22.54 + ($2,215.40 − $535) × 5.4% |
 | NY PFL (WT 5620) | −$10.80 | $2,500 × 0.432% |
 | Garnishment (WT 5900) | −$500.00 | Within the 60% CCPA limit |
-| Net pay (WT 6500) | $1,470.58 | $1,970.58 − $500 |
+| Net pay (WT 6500) | $1,468.52 | $1,968.52 − $500 |
 
 ## Run
 

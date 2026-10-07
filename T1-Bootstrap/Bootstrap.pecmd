@@ -9,7 +9,10 @@
 #   PayrollImport <path>/US.Payroll.Data.Federal.Tax.2026.json
 #   PayrollImport <path>/US.Payroll.Data.Federal.FICA.2026.json
 #   PayrollImport <path>/US.Payroll.Data.State.2026.json
+#   PayrollImport <path>/US.Payroll.Data.State.Withholding.2026.json
+#   PayrollImport <path>/US.Payroll.Data.State.WageBase.2026.json
 #   PayrollImport <path>/US.Payroll.Data.Local.Tax.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.WageBase.2026.json
 #   PayrollImport <path>/US.Payroll.Data.Federal.Garnishment.2026.json
 # ─────────────────────────────────────────────────────────────────────────────
 

@@ -97,7 +97,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-02-03T00:00:00.0Z",
           "evaluationDate": "2026-02-17T00:00:00.0Z",
-          "reason": "Carlos Rivera, biweekly, L2 Apex.Benefits monthly transit election $400. IRC §132(f) monthly limit $340 (lookup US.FederalTaxParameters.TransitMonthlyLimit, Rev. Proc. 2025-32). Pre-tax part WT 1250 = $340 × 12 / 26 = $156.92; excess WT 5520 (post-tax) = $60 × 12 / 26 = $27.69. FIT/FICA taxable = $7,115.38 - $156.92 = $6,958.46 (WT 5050/5051). FIT: annual $180,919.96 - $16,100 = $164,819.96 → $17,966 + 24% × $59,119.96 = $32,154.79 ÷ 26 = $1,236.72. SS 6.2% × $6,958.46 = $431.42. Medicare 1.45% × $6,958.46 = $100.90. State withholding (WT 5310 $324.18) is unchanged: US.Payroll does not model state conformity for WT 1250. NY PFL (WT 5620): 0.432% × $6,958.46 = $30.06. Net = $7,115.38 - $156.92 - $27.69 - $1,236.72 - $431.42 - $100.90 - $324.18 - $30.06 = $4,807.49. Validates the T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
+          "reason": "Carlos Rivera, biweekly, L2 Apex.Benefits monthly transit election $400. IRC §132(f) monthly limit $340 (lookup US.FederalTaxParameters.TransitMonthlyLimit, Rev. Proc. 2025-32). Pre-tax part WT 1250 = $340 × 12 / 26 = $156.92; excess WT 5520 (post-tax) = $60 × 12 / 26 = $27.69. FIT/FICA taxable = $7,115.38 - $156.92 = $6,958.46 (WT 5050/5051). FIT: annual $180,919.96 - $16,100 = $164,819.96 → $17,966 + 24% × $59,119.96 = $32,154.79 ÷ 26 = $1,236.72. SS 6.2% × $6,958.46 = $431.42. Medicare 1.45% × $6,958.46 = $100.90. State withholding (WT 5310): NY and CT exclude the transit salary reduction (wages $6,958.46), NJ taxes it (wages $7,115.38, N.J.S.A. 54A:6-23.c; TB-24(R)). NY slot 60%: $4,175.08 - $284.60 = $3,890.48 → $197.81 + ($3,890.48 - $3,723) × 7.03% = $209.58. NJ slot 25%: NJ rate A $1,778.85 → $31 + ($1,778.85 - $1,538) × 6.1% = $45.69; NY resident $1,739.62 - $284.60 = $1,455.02 → $22.54 + ($1,455.02 - $535) × 5.4% = $72.22 → slot $72.22. CT slot 15%: $1,043.77 × 6.99% = $72.96 (no CT-W4); NY resident $34.65 < CT → slot $72.96. WT 5310 = $209.58 + $72.22 + $72.96 = $354.76. NY PFL (WT 5620): 0.432% × $6,958.46 = $30.06. Net = $7,115.38 - $156.92 - $27.69 - $1,236.72 - $431.42 - $100.90 - $354.76 - $30.06 = $4,776.91. Validates the T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],
@@ -113,10 +113,10 @@
             { "wageTypeNumber": 5100,  "value": -1236.72 },
             { "wageTypeNumber": 5200,  "value": -431.42 },
             { "wageTypeNumber": 5210,  "value": -100.90 },
-            { "wageTypeNumber": 5310,  "value": -324.18 },
+            { "wageTypeNumber": 5310,  "value": -354.76 },
             { "wageTypeNumber": 5520,  "value": -27.69 },
             { "wageTypeNumber": 5620,  "value": -30.06 },
-            { "wageTypeNumber": 6500,  "value": 4807.49 }
+            { "wageTypeNumber": 6500,  "value": 4776.91 }
           ]
         }
       ]

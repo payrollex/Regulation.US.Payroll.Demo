@@ -82,7 +82,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-01T00:00:00.0Z",
           "evaluationDate": "2026-02-01T00:00:00.0Z",
-          "reason": "Robert Stevenson (VP Engineering, age 59 in 2026), Monthly January 2026. Annual $115k/12=$9,583.33 gross. Pre401kAmount $2,708.33 (fixed, age-50+ catch-up eligible — SECURE 2.0). Health $475. FITTaxable=$6,400.00 (WT 5050). FICATaxable=$9,108.33 (WT 5051, 401k does not reduce FICA). FIT: annual $76,800 - MFJ StdDed $32,200 = $44,600 → 10%×$24,800 + 12%×$19,800 = $4,856/yr → $404.67/mo - W4Step3 $166.67 = $238.00. SS 6.2%×$9,108.33=$564.72. Medicare 1.45%×$9,108.33=$132.07. No Additional Medicare (YTD Medicare wages < $200,000 employer threshold). NY SIT (NYS-50-T, WT 5300) on annual $76,800 = $294.08/mo. NY PFL (WT 5620): 0.432%×$9,108.33 = $39.35. No local tax. Net = $9,583.33 - $2,708.33 - $475 - $238.00 - $564.72 - $132.07 - $294.08 - $39.35 = $5,131.78.",
+          "reason": "Robert Stevenson (VP Engineering, age 59 in 2026), Monthly January 2026. Annual $115k/12=$9,583.33 gross. Pre401kAmount $2,708.33 (fixed, age-50+ catch-up eligible — SECURE 2.0). Health $475. FITTaxable=$6,400.00 (WT 5050). FICATaxable=$9,108.33 (WT 5051, 401k does not reduce FICA). FIT: annual $76,800 - MFJ StdDed $32,200 = $44,600 → 10%×$24,800 + 12%×$19,800 = $4,856/yr → $404.67/mo - W4Step3 $166.67 = $238.00. SS 6.2%×$9,108.33=$564.72. Medicare 1.45%×$9,108.33=$132.07. No Additional Medicare (YTD Medicare wages < $200,000 employer threshold). NY SIT (WT 5300; NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D monthly): net $6,400 - $616.70 = $5,783.30 → line 4: $48.83 + ($5,783.30 - $1,158) × 5.4% = $298.60. NY PFL (WT 5620): 0.432%×$9,108.33 = $39.35. No local tax. Net = $9,583.33 - $2,708.33 - $475 - $238.00 - $564.72 - $132.07 - $298.60 - $39.35 = $5,127.26.",
           "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
         }
       ],
@@ -99,9 +99,9 @@
             { "wageTypeNumber": 5100,  "value": -238.00 },
             { "wageTypeNumber": 5200,  "value": -564.72 },
             { "wageTypeNumber": 5210,  "value": -132.07 },
-            { "wageTypeNumber": 5300,  "value": -294.08 },
+            { "wageTypeNumber": 5300,  "value": -298.60 },
             { "wageTypeNumber": 5620,  "value": -39.35 },
-            { "wageTypeNumber": 6500,  "value": 5131.78 }
+            { "wageTypeNumber": 6500,  "value": 5127.26 }
           ]
         }
       ]

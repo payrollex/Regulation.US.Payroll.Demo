@@ -10,8 +10,11 @@ Validates the commuter path without reciprocity:
 
 - NJ and NY have no reciprocal agreement — work state NY withholds on all wages
 - Resident and work state differ → multi-state path WT 5310 (WT 5300 stays empty)
-- NJ resident tax is fully offset by the credit for tax paid to NY → $0 NJ withholding
-- 401(k) 6% reduces FIT and NY taxable wages but not FICA
+- Each state taxes its own wage base: NY excludes 401(k) and the §125 health premium ($5,223.08);
+  NJ excludes 401(k) but taxes the §125 health premium ($5,423.08; N.J.S.A. 54A:6-24, TB-39(R))
+- NJ resident tax ($290.67, NJ-WT rate A without NJ-W4) exceeds the NY tax ($287.28) → additional NJ withholding $3.39
+- No NY IT-2104 on file → NY withholding as single with 0 allowances (NYS-50-T-NYS)
+- 401(k) 6% reduces FIT, NY and NJ taxable wages but not FICA
 - NY Paid Family Leave (work state NY) deducted from net pay
 
 ## Key Assertions
@@ -24,9 +27,9 @@ Validates the commuter path without reciprocity:
 | Federal income tax (WT 5100) | −$820.23 | Single, annualized ×26 |
 | Social Security (WT 5200) | −$345.29 | $5,569.23 × 6.2% |
 | Medicare (WT 5210) | −$80.75 | $5,569.23 × 1.45% |
-| Multi-state withholding (WT 5310) | −$284.35 | NY work-state tax; NJ fully credited |
+| Multi-state withholding (WT 5310) | −$290.67 | NY Table II-D biweekly: $5,223.08 − $284.60 = $4,938.48 → $227.15 + ($4,938.48 − $4,140) × 7.53% = $287.28; NJ rate A: $113 + ($5,423.08 − $2,885) × 7% = $290.67 → NJ excess $3.39 |
 | NY PFL (WT 5620) | −$24.06 | $5,569.23 × 0.432% |
-| Net pay (WT 6500) | $3,668.40 | |
+| Net pay (WT 6500) | $3,662.08 | |
 
 ## Run
 

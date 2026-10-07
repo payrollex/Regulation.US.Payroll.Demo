@@ -25,7 +25,7 @@ No modification of the core regulation needed.
 
 | Customization | WT | Collector | Federal treatment | State treatment |
 |:---|:---:|:---|:---|:---|
-| **§132(f) Transit — up to the limit** | 1250 | `US.EmployeeDeductions` | FIT + FICA exempt | Not modeled by US.Payroll — state taxable wages unchanged (CA does not conform) |
+| **§132(f) Transit — up to the limit** | 1250 | `US.EmployeeDeductions` | FIT + FICA exempt | Per state wage base of US.Payroll (lookup `StateTaxableWageBase`): excluded in most states incl. NY, CT and CA; taxable in NJ, PA and MS |
 | **§132(f) Transit — excess** | 5520 | `US.EmployeeDeductions` | Taxable, post-tax deduction | Taxable |
 | **WFH Equipment Stipend** | 1260 | `US.GrossWages` | Fully taxable | Taxable |
 
@@ -104,4 +104,5 @@ pecmd PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-
 Expected for Carlos (biweekly, $400 monthly election):
 - WT 1250 = −$156.92 ($340 × 12 / 26), WT 5520 = −$27.69 ($60 × 12 / 26)
 - WT 5050 (FIT taxable) and WT 5051 (FICA taxable) each reduced by $156.92
-- Net pay $4,807.49
+- WT 5310 = −$354.76: NY and CT wages reduced by $156.92, NJ wages unchanged
+- Net pay $4,776.91

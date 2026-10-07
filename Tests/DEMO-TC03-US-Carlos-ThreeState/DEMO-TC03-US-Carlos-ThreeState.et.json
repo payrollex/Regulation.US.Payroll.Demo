@@ -86,7 +86,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Carlos Rivera, $185k/yr, NY resident/work primary, 3-state allocation NY(60%)/NJ(25%)/CT(15%). Gross=$7,115.38/period. No pre-tax deductions. FIT: annual $185k-$16,100 StdDed=$168,900 → 24% bracket → $33,134/yr ÷ 26=$1,274.38 (WT 5100). WT 5310 MultiState slots: Slot1 NY 60% annualAlloc $111k-$8,400=$102,600 → bracket 7.03%→$5,550.74/yr÷26=$213.49. Slot2 NJ 25% annualAlloc $46,250: NJ $62.81 < NY($1,879.30) → credit diff → slot $1,879.30/yr÷26=$72.28. Slot3 CT 15% annualAlloc $27,750: CT $998.75 > NY($880.30) → CT dominates → $998.75/yr÷26=$38.41. Total WT 5310=$324.18. WorkLocality=NYC but no LocalTaxJurisdiction → WT 5400=null. NY PFL (WT 5620): 0.432%×$7,115.38=$30.74. Net = $7,115.38 - $1,274.38 - $441.15 - $103.17 - $324.18 - $30.74 = $4,941.76.",
+          "reason": "Carlos Rivera, $185k/yr, NY resident/work primary, 3-state allocation NY(60%)/NJ(25%)/CT(15%). Gross=$7,115.38/period. No pre-tax deductions. FIT: annual $185k-$16,100 StdDed=$168,900 → 24% bracket → $33,134/yr ÷ 26=$1,274.38 (WT 5100). WT 5310 MultiState slots (official period method per state on the allocated wages; NY NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D biweekly; NJ no NJ-W4: rate A; CT no CT-W4: 6.99% flat): Slot1 NY 60% $4,269.23: net $3,984.63 → $197.81 + ($3,984.63 - $3,723) × 7.03% = $216.20. Slot2 NJ 25% $1,778.85: NJ $31 + ($1,778.85 - $1,538) × 6.1% = $45.69 < NY $74.34 (net $1,494.25 → $22.54 + ($1,494.25 - $535) × 5.4%) → slot $74.34. Slot3 CT 15% $1,067.31: CT 6.99% = $74.60 > NY $35.92 → slot $74.60. Total WT 5310 = $365.14. WorkLocality=NYC but no LocalTaxJurisdiction → WT 5400=null. NY PFL (WT 5620): 0.432%×$7,115.38=$30.74. Net = $7,115.38 - $1,274.38 - $441.15 - $103.17 - $365.14 - $30.74 = $4,900.80.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],
@@ -99,9 +99,9 @@
             { "wageTypeNumber": 5100,  "value": -1274.38 },
             { "wageTypeNumber": 5200,  "value": -441.15 },
             { "wageTypeNumber": 5210,  "value": -103.17 },
-            { "wageTypeNumber": 5310,  "value": -324.18 },
+            { "wageTypeNumber": 5310,  "value": -365.14 },
             { "wageTypeNumber": 5620,  "value": -30.74 },
-            { "wageTypeNumber": 6500,  "value": 4941.76 }
+            { "wageTypeNumber": 6500,  "value": 4900.80 }
           ]
         }
       ]

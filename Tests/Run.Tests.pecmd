@@ -6,7 +6,7 @@
 PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
 
 # DEMO-TC02 — Marcus Johnson: NJ→NY commuter, no reciprocity
-# Multi-state path WT 5310; NJ resident tax fully credited
+# Multi-state path WT 5310; NJ resident tax on NJ wages (health premium taxable) above NY tax
 PayrunEmployeeTest DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json
 
 # DEMO-TC03 — Carlos Rivera: Three-state allocation NY/NJ/CT

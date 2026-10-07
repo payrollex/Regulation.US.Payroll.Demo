@@ -21,17 +21,17 @@ expected payroll results for each key scenario.
 
 | Test | Employee | Payroll | Key Feature | Net pay |
 |:---|:---|:---|:---|---:|
-| [DEMO-TC01](DEMO-TC01-US-Sara-Monthly/) | Sara Chen | Monthly | NYC · company car (taxed, not paid out) · W-4 Steps 3/4(c) · NY PFL | $11,487.68 |
-| [DEMO-TC02](DEMO-TC02-US-Marcus-NJtoNY/) | Marcus Johnson | Biweekly | NJ→NY commuter, no reciprocity | $3,668.40 |
-| [DEMO-TC03](DEMO-TC03-US-Carlos-ThreeState/) | Carlos Rivera | Biweekly | Three-state allocation NY/NJ/CT | $4,941.76 |
-| [DEMO-TC04](DEMO-TC04-US-Kevin-CADailyOT/) | Kevin Wu | Biweekly | CA daily overtime (§510 sprint week) · CA SDI | $3,199.53 |
+| [DEMO-TC01](DEMO-TC01-US-Sara-Monthly/) | Sara Chen | Monthly | NYC · company car (taxed, not paid out) · W-4 Steps 3/4(c) · NY PFL | $11,482.38 |
+| [DEMO-TC02](DEMO-TC02-US-Marcus-NJtoNY/) | Marcus Johnson | Biweekly | NJ→NY commuter, no reciprocity | $3,662.08 |
+| [DEMO-TC03](DEMO-TC03-US-Carlos-ThreeState/) | Carlos Rivera | Biweekly | Three-state allocation NY/NJ/CT | $4,900.80 |
+| [DEMO-TC04](DEMO-TC04-US-Kevin-CADailyOT/) | Kevin Wu | Biweekly | CA daily overtime (§510 sprint week) · CA SDI | $3,193.71 |
 | [DEMO-TC05](DEMO-TC05-US-Jessica-TX/) | Jessica Torres | Biweekly | TX baseline, no state income tax | $2,282.60 |
-| [DEMO-TC06](DEMO-TC06-US-Linda-Garnishment/) | Linda Okafor | Biweekly | Child support garnishment · CCPA 60% limit | $1,470.58 |
+| [DEMO-TC06](DEMO-TC06-US-Linda-Garnishment/) | Linda Okafor | Biweekly | Child support garnishment · CCPA 60% limit | $1,468.52 |
 | [DEMO-TC07](DEMO-TC07-US-David-Philadelphia/) | David Kim | Weekly | PA SIT + Philadelphia Wage Tax (PSD codes) · PA UC | $982.22 |
-| [DEMO-TC08](DEMO-TC08-US-Apex-Transit-L2/) | Carlos Rivera | Biweekly | L2 §132(f) transit benefit with monthly limit | $4,807.49 |
-| [DEMO-TC09](DEMO-TC09-US-Robert-Monthly/) | Robert Stevenson | Monthly | Age-50+ 401(k) catch-up · W-4 Step 3 | $5,131.78 |
-| [DEMO-TC10](DEMO-TC10-US-Priya-CTtoNY/) | Priya Patel | Biweekly | CT→NY commuter · Head of Household | $2,693.70 |
-| [DEMO-TC11](DEMO-TC11-US-Ashley-CAWeekly/) | Ashley Park | Weekly | CA hourly weekly baseline · CA SDI | $1,247.46 |
+| [DEMO-TC08](DEMO-TC08-US-Apex-Transit-L2/) | Carlos Rivera | Biweekly | L2 §132(f) transit benefit with monthly limit | $4,776.91 |
+| [DEMO-TC09](DEMO-TC09-US-Robert-Monthly/) | Robert Stevenson | Monthly | Age-50+ 401(k) catch-up · W-4 Step 3 | $5,127.26 |
+| [DEMO-TC10](DEMO-TC10-US-Priya-CTtoNY/) | Priya Patel | Biweekly | CT→NY commuter · Head of Household | $2,617.01 |
+| [DEMO-TC11](DEMO-TC11-US-Ashley-CAWeekly/) | Ashley Park | Weekly | CA hourly weekly baseline · CA SDI | $1,244.55 |
 
 11 tests, 102 asserted wage type results.
 

@@ -1,13 +1,13 @@
 # Regulation.US.Payroll.Demo
 
-Demo company and tutorials for [US.Payroll](https://github.com/Payroll-Engine/Regulation.US.Payroll)
+Demo company and tutorials for [US.Payroll](https://github.com/payrollex/Regulation.US.Payroll)
 on [Payroll Engine](https://payrollengine.org).
 
 ---
 
 ## Dependency: Regulation.US.Payroll
 
-This demo requires **[Regulation.US.Payroll](https://github.com/Payroll-Engine/Regulation.US.Payroll)**
+This demo requires **[Regulation.US.Payroll](https://github.com/payrollex/Regulation.US.Payroll)**
 to be checked out as a sibling folder:
 
 ```
@@ -98,7 +98,10 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
   - `US.Payroll.Data.Federal.Tax.2026.json`
   - `US.Payroll.Data.Federal.FICA.2026.json`
   - `US.Payroll.Data.State.2026.json`
+  - `US.Payroll.Data.State.Withholding.2026.json`
+  - `US.Payroll.Data.State.WageBase.2026.json`
   - `US.Payroll.Data.Local.Tax.2026.json`
+  - `US.Payroll.Data.Local.Tax.WageBase.2026.json`
   - `US.Payroll.Data.Federal.Garnishment.2026.json`
 
 ---

@@ -84,7 +84,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-06T00:00:00.0Z",
           "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Linda Okafor, NY Single, $65k/yr, biweekly. No pre-tax deductions. Gross=$65,000÷26=$2,500 (WT 1000). FICATaxable=$2,500 (no health). SS $2,500×6.2%=$155 (WT 5200). Medicare $2,500×1.45%=$36.25 (WT 5210). FIT: annual $65,000-$16,100=$48,900 → 10% to $12,400=$1,240 + 12% on $36,500=$4,380 = $5,620÷26=$216.15 (WT 5100). NY SIT: $65,000-$8,400=$56,600 → 5.4% bracket → $586+$42,700×5.4%=$2,891.80÷26=$111.22 (WT 5300). NY PFL (WT 5620): 0.432%×$2,500=$10.80. Disposable earnings (15 USC §1672(b)) = $2,500 - $216.15 - $155.00 - $36.25 - $111.22 - $10.80 = $1,970.58. ChildSupport garnishment $500: CCPA 60% limit (not supporting another family, no arrears) = $1,970.58×60% = $1,182.35 ≥ $500 → full $500 (WT 5900). Net = $1,970.58 - $500 = $1,470.58.",
+          "reason": "Linda Okafor, NY Single, $65k/yr, biweekly. No pre-tax deductions. Gross=$65,000÷26=$2,500 (WT 1000). FICATaxable=$2,500 (no health). SS $2,500×6.2%=$155 (WT 5200). Medicare $2,500×1.45%=$36.25 (WT 5210). FIT: annual $65,000-$16,100=$48,900 → 10% to $12,400=$1,240 + 12% on $36,500=$4,380 = $5,620÷26=$216.15 (WT 5100). NY SIT (NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D biweekly): net $2,500 - $284.60 = $2,215.40 → line 4: $22.54 + ($2,215.40 - $535) × 5.4% = $113.28 (WT 5300). NY PFL (WT 5620): 0.432%×$2,500=$10.80. Disposable earnings (15 USC §1672(b)) = $2,500 - $216.15 - $155.00 - $36.25 - $113.28 - $10.80 = $1,968.52. ChildSupport garnishment $500: CCPA 60% limit (not supporting another family, no arrears) = $1,968.52×60% = $1,181.11 ≥ $500 → full $500 (WT 5900). Net = $1,968.52 - $500 = $1,468.52.",
           "employeeIdentifiers": [ "linda.okafor@apexdigital.com" ]
         }
       ],
@@ -97,10 +97,10 @@
             { "wageTypeNumber": 5100,  "value": -216.15 },
             { "wageTypeNumber": 5200,  "value": -155.00 },
             { "wageTypeNumber": 5210,  "value": -36.25 },
-            { "wageTypeNumber": 5300,  "value": -111.22 },
+            { "wageTypeNumber": 5300,  "value": -113.28 },
             { "wageTypeNumber": 5620,  "value": -10.80 },
             { "wageTypeNumber": 5900,  "value": -500.00 },
-            { "wageTypeNumber": 6500,  "value": 1470.58 }
+            { "wageTypeNumber": 6500,  "value": 1468.52 }
           ]
         }
       ]

@@ -22,9 +22,9 @@ Weekly baseline for a California hourly employee:
 | Federal income tax (WT 5100) | −$199.79 | Single, $10,389.20 ÷ 52 |
 | Social Security (WT 5200) | −$104.16 | $1,680 × 6.2% |
 | Medicare (WT 5210) | −$24.36 | $1,680 × 1.45% |
-| CA SIT (WT 5300) | −$82.39 | EDD Method B |
+| CA SIT (WT 5300) | −$85.30 | EDD Method B annualized, no DE 4 (single, 0 allowances): ($1,680 × 52 − $5,706) → $4,435.71 ÷ 52 |
 | CA SDI (WT 5600) | −$21.84 | $1,680 × 1.3% |
-| Net pay (WT 6500) | $1,247.46 | |
+| Net pay (WT 6500) | $1,244.55 | |
 
 ## Run
 

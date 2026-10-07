@@ -27,9 +27,9 @@ Validates the age-50+ 401(k) catch-up with a fixed monthly contribution:
 | Federal income tax (WT 5100) | −$238.00 | MFJ $404.67 − Step 3 $166.67 |
 | Social Security (WT 5200) | −$564.72 | $9,108.33 × 6.2% |
 | Medicare (WT 5210) | −$132.07 | $9,108.33 × 1.45% |
-| NY SIT (WT 5300) | −$294.08 | NYS-50-T on $76,800 annual |
+| NY SIT (WT 5300) | −$298.60 | NYS-50-T-NYS Table II-D monthly, no IT-2104 (single, 0 allowances): $6,400 − $616.70 → $48.83 + ($5,783.30 − $1,158) × 5.4% |
 | NY PFL (WT 5620) | −$39.35 | $9,108.33 × 0.432% |
-| Net pay (WT 6500) | $5,131.78 | |
+| Net pay (WT 6500) | $5,127.26 | |
 
 ## Run
 
