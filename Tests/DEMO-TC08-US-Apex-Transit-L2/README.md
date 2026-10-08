@@ -33,10 +33,10 @@ Validates a company-specific benefit added by the L2 regulation without modifyin
 | Federal income tax (WT 5100) | −$1,274.38 | −$1,236.72 | 24% × $156.92 saved |
 | Social Security (WT 5200) | −$441.15 | −$431.42 | |
 | Medicare (WT 5210) | −$103.17 | −$100.90 | |
-| Multi-state withholding (WT 5310) | −$365.14 | −$354.76 | NY slot $209.58 + NJ slot $72.22 + CT slot $72.96 |
+| Multi-state withholding (WT 5310) | −$421.18 | −$411.14 | NJ $45.69 + CT $72.96 + NY $292.49 |
 | Transit excess post-tax (WT 5520) | — | −$27.69 | $60 × 12 / 26 |
 | NY PFL (WT 5620) | −$30.74 | −$30.06 | |
-| Net pay (WT 6500) | $4,900.80 | $4,776.91 | |
+| Net pay (WT 6500) | $4,844.76 | $4,720.53 | |
 
 ## Run
 

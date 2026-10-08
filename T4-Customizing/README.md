@@ -104,5 +104,5 @@ pecmd PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-
 Expected for Carlos (biweekly, $400 monthly election):
 - WT 1250 = −$156.92 ($340 × 12 / 26), WT 5520 = −$27.69 ($60 × 12 / 26)
 - WT 5050 (FIT taxable) and WT 5051 (FICA taxable) each reduced by $156.92
-- WT 5310 = −$354.76: NY and CT wages reduced by $156.92, NJ wages unchanged
-- Net pay $4,776.91
+- WT 5310 = −$411.14: NY and CT wages reduced by $156.92, NJ wages unchanged
+- Net pay $4,720.53
