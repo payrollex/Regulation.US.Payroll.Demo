@@ -25,7 +25,7 @@ PayrunEmployeeTest DEMO-TC05-US-Jessica-TX/DEMO-TC05-US-Jessica-TX.et.json
 PayrunEmployeeTest DEMO-TC06-US-Linda-Garnishment/DEMO-TC06-US-Linda-Garnishment.et.json
 
 # DEMO-TC07 — David Kim: Philadelphia weekly
-# PA SIT (3.07%) + Philadelphia Wage Tax (3.74%) — PSD code resolution · PA UC WT 5630
+# PA SIT (3.07%) + Philadelphia Wage Tax (resident 3.74%) · PA UC WT 5630
 PayrunEmployeeTest DEMO-TC07-US-David-Philadelphia/DEMO-TC07-US-David-Philadelphia.et.json
 
 # DEMO-TC08 — L2 §132(f) transit benefit (requires T4-Customizing completed)

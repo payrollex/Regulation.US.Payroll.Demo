@@ -6,10 +6,11 @@
 
 ## Scenario
 
-Validates PA state tax and the Philadelphia Wage Tax with PSD code resolution:
+Validates PA state tax and the Philadelphia Wage Tax:
 
 - PA SIT flat rate on gross wages (no pre-tax deductions)
-- Resident and work PSD code 510101 (Philadelphia) → Philadelphia resident Wage Tax (WT 5400)
+- `US.LocalTaxJurisdiction = PA-Philadelphia` → Philadelphia resident Wage Tax (WT 5400), rate of the
+  period from the `PhiladelphiaWageTax` lookup (Philadelphia is exempt from PA Act 32: no PSD codes)
 - PA employee unemployment contribution 0.07% (WT 5630, no wage cap)
 - 40 regular hours, weekly annualization ×52
 
@@ -22,7 +23,7 @@ Validates PA state tax and the Philadelphia Wage Tax with PSD code resolution:
 | Social Security (WT 5200) | −$79.36 | $1,280 × 6.2% |
 | Medicare (WT 5210) | −$18.56 | $1,280 × 1.45% |
 | PA SIT (WT 5300) | −$39.30 | $1,280 × 3.07% |
-| Philadelphia Wage Tax (WT 5400) | −$47.87 | $1,280 × 3.74% (resident) |
+| Philadelphia Wage Tax (WT 5400) | −$47.87 | $1,280 × 3.74% (resident, edition July 1, 2025) |
 | PA employee UC (WT 5630) | −$0.90 | $1,280 × 0.07% |
 | Net pay (WT 6500) | $982.22 | |
 

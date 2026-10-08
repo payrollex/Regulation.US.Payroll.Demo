@@ -73,7 +73,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 | 6 | Jessica Torres | Account Executive | Biweekly | TX · no SIT · Q1 bonus |
 | 7 | Carlos Rivera | Principal Consultant | Biweekly | Three-state allocation NY/NJ/CT |
 | 8 | Linda Okafor | HR Coordinator | Biweekly | NY · garnishment (child support) |
-| 9 | David Kim | IT Support Tech | Weekly | Philadelphia · local EIT · OT |
+| 9 | David Kim | IT Support Tech | Weekly | Philadelphia · Wage Tax · OT |
 | 10 | Ashley Park | QA Engineer | Weekly | CA hourly · SDI uncapped |
 
 ---

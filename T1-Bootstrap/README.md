@@ -124,7 +124,7 @@ Each file sets all required cases for one employee. Cases are submitted in this 
 | `06-JessicaTorres.json` | Jessica Torres | Biweekly | PersonalData · Employment(TX) · Remuneration($80k) · TaxData(MFJ) · PreTax(401k4% H$310 family) |
 | `07-CarlosRivera.json` | Carlos Rivera | Biweekly | PersonalData · Employment(NY/NYC) · Remuneration($185k) · TaxData(Single) · MultiStateEmployment(NY60%/NJ25%/CT15%) |
 | `08-LindaOkafor.json` | Linda Okafor | Biweekly | PersonalData · Employment(NYC) · Remuneration($65k) · TaxData(Single) · Garnishment(ChildSupport $500/period) |
-| `09-DavidKim.json` | David Kim | Weekly | PersonalData · Employment(PA) · Remuneration(Hourly $32/hr) · TaxData(Single PA-Philadelphia PSD=510101) |
+| `09-DavidKim.json` | David Kim | Weekly | PersonalData · Employment(PA) · Remuneration(Hourly $32/hr) · TaxData(Single PA-Philadelphia) |
 | `10-AshleyPark.json` | Ashley Park | Weekly | PersonalData · Employment(CA) · Remuneration(Hourly $42/hr) · TaxData(Single) |
 
 ```bash
@@ -180,9 +180,10 @@ regulation, and the garnishment is deducted before net pay (WT 6500).
 
 ### PA Local Tax (David)
 
-`US.LocalTaxJurisdiction = PA-Philadelphia` activates WT 5400 (`LocalTaxWithholding`).
-The `US.ResidentPSDCode` and `US.WorkPSDCode` (`510101` = Philadelphia City) resolve
-the 3.74% resident rate from the `US.Payroll.Data.Local.Tax` data satellite.
+`US.LocalTaxJurisdiction = PA-Philadelphia` activates WT 5400 (`LocalTaxWithholding`) with the
+Philadelphia Wage Tax resident rate of the period from the `PhiladelphiaWageTax` lookup of the
+`US.Payroll.Data.Local.Tax` data satellite (3.74% until June 30, 2026, 3.735% from July 1, 2026).
+Philadelphia is exempt from PA Act 32, so David has no PSD codes.
 
 ---
 

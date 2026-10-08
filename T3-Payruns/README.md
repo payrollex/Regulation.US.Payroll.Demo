@@ -64,7 +64,7 @@ Run all three payrolls for January 2026. No YTD accumulators active yet.
 - Sara Chen: $20,000 salary + $450 company car → FITTaxable / FICATaxable split
 - Marcus Johnson: NY SIT + NJ SIT both appear on same payslip
 - Jessica Torres: TX SIT = $0
-- David Kim: PA SIT + Philadelphia EIT (PSD code resolution)
+- David Kim: PA SIT + Philadelphia Wage Tax (resident)
 - FUTA ER (WT 6700) begins accumulating toward $7,000 per-employee cap
 
 **Validate with pecmd (run from repo root):**
