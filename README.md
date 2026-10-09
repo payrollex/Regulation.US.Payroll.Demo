@@ -105,6 +105,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
   - `US.Payroll.Data.Local.Tax.WageBase.2026.json`
   - `US.Payroll.Data.Local.Tax.IndianaCounty.2026.json`
   - `US.Payroll.Data.Local.Tax.Philadelphia.2026.json`
+  - `US.Payroll.Data.Local.Tax.NewYork.2026.json`
   - `US.Payroll.Data.Federal.Garnishment.2026.json`
 
 ---

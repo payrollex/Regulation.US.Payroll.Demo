@@ -56,7 +56,7 @@ The L2 regulation (`Apex.Payroll`) wins over any L1 definition for WT 1250/1260.
 
 The six L1 data regulations live in the **US.Payroll** tenant (the provider tenant)
 and are shared with `Apex.DigitalSolutions` via `RegulationShare`. This is how
-Payroll Engine separates the regulatory owner (LeddraPay/provider) from the
+Payroll Engine separates the regulatory owner (provider) from the
 employer tenant (Apex) without copying data.
 
 ```

@@ -15,7 +15,7 @@ Validates the full monthly payslip for a high-earning NYC executive:
 - Three different taxable wage bases on one payslip (FIT ≠ FICA ≠ Gross)
 - W-4 Step 3 child credits ($4,000/yr → $333/month tax reduction)
 - W-4 Step 4c extra withholding ($500/month)
-- No NY IT-2104 on file → NY withholding as single with 0 allowances (NYS-50-T-NYS)
+- No NY IT-2104 on file → NY and NYC withholding as single with 0 allowances (NYS-50-T-NYS, NYS-50-T-NYC)
 - Additional Medicare (0.9%) NOT triggered in January (YTD < $200k)
 
 ## Key Assertions
@@ -32,7 +32,7 @@ Validates the full monthly payslip for a high-earning NYC executive:
 | Medicare (WT 5210) | −$283.48 | $19,550 × 1.45% |
 | Add'l Medicare (WT 5220) | — | Not triggered: YTD Medicare wages < $200,000 (employer threshold, any filing status) |
 | NY SIT (WT 5300) | −$1,074.58 | NYS-50-T-NYS Method II, Table II-D monthly: $17,950 − $616.70 = $17,333.30 → $806.08 + ($17,333.30 − $13,138) × 6.4% |
-| NYC local (WT 5400) | −$719.00 | NYC city graduated; annual base $215,400 − $5,000 = $210,400 |
+| NYC local (WT 5400) | −$719.00 | NYS-50-T-NYC Method II, Table II-D monthly, no IT-2104 (single, 0 New York City allowances): $17,950 − $416.70 = $17,533.30 → $186.33 + ($17,533.30 − $5,000) × 4.25% |
 | NY PFL (WT 5620) | −$84.46 | $19,550 × 0.432% |
 | Net pay (WT 6500) | $11,482.38 | $20,450 − $450 car (not paid out) − $2,500 pre-tax − $5,933.16 taxes − $84.46 PFL |
 
