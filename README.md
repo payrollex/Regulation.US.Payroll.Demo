@@ -103,6 +103,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
   - `US.Payroll.Data.State.2026.json`
   - `US.Payroll.Data.State.Withholding.2026.json`
   - `US.Payroll.Data.State.MultiState.2026.json`
+  - `US.Payroll.Data.State.W2.2026.json`
   - `US.Payroll.Data.State.WageBase.2026.json`
   - `US.Payroll.Data.Local.Tax.2026.json`
   - `US.Payroll.Data.Local.Tax.WageBase.2026.json`

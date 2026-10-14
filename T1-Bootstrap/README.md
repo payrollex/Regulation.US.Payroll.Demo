@@ -39,6 +39,7 @@ PayrollImport US.Payroll.Data.Federal.Garnishment.2026.json /bulk
 PayrollImport US.Payroll.Data.State.2026.json /bulk
 PayrollImport US.Payroll.Data.State.Withholding.2026.json /bulk
 PayrollImport US.Payroll.Data.State.MultiState.2026.json /bulk
+PayrollImport US.Payroll.Data.State.W2.2026.json /bulk
 PayrollImport US.Payroll.Data.State.WageBase.2026.json /bulk
 PayrollImport US.Payroll.Data.Local.Tax.2026.json /bulk
 PayrollImport US.Payroll.Data.Local.Tax.WageBase.2026.json /bulk
