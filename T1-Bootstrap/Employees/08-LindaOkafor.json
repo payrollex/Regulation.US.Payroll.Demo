@@ -64,6 +64,18 @@
               "employeeIdentifier": "linda.okafor@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.Garnishment",
                 "values": [
                   { "caseFieldName": "US.GarnishmentType",         "value": "ChildSupport", "start": "2026-01-01T00:00:00.0Z" },

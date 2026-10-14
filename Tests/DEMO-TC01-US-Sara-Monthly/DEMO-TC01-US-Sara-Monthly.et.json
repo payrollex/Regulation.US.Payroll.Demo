@@ -70,6 +70,18 @@
               "employeeIdentifier": "sara.chen@apexdigital.com",
               "divisionName": "Apex.Division.Monthly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "M", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
                   { "caseFieldName": "US.Pre401kPercent",  "value": "0.08", "start": "2026-01-01T00:00:00.0Z" },
@@ -100,7 +112,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-01T00:00:00.0Z",
           "evaluationDate": "2026-02-01T00:00:00.0Z",
-          "reason": "Sara Chen (CFO), Monthly January 2026. Annual $240k/12=$20,000 gross. Car imputed $450 (WT 1320). 401k 0.08×$20,000=$1,600 (WT 1200). Health $600 (WT 1210). HSA $300 (WT 1220). FITTaxable=$17,950 (WT 5050). FICATaxable=$19,550 (WT 5051). FIT (WT 5100): annual $215,400 - MFJ StdDed $32,200 = $183,200 → 22% bracket → $29,728/yr → $2,477.33/mo - Step3 $333.33 = $2,144.00. Step4c $500 extra (WT 5110). SS 6.2%×$19,550=$1,212.10 (WT 5200). Medicare 1.45%×$19,550=$283.48 (WT 5210). Additional Medicare NOT triggered in January (employer withholding threshold $200,000 YTD Medicare wages, independent of filing status). NY SIT (WT 5300; NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D monthly): net $17,950 - $616.70 = $17,333.30 → line 8: $806.08 + ($17,333.30 - $13,138) × 6.4% = $1,074.58. NYC (WT 5400; NYS-50-T-NYC 1/26 Method II, no IT-2104: single, 0 New York City allowances, Table II-D monthly): net $17,950 - $416.70 = $17,533.30 → line 6: $186.33 + ($17,533.30 - $5,000) × 4.25% = $718.99525 → $719.00. NY PFL (WT 5620): 0.432%×$19,550=$84.46. Net = gross $20,450 - imputed car $450 (taxed, not paid out) - pre-tax $2,500 - taxes $5,933.16 - NY PFL $84.46 = $11,482.38.",
+          "reason": "Sara Chen (CFO), Monthly January 2026. Annual $240k/12=$20,000 gross. Car imputed $450 (WT 1320). 401k 0.08×$20,000=$1,600 (WT 1200). Health $600 (WT 1210). HSA $300 (WT 1220). FITTaxable=$17,950 (WT 5050). FICATaxable=$19,550 (WT 5051). FIT (WT 5100, Pub 15-T Worksheet 1A, MFJ): $17,950 × 12 = $215,400 - Step 1g $12,900 = $202,500 → $11,600 + 22% × ($202,500 - $120,100) = $29,728/yr; ($29,728 - Step 3 $4,000) ÷ 12 = $2,144.00. Step4c $500 extra (WT 5110). SS 6.2%×$19,550=$1,212.10 (WT 5200). Medicare 1.45%×$19,550=$283.48 (WT 5210). Additional Medicare NOT triggered in January (employer withholding threshold $200,000 YTD Medicare wages, independent of filing status). NY SIT (WT 5300; NYS-50-T-NYS 1/26 Method II, IT-2104 married, 0 allowances, Table II-D monthly married): net $17,950 - $662.50 = $17,287.50 → line 8: $782.33 + ($17,287.50 - $13,138) × 8.01% = $1,114.70. NYC (WT 5400; NYS-50-T-NYC 1/26 Method II, IT-2104 married, 0 New York City allowances, Table II-D monthly married): net $17,950 - $458.30 = $17,491.70 → line 6: $186.33 + ($17,491.70 - $5,000) × 4.25% = $717.23. NY PFL (WT 5620): 0.432%×$19,550=$84.46. Net = gross $20,450 - imputed car $450 (taxed, not paid out) - pre-tax $2,500 - taxes $5,971.51 - NY PFL $84.46 = $11,444.03.",
           "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
         }
       ],
@@ -117,10 +129,10 @@
             { "wageTypeNumber": 5110,  "value": -500.00 },
             { "wageTypeNumber": 5200,  "value": -1212.10 },
             { "wageTypeNumber": 5210,  "value": -283.48 },
-            { "wageTypeNumber": 5300,  "value": -1074.58 },
-            { "wageTypeNumber": 5400,  "value": -719.00 },
+            { "wageTypeNumber": 5300,  "value": -1114.70 },
+            { "wageTypeNumber": 5400,  "value": -717.23 },
             { "wageTypeNumber": 5620,  "value": -84.46 },
-            { "wageTypeNumber": 6500,  "value": 11482.38 }
+            { "wageTypeNumber": 6500,  "value": 11444.03 }
           ]
         }
       ]

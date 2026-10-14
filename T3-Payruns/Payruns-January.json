@@ -13,7 +13,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-01T00:00:00.0Z",
           "evaluationDate": "2026-02-01T00:00:00.0Z",
-          "reason": "January 2026 Monthly payrun — Sara Chen (NY/NYC, CFO $240k), Robert Stevenson (TX, VP $180k). Demo seed data for reports.",
+          "reason": "January 2026 Monthly payrun (Jan 1-31, paid Jan 31) — Sara Chen (NY/NYC, $240k), Robert Stevenson (NY, $115k). Demo seed data for reports.",
           "employeeIdentifiers": [
             "sara.chen@apexdigital.com",
             "robert.stevenson@apexdigital.com"
@@ -24,9 +24,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-06T00:00:00.0Z",
-          "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "January 2026 Biweekly payrun (Jan 6-19) — Marcus Johnson (NJ→NY), Priya Patel (CT→NY, HoH), Kevin Wu (CA daily OT), Jessica Torres (TX), Carlos Rivera (CA+NV+WA), Linda Okafor (NJ, garnishment). Demo seed data for reports.",
+          "periodStart": "2026-01-12T00:00:00.0Z",
+          "evaluationDate": "2026-01-26T00:00:00.0Z",
+          "reason": "January 2026 Biweekly payrun (Jan 12-25, paid Jan 30) — Marcus Johnson (NJ resident, NY work), Priya Patel (CT resident, NY work, HoH), Kevin Wu (CA), Jessica Torres (TX), Carlos Rivera (NY/NJ/CT allocation), Linda Okafor (NY/NYC, child support). Demo seed data for reports.",
           "employeeIdentifiers": [
             "marcus.johnson@apexdigital.com",
             "priya.patel@apexdigital.com",
@@ -43,7 +43,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-05T00:00:00.0Z",
           "evaluationDate": "2026-01-12T00:00:00.0Z",
-          "reason": "January 2026 Weekly payrun (Jan 5-11) — David Kim (PA/Philadelphia local tax), Ashley Park (CA, hourly OT). Demo seed data for reports.",
+          "reason": "January 2026 Weekly payrun (Jan 5-11, paid Jan 16) — David Kim (PA/Philadelphia wage tax), Ashley Park (CA, hourly). Demo seed data for reports.",
           "employeeIdentifiers": [
             "david.kim@apexdigital.com",
             "ashley.park@apexdigital.com"

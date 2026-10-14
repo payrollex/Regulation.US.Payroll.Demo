@@ -1,18 +1,18 @@
 # ============================================================
 # T3-Payruns/Payruns-March-Biweekly.pecmd
 #
-# Runs biweekly payruns from Jan 20 through Mar 30 2026.
+# Runs biweekly payruns from Jan 26 through Mar 22 2026.
 # Called by Setup.cmd after Payruns-January.pecmd.
 #
 # Includes:
 #   - Jessica Torres March bonus ($10,000 supplemental wages)
 #     case value import (processed before payrun execution)
-#   - 5 biweekly periods covering all 6 biweekly employees:
-#       P2: Jan 20 – Feb 2
-#       P3: Feb 3  – Feb 16
-#       P4: Feb 17 – Mar 2
-#       P5: Mar 3  – Mar 16
-#       P6: Mar 17 – Mar 30  ← Jessica bonus period
+#   - 4 biweekly periods covering all 6 biweekly employees
+#     (pay date = period end + 5 days, Friday):
+#       P2: Jan 26 – Feb 8   paid Feb 13
+#       P3: Feb 9  – Feb 22  paid Feb 27
+#       P4: Feb 23 – Mar 8   paid Mar 13
+#       P5: Mar 9  – Mar 22  paid Mar 27  ← Jessica bonus period
 # ============================================================
 
 PayrollImport Payruns-March-Biweekly.json

@@ -39,7 +39,7 @@ converts both parts to the pay period: monthly × 12 / periods per year.
 
 | Rule | Why |
 |:---|:---|
-| `Apex.Payroll` has **no namespace**; all objects carry the `Apex.` prefix in their name | Scripts of a regulation with a namespace prefix every case field and lookup name with that namespace. With namespace `Apex`, `US.PayFrequency` would resolve to `Apex.US.PayFrequency` and fail. |
+| `Apex.Payroll` has **no namespace**; all objects carry the `Apex.` prefix in their name | Scripts of a regulation with a namespace prefix every case field and lookup name with that namespace. With namespace `Apex`, `US.WorkState` would resolve to `Apex.US.WorkState` and fail. |
 | Base lookups are addressed with their full name (`US.FederalTaxParameters`) | The US data regulations use namespace `US`; the stored lookup name includes it. |
 | Employee deductions are numbered **below 6500** (WT 1250, 5520) | NetPay (WT 6500) reads the `US.EmployeeDeductions` collector, which only contains wage types processed before it. A deduction numbered above 6500 would be missing from net pay. |
 | Employer-only wage types may use numbers above 6900 | They do not affect net pay. |
@@ -85,7 +85,7 @@ pecmd PayrollImport CaseValues/WFHStipend-Remote.json
 
 The same L2 pattern supports:
 - Custom garnishment priority rules (override WT 5900)
-- Higher voluntary supplemental withholding rate (override WT 1110)
+- Higher voluntary supplemental withholding rate (override WT 5120)
 - Company-specific 401(k) match formula (override WT 1310)
 - Equity compensation (RSU) wage types at Level 2
 - Custom payslip groupings and labels

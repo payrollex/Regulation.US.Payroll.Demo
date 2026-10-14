@@ -10,6 +10,15 @@ mid-period changes (intra-period segmentation).
 All events use employees from the T1 Bootstrap. Run `T1-Bootstrap/Bootstrap.pecmd`
 before executing any lifecycle events.
 
+All events affect the biweekly payroll (periods of two weeks from Monday, paid on the
+Friday after the period end):
+
+| Period | Pay date | Event |
+|:---|:---|:---|
+| Mar 9 – Mar 22 | Mar 27 | L1 hire James Lee (Mar 17), L2 raise Marcus Johnson (Mar 15) |
+| Apr 6 – Apr 19 | Apr 24 | L3 FMLA leave Linda Okafor (Apr 7) |
+| Jun 29 – Jul 12 | Jul 17 | L4 TX → CA Jessica Torres (Jul 1), L5 return Linda Okafor (Jul 1) |
+
 ---
 
 ## Lifecycle Events
@@ -31,8 +40,8 @@ office, starting March 17, 2026. He joins the Biweekly payroll.
 
 **What this shows:**
 - Adding a new employee record + initial case values in a single import
-- `US.HireDate` with `start = hire date` activates `LifecycleStatus = 1` automatically
-- First payrun is the biweekly period containing March 17
+- The first pay period Mar 9–22 covers 6 of 14 days (Mar 17–22): the salary and the
+  health premium are prorated by calendar days (`CalendarPeriod` case fields)
 
 **Employee data:**
 
@@ -43,6 +52,7 @@ office, starting March 17, 2026. He joins the Biweekly payroll.
 | Pay Type | Salary |
 | Annual Salary | $130,000 |
 | Filing Status | Single |
+| State certificate | CA DE 4: single, 0 allowances |
 | Pre-tax 401k | 5% |
 | Health Insurance | $220/period |
 
@@ -61,8 +71,8 @@ effective March 15, 2026.
 **What this shows:**
 - A single case value update with a new `start` date
 - PE keeps both values: $150k before March 15, $165k from March 15 onward
-- The biweekly period that straddles March 15 (March 10–23) is automatically
-  split and prorated at each rate
+- The biweekly period that straddles March 15 (Mar 9–22) is split by calendar days:
+  6 days at $150,000 and 8 days at $165,000
 
 **Run:**
 ```
@@ -78,10 +88,9 @@ Her salary is set to $0 for the leave period.
 
 **What this shows:**
 - Time-segmented case values: $65k up to April 6, $0 from April 7
-- The biweekly period containing April 7 is prorated: days before = paid,
-  days after = $0
-- Garnishment (child support) continues to accrue, but the CCPA cap means
-  no deduction when gross pay is zero
+- The biweekly period Apr 6–19 pays one day (April 6)
+- The child support garnishment is limited to 60% of disposable earnings (CCPA) in that
+  period; without wages there is no deduction, and the regulation carries no arrears forward
 
 **Run:**
 ```
@@ -95,10 +104,15 @@ PayrollImport T2-Lifecycle/Events/L3-FMLALeave-Linda.json
 **Scenario:** Jessica relocates from Texas to California, effective July 1, 2026.
 
 **What this shows:**
-- WorkState and ResidentState update — two fields, same start date
-- State income tax switches from $0 (TX has no SIT) to CA SDI + CA SIT
-- YTD SIT resets conceptually: TX YTD = $0; CA SIT starts accumulating from July 1
-- FUTA/SUTA credit reduction unaffected (no change for 2026)
+- WorkState and ResidentState update — two fields, same start date — plus her CA DE 4
+  (married, one income, 0 allowances)
+- The period Jun 29–Jul 12 (paid Jul 17) contains 2 Texas and 8 California working days:
+  - CA SDI covers the services localized in California (CUIC §§ 602-603, EDD DE 231D); the
+    wages are split by working days and SDI applies to the CA share only
+  - CA income tax applies to all wages of the period, because Jessica is a California resident
+    at the period end (EDD DE 44, Wages Paid to California Residents)
+- The period Jun 15–28 stays in Texas, even when its payrun runs after July 1: payruns use the
+  case values of the period, not those of the run date
 
 **Run:**
 ```
@@ -114,8 +128,8 @@ of $65,000 is restored.
 
 **What this shows:**
 - Reverting a case value by setting the original amount with a new start date
-- Child support garnishment resumes deduction
-- YTD gross picks up from where it left off before the leave
+- The period Jun 29–Jul 12 pays 12 of 14 days (July 1–12)
+- The child support garnishment resumes in full ($500)
 
 **Run:**
 ```
@@ -127,10 +141,11 @@ PayrollImport T2-Lifecycle/Events/L5-ReEntry-Linda.json
 ## Running All Events
 
 ```
-T2-Lifecycle/Lifecycle.pecmd
+cd T2-Lifecycle
+pecmd Lifecycle.pecmd
 ```
 
-Or run individual events in order:
+Or run individual events in order (from the repo root):
 
 ```
 PayrollImport T2-Lifecycle/Events/L1-NewHire-JamesLee.json
@@ -144,15 +159,25 @@ PayrollImport T2-Lifecycle/Events/L5-ReEntry-Linda.json
 
 ## Observing Results
 
-After importing the events, run the affected payrolls to observe the changes.
-The following periods are most informative:
+After importing the events, run the affected biweekly periods. `Setup.cmd` already completes
+the biweekly payruns up to Mar 22 (Step 7); to observe the March events in their pay period,
+import them before `T3-Payruns/Payruns-March-Biweekly.pecmd`.
 
-| Period | Payroll | What to observe |
+| Period (pay date) | Employee | What to observe |
 |:---|:---|:---|
-| 2026-03-10 / 2026-03-23 | Biweekly | Marcus proration at $150k / $165k |
-| 2026-03-17 / 2026-03-30 | Biweekly | James Lee first payslip (partial period) |
-| 2026-04-07 / 2026-04-20 | Biweekly | Linda proration: paid days vs. zero |
-| 2026-07-01 / 2026-07-14 | Biweekly | Jessica: CA SIT appears; Linda: salary restored |
+| Mar 9 – Mar 22 (Mar 27) | James Lee | Salary $2,142.86 ($5,000 × 6/14), health $94.29 ($220 × 6/14), net $1,557.30 |
+| Mar 9 – Mar 22 (Mar 27) | Marcus Johnson | Salary $6,098.90 (($150,000 × 6 + $165,000 × 8) ÷ 14 ÷ 26), net $3,849.26 |
+| Mar 23 – Apr 5 (Apr 10) | James Lee / Marcus Johnson | Full period: salary $5,000.00 / $6,346.15 |
+| Apr 6 – Apr 19 (Apr 24) | Linda Okafor | Salary $178.57 (1 day), garnishment $98.48 (60% CCPA limit), net $65.66 |
+| Apr 20 – May 3 (May 8) | Linda Okafor | No wages, no garnishment |
+| Jun 29 – Jul 12 (Jul 17) | Linda Okafor | Salary $2,142.86 (12 days), garnishment $500.00 |
+| Jun 29 – Jul 12 (Jul 17) | Jessica Torres | CA SIT $52.85, CA SDI $28.78 (1.3% of the 8 CA working days), net $2,200.97 |
+
+The values apply to the employees' T1 case data without the T4 benefits (transit, WFH stipend).
+They are asserted by [DEMO-TC15](../Tests/DEMO-TC15-US-James-NewHire/) (James Lee),
+[DEMO-TC16](../Tests/DEMO-TC16-US-Marcus-SalaryChange/) (Marcus Johnson),
+[DEMO-TC17](../Tests/DEMO-TC17-US-Linda-FMLA/) (Linda Okafor) and
+[DEMO-TC18](../Tests/DEMO-TC18-US-Jessica-Relocation/) (Jessica Torres).
 
 ---
 

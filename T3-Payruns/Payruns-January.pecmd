@@ -7,10 +7,10 @@
 # Called by Setup.cmd after T4-Customizing (L2 regulation must be active).
 #
 # Payrolls:
-#   Monthly  (Jan 1-31)   Sara Chen, Robert Stevenson
-#   Biweekly (Jan 6-19)   Marcus Johnson, Priya Patel, Kevin Wu,
-#                          Jessica Torres, Carlos Rivera, Linda Okafor
-#   Weekly   (Jan 5-11)   David Kim, Ashley Park
+#   Monthly  (Jan 1-31,  paid Jan 31)  Sara Chen, Robert Stevenson
+#   Biweekly (Jan 12-25, paid Jan 30)  Marcus Johnson, Priya Patel, Kevin Wu,
+#                                       Jessica Torres, Carlos Rivera, Linda Okafor
+#   Weekly   (Jan 5-11,  paid Jan 16)  David Kim, Ashley Park
 # ============================================================
 
 PayrollImport Payruns-January.json

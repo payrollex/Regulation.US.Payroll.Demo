@@ -10,6 +10,10 @@
           "name": "Apex.Payroll.Monthly",
           "updateMode": "Update",
           "divisionName": "Apex.Division.Monthly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -24,6 +28,10 @@
           "name": "Apex.Payroll.Biweekly",
           "updateMode": "Update",
           "divisionName": "Apex.Division.Biweekly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -38,6 +46,10 @@
           "name": "Apex.Payroll.Weekly",
           "updateMode": "Update",
           "divisionName": "Apex.Division.Weekly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },

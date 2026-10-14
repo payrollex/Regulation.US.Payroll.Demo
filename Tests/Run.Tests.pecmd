@@ -6,7 +6,7 @@
 PayrunEmployeeTest DEMO-TC01-US-Sara-Monthly/DEMO-TC01-US-Sara-Monthly.et.json
 
 # DEMO-TC02 — Marcus Johnson: NJ→NY commuter, no reciprocity
-# Multi-state path WT 5310; NJ resident tax on NJ wages (health premium taxable) above NY tax
+# Multi-state path WT 5310; NJ resident tax on NJ wages (IRC §125 health premium NJ-taxable) above NY tax
 PayrunEmployeeTest DEMO-TC02-US-Marcus-NJtoNY/DEMO-TC02-US-Marcus-NJtoNY.et.json
 
 # DEMO-TC03 — Carlos Rivera: Three-state allocation NY/NJ/CT
@@ -32,8 +32,8 @@ PayrunEmployeeTest DEMO-TC07-US-David-Philadelphia/DEMO-TC07-US-David-Philadelph
 # Carlos elects $400/month: $340 limit pre-tax (WT 1250), excess post-tax (WT 5520)
 PayrunEmployeeTest DEMO-TC08-US-Apex-Transit-L2/DEMO-TC08-US-Apex-Transit-L2.et.json
 
-# DEMO-TC09 — Robert Stevenson: Monthly, age-50+ 401k catch-up, SECURE 2.0
-# Fixed Pre401kAmount; FIT/FICA taxable split; NY SIT + NY PFL
+# DEMO-TC09 — Robert Stevenson: Monthly, fixed 401k amount, age-50 catch-up range
+# Fixed Pre401kAmount; FIT/FICA taxable split; NY SIT (IT-2104 married) + NY PFL
 PayrunEmployeeTest DEMO-TC09-US-Robert-Monthly/DEMO-TC09-US-Robert-Monthly.et.json
 
 # DEMO-TC10 — Priya Patel: CT resident working in NY, Head of Household, no reciprocity
@@ -43,3 +43,32 @@ PayrunEmployeeTest DEMO-TC10-US-Priya-CTtoNY/DEMO-TC10-US-Priya-CTtoNY.et.json
 # DEMO-TC11 — Ashley Park: CA hourly weekly baseline (40 hrs, no OT)
 # FIT ×52 annualization · CA SIT · CA SDI WT 5600
 PayrunEmployeeTest DEMO-TC11-US-Ashley-CAWeekly/DEMO-TC11-US-Ashley-CAWeekly.et.json
+
+# DEMO-TC12 — Jessica Torres: $10,000 bonus with the regular wages (Mar 9-22, paid Mar 27)
+# Supplemental FIT 22% flat rate (WT 5120) · no 401k on the bonus · FICA on the bonus
+PayrunEmployeeTest DEMO-TC12-US-Jessica-Bonus/DEMO-TC12-US-Jessica-Bonus.et.json
+
+# DEMO-TC13 — Sara Chen: Social Security wage base and Additional Medicare, January-November
+# 11 monthly jobs · NY PFL maximum in May · SS wage base in October · Additional Medicare from November
+PayrunEmployeeTest DEMO-TC13-US-Sara-WageBase/DEMO-TC13-US-Sara-WageBase.et.json
+
+# DEMO-TC14 — Robert Stevenson: 401(k) annual limit with age-50 catch-up, January-December
+# 12 monthly jobs · NY PFL maximum in November · 401(k) capped at the $32,500 limit in December
+PayrunEmployeeTest DEMO-TC14-US-Robert-401kLimit/DEMO-TC14-US-Robert-401kLimit.et.json
+
+# DEMO-TC15 — James Lee: new hire Mar 17 (CA, biweekly Mar 9-22 and Mar 23-Apr 5)
+# Employee record first (test employees are cloned from an existing record) · salary and health prorated 6/14
+PayrollImport DEMO-TC15-US-James-NewHire/DEMO-TC15-US-James-NewHire.employee.json
+PayrunEmployeeTest DEMO-TC15-US-James-NewHire/DEMO-TC15-US-James-NewHire.et.json
+
+# DEMO-TC16 — Marcus Johnson: salary change $150,000 → $165,000 from Mar 15
+# Period Mar 9-22 split 6/8 days · first full period Mar 23-Apr 5
+PayrunEmployeeTest DEMO-TC16-US-Marcus-SalaryChange/DEMO-TC16-US-Marcus-SalaryChange.et.json
+
+# DEMO-TC17 — Linda Okafor: unpaid FMLA leave from Apr 7, return Jul 1
+# 1 paid day with CCPA-limited garnishment · no wages · 12 paid days, garnishment in full
+PayrunEmployeeTest DEMO-TC17-US-Linda-FMLA/DEMO-TC17-US-Linda-FMLA.et.json
+
+# DEMO-TC18 — Jessica Torres: relocation TX → CA on Jul 1
+# Period before the move evaluated after it · CA SDI on CA working days, CA SIT on all wages · first full CA period
+PayrunEmployeeTest DEMO-TC18-US-Jessica-Relocation/DEMO-TC18-US-Jessica-Relocation.et.json

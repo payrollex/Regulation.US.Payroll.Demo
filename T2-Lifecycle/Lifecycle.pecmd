@@ -1,9 +1,9 @@
 # Apex Digital Solutions LLC — Employee Lifecycle Events
-# Run from repo root directory
+# Run from T2-Lifecycle/ directory
 # Prerequisite: T1-Bootstrap/Bootstrap.pecmd already executed
 
 # L1: New hire — James Lee (CA Software Engineer, March 17)
-#     Adds employee record + initial case values in one import
+#     Adds employee record + initial case values (incl. CA DE 4) in one import
 PayrollImport Events/L1-NewHire-JamesLee.json
 
 # L2: Salary change — Marcus Johnson $150k → $165k (March 15)
@@ -11,11 +11,11 @@ PayrollImport Events/L1-NewHire-JamesLee.json
 PayrollImport Events/L2-SalaryChange-Marcus.json
 
 # L3: FMLA leave — Linda Okafor, unpaid (April 7)
-#     AnnualSalary → 0; garnishment CCPA cap yields $0 deduction during leave
+#     AnnualSalary → 0; garnishment limited by the CCPA cap, no deduction without wages
 PayrollImport Events/L3-FMLALeave-Linda.json
 
 # L4: State transfer — Jessica Torres TX → CA (July 1)
-#     WorkState + ResidentState update; CA SIT/SDI begin from this date
+#     WorkState + ResidentState + CA DE 4; CA SIT/SDI from the pay period containing July 1
 PayrollImport Events/L4-StateChange-Jessica.json
 
 # L5: Return from leave — Linda Okafor (July 1)

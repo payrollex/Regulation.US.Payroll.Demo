@@ -1,0 +1,166 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3006", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1984",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2020-09-01", "start": "2020-09-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "TX",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "TX",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.WorkState",     "value": "CA", "start": "2026-07-01T00:00:00.0Z", "created": "2026-06-25T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CA", "start": "2026-07-01T00:00:00.0Z", "created": "2026-06-25T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CA", "value": "M", "start": "2026-07-01T00:00:00.0Z", "created": "2026-06-25T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "CA", "value": "0", "start": "2026-07-01T00:00:00.0Z", "created": "2026-06-25T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "80000",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "MFJ", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "jessica.torres@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.04", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "310", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC18-US-Jessica-Relocation-Jun15",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-06-15T00:00:00.0Z",
+          "evaluationDate": "2026-07-02T00:00:00.0Z",
+          "reason": "Jessica Torres, MFJ, relocation TX -> CA on Jul 1 (work and residence), entered Jun 25. Biweekly Jun 15-28 2026 (paid Jul 3), payrun evaluated on Jul 2: the period values apply, TX for the whole period. Salary $80,000 ÷ 26 = $3,076.92. 401k 4% = $123.08. Health $310. FITTaxable=$2,643.84. FICATaxable=$2,766.92. FIT (Worksheet 1A, MFJ): $2,643.84 × 26 = $68,739.84 - $12,900 = $55,839.84 → $2,480 + 12% × ($55,839.84 - $44,100) = $3,888.78/yr ÷ 26 = $149.57. SS 6.2% = $171.55. Medicare 1.45% = $40.12. TX: no state income tax, no SDI. Net = $2,282.60.",
+          "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC18-US-Jessica-Relocation-Jun29",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-06-29T00:00:00.0Z",
+          "evaluationDate": "2026-07-13T00:00:00.0Z",
+          "reason": "Jessica Torres, biweekly Jun 29-Jul 12 2026 (paid Jul 17), relocation TX -> CA on Jul 1. Federal values as in the previous period: FIT $149.57, SS $171.55, Medicare $40.12. CA SIT (WT 5300): CA resident at the period end, wages paid to a resident are subject to withholding in full (EDD DE 44, Wages Paid to California Residents; DE 231D). DE 4 married, 0 allowances, Method B: $2,643.84 × 26 = $68,739.84 - standard deduction $5,706 = $63,033.84 → $911.88 + 4.4% × ($63,033.84 - $52,528) = $1,374.14/yr ÷ 26 = $52.85. CA SDI (WT 5600): state programs cover the services localized in the state (CUIC §§ 602-603, EDD DE 231D); working days (Mon-Fri) TX Jun 29-30 = 2, CA Jul 1-10 = 8, total 10. TX share = round($2,766.92 × 2/10) = $553.38, CA share = $2,766.92 - $553.38 = $2,213.54 × 1.3% = $28.78. Net = $3,076.92 - $123.08 - $310 - $149.57 - $171.55 - $40.12 - $52.85 - $28.78 = $2,200.97.",
+          "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC18-US-Jessica-Relocation-Jul13",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-07-13T00:00:00.0Z",
+          "evaluationDate": "2026-07-27T00:00:00.0Z",
+          "reason": "Jessica Torres, first full CA period Jul 13-26 2026 (paid Jul 31). CA SIT $52.85 (as in the previous period). CA SDI 1.3% × $2,766.92 = $35.97. Net = $3,076.92 - $123.08 - $310 - $149.57 - $171.55 - $40.12 - $52.85 - $35.97 = $2,193.78.",
+          "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC18-US-Jessica-Relocation-Jun15",
+          "employeeIdentifier": "jessica.torres@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 3076.92 },
+            { "wageTypeNumber": 5100,  "value": -149.57 },
+            { "wageTypeNumber": 5200,  "value": -171.55 },
+            { "wageTypeNumber": 5210,  "value": -40.12 },
+            { "wageTypeNumber": 6500,  "value": 2282.60 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC18-US-Jessica-Relocation-Jun29",
+          "employeeIdentifier": "jessica.torres@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 2766.92 },
+            { "wageTypeNumber": 5300,  "value": -52.85 },
+            { "wageTypeNumber": 5600,  "value": -28.78 },
+            { "wageTypeNumber": 6500,  "value": 2200.97 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC18-US-Jessica-Relocation-Jul13",
+          "employeeIdentifier": "jessica.torres@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5300,  "value": -52.85 },
+            { "wageTypeNumber": 5600,  "value": -35.97 },
+            { "wageTypeNumber": 6500,  "value": 2193.78 }
+          ]
+        }
+      ]
+    }
+  ]
+}

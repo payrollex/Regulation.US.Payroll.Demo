@@ -1,7 +1,7 @@
 # DEMO-TC02 — Marcus Johnson: NJ Resident Working in NY
 
 **Payroll:** Apex.Payroll.Biweekly  
-**Period:** 2026-01-06 / 2026-01-19  
+**Period:** 2026-01-12 / 2026-01-25 (paid 2026-01-30)  
 **Employee:** Marcus Johnson (Sr. Software Engineer, NJ resident, NY work state, Single)
 
 ## Scenario
@@ -12,8 +12,8 @@ Validates the commuter path without reciprocity:
 - Resident and work state differ → multi-state path WT 5310 (WT 5300 stays empty)
 - Each state taxes its own wage base: NY excludes 401(k) and the §125 health premium ($5,223.08);
   NJ excludes 401(k) but taxes the §125 health premium ($5,423.08; N.J.S.A. 54A:6-24, TB-39(R))
-- NJ resident tax ($290.67, NJ-WT rate A without NJ-W4) exceeds the NY tax ($287.28) → additional NJ withholding $3.39
-- No NY IT-2104 on file → NY withholding as single with 0 allowances (NYS-50-T-NYS)
+- NJ resident tax ($290.67, NJ-W4 single → NJ-WT rate A) exceeds the NY tax ($287.28) → additional NJ withholding $3.39
+- State certificates: NY IT-2104 single and NJ-W4 single, 0 allowances each (`StateWithholdingCertificate` slots `NY`, `NJ`)
 - 401(k) 6% reduces FIT, NY and NJ taxable wages but not FICA
 - NY Paid Family Leave (work state NY) deducted from net pay
 

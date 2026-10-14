@@ -1,0 +1,182 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3008", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1991",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2023-08-14", "start": "2023-08-14T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "65000",  "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.AnnualSalary", "value": "0", "start": "2026-04-07T00:00:00.0Z", "created": "2026-04-07T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.AnnualSalary", "value": "65000", "start": "2026-07-01T00:00:00.0Z", "created": "2026-07-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "linda.okafor@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Garnishment",
+                "values": [
+                  { "caseFieldName": "US.GarnishmentType",         "value": "ChildSupport", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentAmount",       "value": "500",          "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentIsSupporting", "value": "false",        "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.GarnishmentIsArrears",    "value": "false",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC17-US-Linda-FMLA-Apr06",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-04-06T00:00:00.0Z",
+          "evaluationDate": "2026-04-20T00:00:00.0Z",
+          "reason": "Linda Okafor, NY Single, $65,000, unpaid FMLA leave from Apr 7 (AnnualSalary $0). Biweekly Apr 6-19 2026 (paid Apr 24): AnnualSalary is a CalendarPeriod field, only Apr 6 (1 of 14 days) is paid. Salary $65,000 ÷ 26 = $2,500 × 1/14 = $178.57 (WT 1000). FICATaxable=FITTaxable=$178.57. FIT (Worksheet 1A, Single): $178.57 × 26 = $4,642.82 below Step 1g $8,600 → $0. SS 6.2% × $178.57 = $11.07 (WT 5200). Medicare 1.45% × $178.57 = $2.59 (WT 5210). NY SIT (IT-2104 single, 0 allowances): $178.57 below the biweekly deduction allowance $284.60 → $0. NY PFL 0.432% × $178.57 = $0.77 (WT 5620). Disposable earnings (15 USC §1672(b)) = $178.57 - $11.07 - $2.59 - $0.77 = $164.14. ChildSupport $500: CCPA 60% limit (not supporting another family, no arrears) = $164.14 × 60% = $98.48 < $500 → $98.48 (WT 5900). Net = $164.14 - $98.48 = $65.66.",
+          "employeeIdentifiers": [ "linda.okafor@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC17-US-Linda-FMLA-Apr20",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-04-20T00:00:00.0Z",
+          "evaluationDate": "2026-05-04T00:00:00.0Z",
+          "reason": "Linda Okafor on unpaid FMLA leave for the whole period Apr 20-May 3 2026 (paid May 8): AnnualSalary $0 → no wages, no taxes, no garnishment (the CCPA limit of zero disposable earnings is $0; the regulation carries no unpaid amount forward). Net $0.",
+          "employeeIdentifiers": [ "linda.okafor@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC17-US-Linda-FMLA-Jun29",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-06-29T00:00:00.0Z",
+          "evaluationDate": "2026-07-13T00:00:00.0Z",
+          "reason": "Linda Okafor returns from FMLA on Jul 1 (AnnualSalary $65,000). Biweekly Jun 29-Jul 12 2026 (paid Jul 17): 12 of 14 days paid (Jul 1-12). Salary $2,500 × 12/14 = $2,142.86 (WT 1000). FIT (Worksheet 1A, Single): $2,142.86 × 26 = $55,714.36 - $8,600 = $47,114.36 → $1,240 + 12% × ($47,114.36 - $19,900) = $4,505.72/yr ÷ 26 = $173.30. SS 6.2% × $2,142.86 = $132.86. Medicare 1.45% × $2,142.86 = $31.07. NY SIT (NYS-50-T-NYS Method II, IT-2104 single, 0 allowances, Table II-D biweekly): net $2,142.86 - $284.60 = $1,858.26 → $22.54 + ($1,858.26 - $535) × 5.4% = $94.00 (WT 5300). NY PFL 0.432% × $2,142.86 = $9.26. Disposable earnings = $2,142.86 - $173.30 - $132.86 - $31.07 - $94.00 - $9.26 = $1,702.37; CCPA 60% = $1,021.42 ≥ $500 → full $500 (WT 5900). Net = $1,702.37 - $500 = $1,202.37.",
+          "employeeIdentifiers": [ "linda.okafor@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC17-US-Linda-FMLA-Apr06",
+          "employeeIdentifier": "linda.okafor@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 178.57 },
+            { "wageTypeNumber": 5200,  "value": -11.07 },
+            { "wageTypeNumber": 5210,  "value": -2.59 },
+            { "wageTypeNumber": 5620,  "value": -0.77 },
+            { "wageTypeNumber": 5900,  "value": -98.48 },
+            { "wageTypeNumber": 6500,  "value": 65.66 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC17-US-Linda-FMLA-Apr20",
+          "employeeIdentifier": "linda.okafor@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 6500,  "value": 0.00 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC17-US-Linda-FMLA-Jun29",
+          "employeeIdentifier": "linda.okafor@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 2142.86 },
+            { "wageTypeNumber": 5100,  "value": -173.30 },
+            { "wageTypeNumber": 5200,  "value": -132.86 },
+            { "wageTypeNumber": 5210,  "value": -31.07 },
+            { "wageTypeNumber": 5300,  "value": -94.00 },
+            { "wageTypeNumber": 5620,  "value": -9.26 },
+            { "wageTypeNumber": 5900,  "value": -500.00 },
+            { "wageTypeNumber": 6500,  "value": 1202.37 }
+          ]
+        }
+      ]
+    }
+  ]
+}

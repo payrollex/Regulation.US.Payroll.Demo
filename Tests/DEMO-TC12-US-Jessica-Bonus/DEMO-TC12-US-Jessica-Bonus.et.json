@@ -1,9 +1,9 @@
 {
   "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
-  "createdObjectDate": "2026-03-17T00:00:00.0Z",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
   "tenants": [
     {
-      "identifier": "Apex.DigitalSolutions",
+        "identifier": "Apex.DigitalSolutions",
       "updateMode": "NoUpdate",
       "payrolls": [
         {
@@ -17,8 +17,8 @@
               "case": {
                 "caseName": "US.PersonalData",
                 "values": [
-                  { "caseFieldName": "US.SSN",      "value": "111-22-3006", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear", "value": "1984",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3006", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1984",  "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },
@@ -77,12 +77,7 @@
               "case": {
                 "caseName": "US.SupplementaryPay",
                 "values": [
-                  {
-                    "caseFieldName": "US.SupplementalWages",
-                    "value": "10000",
-                    "start": "2026-03-17T00:00:00.0Z",
-                    "end": "2026-03-30T00:00:00.0Z"
-                  }
+                  { "caseFieldName": "US.SupplementalWages", "value": "10000", "start": "2026-03-09T00:00:00.0Z", "end": "2026-03-23T00:00:00.0Z" }
                 ]
               }
             }
@@ -91,17 +86,35 @@
       ],
       "payrunJobInvocations": [
         {
-          "name": "DEMO-T3-Jessica-MarchBonus",
+          "name": "DEMO-TC12-US-Jessica-Bonus",
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-03-17T00:00:00.0Z",
-          "evaluationDate": "2026-03-31T00:00:00.0Z",
-          "reason": "Jessica Torres, TX, March bonus. SupplementalWages $10,000 taxed at flat 22% FIT (IRC 3402(g)(1)). Regular salary $3,076.92 + supplemental $10,000. TX SIT = $0. Observe: WT 1100 (supplemental), split FIT between graduated (regular) and flat-rate (supplemental).",
+          "periodStart": "2026-03-09T00:00:00.0Z",
+          "evaluationDate": "2026-03-23T00:00:00.0Z",
+          "reason": "Jessica Torres, TX, MFJ. Biweekly Mar 9-22 2026 (paid Mar 27) with a $10,000 performance bonus paid with the regular wages. Salary $80,000÷26=$3,076.92 (WT 1000); bonus $10,000 (WT 1100, supplemental wages). 401k 4% of the salary only: AnnualSalary×4%÷26=$123.08 (WT 1200, no 401k on the bonus); health $310 (WT 1210). FICATaxable=$3,076.92+$10,000-$310=$12,766.92 (WT 5051). FITTaxable=$12,766.92-$123.08=$12,643.84 (WT 5050). Regular FIT (WT 5100, Pub 15-T Worksheet 1A, MFJ, regular wages only): $2,643.84 × 26 = $68,739.84 - Step 1g $12,900 = $55,839.84 → $2,480 + 12% × ($55,839.84 - $44,100) = $3,888.78/yr ÷ 26 = $149.57. Supplemental FIT (WT 5120, Pub 15 section 7, optional flat rate method: income tax withheld from the regular wages of the period): 22% × $10,000 = $2,200.00. SS 6.2% × $12,766.92 = $791.55 (WT 5200). Medicare 1.45% × $12,766.92 = $185.12 (WT 5210). TX has no SIT. Net = $13,076.92 - $123.08 - $310 - $149.57 - $2,200.00 - $791.55 - $185.12 = $9,317.60.",
           "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
         }
       ],
-      "payrollResults": []
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC12-US-Jessica-Bonus",
+          "employeeIdentifier": "jessica.torres@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 3076.92 },
+            { "wageTypeNumber": 1100,  "value": 10000.00 },
+            { "wageTypeNumber": 1200,  "value": -123.08 },
+            { "wageTypeNumber": 1210,  "value": -310.00 },
+            { "wageTypeNumber": 5050,  "value": 12643.84 },
+            { "wageTypeNumber": 5051,  "value": 12766.92 },
+            { "wageTypeNumber": 5100,  "value": -149.57 },
+            { "wageTypeNumber": 5120,  "value": -2200.00 },
+            { "wageTypeNumber": 5200,  "value": -791.55 },
+            { "wageTypeNumber": 5210,  "value": -185.12 },
+            { "wageTypeNumber": 6500,  "value": 9317.60 }
+          ]
+        }
+      ]
     }
   ]
 }

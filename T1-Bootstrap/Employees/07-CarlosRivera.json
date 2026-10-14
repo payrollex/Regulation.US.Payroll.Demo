@@ -64,6 +64,21 @@
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NJ", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NJ", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CT", "value": "F", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.MultiStateEmployment",
                 "values": [
                   { "caseFieldName": "US.StateAllocationCount", "value": "3",   "start": "2026-01-01T00:00:00.0Z" },

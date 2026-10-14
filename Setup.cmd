@@ -5,18 +5,21 @@ setlocal
 :: Setup.cmd -- Regulation.US.Payroll.Demo (Windows)
 ::
 :: Full demo setup + test pipeline:
-::   1. Regulation      (US.Payroll packages + 2026 data regulations)
-::   2. Reports         (US.Payslip, US.W2, US.Form941, US.Form940, US.StateW2)
-::   3. Tenant cleanup  (TenantDelete Apex.DigitalSolutions)
+::   1. Tenant cleanup  (TenantDelete Apex.DigitalSolutions, then US.Payroll)
+::   2. Regulation      (US.Payroll packages + 2026 data regulations)
+::   3. Reports         (US.Payslip, US.W2, US.Form941, US.Form940, US.StateW2)
 ::   4. Bootstrap       (Apex payrolls + employees + company cases)
 ::   5. T4 Customizing  (L2 Apex.Payroll — transit benefit, WFH stipend)
 ::   6. Seed payruns    (January 2026 — all employees, persistent results)
-::   7. March payruns   (Biweekly Jan 20–Mar 30 + Jessica bonus case)
-::   8. Tests           (TC01-TC11 integration tests, /TestPrecision2)
+::   7. March payruns   (Biweekly Jan 26–Mar 22 + Jessica bonus case)
+::   8. Tests           (TC01-TC18 integration tests, /TestPrecision2)
 ::
 :: Seed payruns (Step 6) create persistent payrun results used by reports.
 :: March payruns (Step 7) extend biweekly history to reach the March bonus period.
 :: T4-Customizing (Step 5) must run before seed so L2 wage types are included.
+:: Tenant cleanup (Step 1) makes the setup repeatable: the US.Payroll test
+:: fixtures cannot be imported twice into the same tenant. The consumer tenant
+:: Apex.DigitalSolutions is deleted before its provider tenant US.Payroll.
 ::
 :: Prerequisites:
 ::   - .pecmd extension registered (Register-PecmdExtension.ps1)
@@ -32,9 +35,33 @@ echo === Setup -- Apex Digital Solutions Demo ===
 echo.
 
 :: ─────────────────────────────────────────────────────────────────────────────
-:: Step 1: Regulation
+:: Step 1: Tenant cleanup
 :: ─────────────────────────────────────────────────────────────────────────────
-echo [1/8] Regulation (US.Payroll + 2026 data + test tenant)...
+echo [1/8] Tenant cleanup (Apex.DigitalSolutions, US.Payroll)...
+start /b /wait "" "T1-Bootstrap\Delete.pecmd"
+if errorlevel 1 (
+    echo.
+    echo [FAILED] Tenant delete Apex.DigitalSolutions failed
+    pause
+    exit /b 1
+)
+pushd ..\Regulation.US.Payroll\2026
+start /b /wait "" "Delete.pecmd"
+set _ERR=%ERRORLEVEL%
+popd
+if %_ERR% neq 0 (
+    echo.
+    echo [FAILED] Tenant delete US.Payroll failed
+    pause
+    exit /b 1
+)
+echo [OK] Tenants deleted
+echo.
+
+:: ─────────────────────────────────────────────────────────────────────────────
+:: Step 2: Regulation
+:: ─────────────────────────────────────────────────────────────────────────────
+echo [2/8] Regulation (US.Payroll + 2026 data + test tenant)...
 pushd ..\Regulation.US.Payroll\2026
 start /b /wait "" "Setup.Tests.pecmd"
 set _ERR=%ERRORLEVEL%
@@ -49,9 +76,9 @@ echo [OK] Regulation imported
 echo.
 
 :: ─────────────────────────────────────────────────────────────────────────────
-:: Step 2: Reports
+:: Step 3: Reports
 :: ─────────────────────────────────────────────────────────────────────────────
-echo [2/8] Reports (US.Payslip / US.W2 / US.Form941 / US.Form940 / US.StateW2)...
+echo [3/8] Reports (US.Payslip / US.W2 / US.Form941 / US.Form940 / US.StateW2)...
 pushd ..\Regulation.US.Payroll\2026\Reports
 start /b /wait "" "Setup.Reports.pecmd"
 set _ERR=%ERRORLEVEL%
@@ -63,20 +90,6 @@ if %_ERR% neq 0 (
     exit /b 1
 )
 echo [OK] Reports imported
-echo.
-
-:: ─────────────────────────────────────────────────────────────────────────────
-:: Step 3: Tenant cleanup
-:: ─────────────────────────────────────────────────────────────────────────────
-echo [3/8] Tenant cleanup (Apex.DigitalSolutions)...
-start /b /wait "" "T1-Bootstrap\Delete.pecmd"
-if errorlevel 1 (
-    echo.
-    echo [FAILED] Tenant delete failed
-    pause
-    exit /b 1
-)
-echo [OK] Tenant deleted
 echo.
 
 :: ─────────────────────────────────────────────────────────────────────────────
@@ -131,9 +144,9 @@ echo [OK] January 2026 payrun data ready
 echo.
 
 :: ─────────────────────────────────────────────────────────────────────────────
-:: Step 7: March Biweekly payruns (Jan 20–Mar 30 + Jessica bonus)
+:: Step 7: March Biweekly payruns (Jan 26–Mar 22 + Jessica bonus)
 :: ─────────────────────────────────────────────────────────────────────────────
-echo [7/8] March Biweekly payruns (Jan 20 - Mar 30, incl. Jessica bonus)...
+echo [7/8] March Biweekly payruns (Jan 26 - Mar 22, incl. Jessica bonus)...
 pushd T3-Payruns
 start /b /wait "" "Payruns-March-Biweekly.pecmd"
 set _ERR=%ERRORLEVEL%
@@ -150,7 +163,7 @@ echo.
 :: ─────────────────────────────────────────────────────────────────────────────
 :: Step 8: Integration tests
 :: ─────────────────────────────────────────────────────────────────────────────
-echo [8/8] Integration tests (TC01-TC11, /TestPrecision2)...
+echo [8/8] Integration tests (TC01-TC18, /TestPrecision2)...
 pushd Tests
 start /b /wait "" "Run.Tests.pecmd" /TestPrecision2
 set _ERR=%ERRORLEVEL%

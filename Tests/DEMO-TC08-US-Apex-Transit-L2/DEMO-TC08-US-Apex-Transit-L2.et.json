@@ -64,6 +64,21 @@
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NJ", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NJ", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CT", "value": "F", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.MultiStateEmployment",
                 "values": [
                   { "caseFieldName": "US.StateAllocationCount", "value": "3",    "start": "2026-01-01T00:00:00.0Z" },
@@ -95,9 +110,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-02-03T00:00:00.0Z",
-          "evaluationDate": "2026-02-17T00:00:00.0Z",
-          "reason": "Carlos Rivera, biweekly, L2 Apex.Benefits monthly transit election $400. IRC §132(f) monthly limit $340 (lookup US.FederalTaxParameters.TransitMonthlyLimit, Rev. Proc. 2025-32). Pre-tax part WT 1250 = $340 × 12 / 26 = $156.92; excess WT 5520 (post-tax) = $60 × 12 / 26 = $27.69. FIT/FICA taxable = $7,115.38 - $156.92 = $6,958.46 (WT 5050/5051). FIT: annual $180,919.96 - $16,100 = $164,819.96 → $17,966 + 24% × $59,119.96 = $32,154.79 ÷ 26 = $1,236.72. SS 6.2% × $6,958.46 = $431.42. Medicare 1.45% × $6,958.46 = $100.90. State withholding (WT 5310): NY and CT exclude the transit salary reduction (wages $6,958.46), NJ taxes it (wages $7,115.38, N.J.S.A. 54A:6-23.c; TB-24(R)). NJ nonresident on the NJ wages 25%: rate A $7,115.38 × 25% = $1,778.85 → $31 + ($1,778.85 - $1,538) × 6.1% = $45.69. CT nonresident on all CT wages × 15%: $6,958.46 × 6.99% = $486.40 (no CT-W4) × 15% = $72.96. NY resident on all NY wages: $6,958.46 - $284.60 = $6,673.86 → $372.04 + ($6,673.86 - $6,063) × 6.4% = $411.14, minus NJ and CT withholding: $411.14 - $45.69 - $72.96 = $292.49. WT 5310 = $45.69 + $72.96 + $292.49 = $411.14. NY PFL (WT 5620): 0.432% × $6,958.46 = $30.06. Net = $7,115.38 - $156.92 - $27.69 - $1,236.72 - $431.42 - $100.90 - $411.14 - $30.06 = $4,720.53. Validates the T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
+          "periodStart": "2026-02-09T00:00:00.0Z",
+          "evaluationDate": "2026-02-23T00:00:00.0Z",
+          "reason": "Carlos Rivera, biweekly, L2 Apex.Benefits monthly transit election $400. IRC §132(f) monthly limit $340 (lookup US.FederalTaxParameters.TransitMonthlyLimit, Rev. Proc. 2025-32). Pre-tax part WT 1250 = $340 × 12 / 26 = $156.92; excess WT 5520 (post-tax) = $60 × 12 / 26 = $27.69. FIT/FICA taxable = $7,115.38 - $156.92 = $6,958.46 (WT 5050/5051). FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $6,958.46 × 26 = $180,919.96 - Step 1g $8,600 = $172,319.96 → $17,966 + 24% × ($172,319.96 - $113,200) = $32,154.79/yr ÷ 26 = $1,236.72. SS 6.2% × $6,958.46 = $431.42. Medicare 1.45% × $6,958.46 = $100.90. State withholding (WT 5310): NY and CT exclude the transit salary reduction (wages $6,958.46), NJ taxes it (wages $7,115.38, N.J.S.A. 54A:6-23.c; TB-24(R)). NJ nonresident on the NJ wages 25%: NJ-W4 single (status S), rate A $7,115.38 × 25% = $1,778.85 → $31 + ($1,778.85 - $1,538) × 6.1% = $45.69. CT nonresident on all CT wages × 15%: CT-W4 code F (TPG-211 2026, annualized $180,919.96: exemption $0, tax $4,750 + 6% × ($180,919.96 - $100,000) = $9,605.20, phase-out add-back $250, recapture $250, credit 0%) → $10,105.20 ÷ 26 = $388.66 × 15% = $58.30. NY resident on all NY wages (IT-2104 single, 0 allowances): $6,958.46 - $284.60 = $6,673.86 → $372.04 + ($6,673.86 - $6,063) × 6.4% = $411.14, minus NJ and CT withholding: $411.14 - $45.69 - $58.30 = $307.15. WT 5310 = $45.69 + $58.30 + $307.15 = $411.14. NY PFL (WT 5620): 0.432% × $6,958.46 = $30.06. Net = $7,115.38 - $156.92 - $27.69 - $1,236.72 - $431.42 - $100.90 - $411.14 - $30.06 = $4,720.53. Validates the T4-Customizing L2 regulation without modifying the base US.Payroll regulation.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],

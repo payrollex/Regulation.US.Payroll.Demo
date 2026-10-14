@@ -64,6 +64,19 @@
               "employeeIdentifier": "priya.patel@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "H", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CT", "value": "B", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
                   { "caseFieldName": "US.Pre401kPercent",  "value": "0.04", "start": "2026-01-01T00:00:00.0Z" },

@@ -5,30 +5,35 @@
 ```
 Tenant: Apex.DigitalSolutions
 │
-├── Division: Apex.Division.Monthly
-│   ├── Payroll: Apex.Payroll.Monthly  (annualization factor 12)
+├── Division: Apex.Division.Monthly   (calendar Apex.Monthly, 12 periods)
+│   ├── Payroll: Apex.Payroll.Monthly
 │   └── Employees: Sara Chen, Robert Stevenson
 │
-├── Division: Apex.Division.Biweekly
-│   ├── Payroll: Apex.Payroll.Biweekly  (annualization factor 26)
+├── Division: Apex.Division.Biweekly  (calendar Apex.Biweekly, 26 periods)
+│   ├── Payroll: Apex.Payroll.Biweekly
 │   └── Employees: Marcus Johnson, Priya Patel, Kevin Wu,
 │                  Jessica Torres, Carlos Rivera, Linda Okafor
 │
-└── Division: Apex.Division.Weekly
-    ├── Payroll: Apex.Payroll.Weekly  (annualization factor 52)
+└── Division: Apex.Division.Weekly    (calendar Apex.Weekly, 52 periods)
+    ├── Payroll: Apex.Payroll.Weekly
     └── Employees: David Kim, Ashley Park
 ```
 
 ### Why One Division per Pay Frequency?
 
-`US.PayFrequency` is stored as a **company-level case value** at the division.
-In Payroll Engine, all employees in the same payroll share the same company case
-values within a division. A single division cannot hold two different
-`US.PayFrequency` values simultaneously.
+The pay frequency is the period of the payroll calendar, and the calendar is assigned
+to the division. US.Payroll derives the IRS Pub 15-T pay frequency (Table 3 periods per
+year: 12 / 26 / 52) from the calendar period and applies it to every federal, state and
+local withholding calculation. One division per calendar keeps the three frequencies
+apart in one tenant.
 
-The IRS Pub 15-T annualization factor (12 / 26 / 52) is read from this field
-and applied to every FIT, SIT, and HoH bracket calculation. Wrong frequency →
-wrong withholding for all employees in that payroll.
+| Calendar | Period | Pay date |
+|:---|:---|:---|
+| `Apex.Monthly` | Calendar month | Period end (last day of the month) |
+| `Apex.Biweekly` | Two weeks from Monday (first demo period Jan 12 – Jan 25) | Period end + 5 days (Friday) |
+| `Apex.Weekly` | Week from Monday (first demo period Jan 5 – Jan 11) | Period end + 5 days (Friday) |
+
+Payrun results belong to the year of the pay date (`cycleAssignment: PayDate`).
 
 ---
 
@@ -78,7 +83,7 @@ US.Payroll tenant  ─── RegulationShare ───►  Apex.DigitalSolutions
 | 1000 | Salary | GrossWages | Salaried employees |
 | 1010 | HourlyWage | GrossWages | Hourly employees (Kevin, David, Ashley) |
 | 1020 | Overtime | GrossWages | FLSA 1.5× weekly OT, or CA daily OT (Kevin) |
-| 1100 | SupplementalWages | GrossWages | Bonus / commission — 22% flat FIT (WT 1110) |
+| 1100 | SupplementalWages | GrossWages | Bonus / commission — supplemental FIT in WT 5120 |
 | 1200 | Pre401k | EmployeeDeductions | Pre-tax 401(k) — reduces FIT/SIT, not FICA |
 | 1210 | PreHealth | EmployeeDeductions | §125 health — reduces FIT, SIT and FICA |
 | 1220 | PreHSA | EmployeeDeductions | §223 HSA — reduces FIT, SIT and FICA |
@@ -89,6 +94,7 @@ US.Payroll tenant  ─── RegulationShare ───►  Apex.DigitalSolutions
 | 5051 | FicaTaxableWages | — | Base for Social Security / Medicare |
 | 5100 | FitWithholding | EmployeeDeductions | Pub 15-T percentage method |
 | 5110 | FitAdditionalWithholding | EmployeeDeductions | W-4 Step 4(c) extra withholding |
+| 5120 | FitSupplementalWithholding | EmployeeDeductions | Pub 15 section 7: 22% optional flat rate, 37% above $1 million |
 | 5200 | SsWithholding | EmployeeDeductions | 6.2% up to the wage base ($184,500 in 2026) |
 | 5210 | MedicareWithholding | EmployeeDeductions | 1.45%, no cap |
 | 5220 | AdditionalMedicareWithholding | EmployeeDeductions | 0.9% above $200,000 YTD (employer threshold) |
@@ -129,7 +135,12 @@ wage types processed before the wage type that reads it.
 
 | Month | Event | Employee | Wage Type |
 |:---|:---|:---|:---|
-| Feb | FUTA $7k cap reached | All low earners | WT 6700 → $0 |
-| Sep / Oct | SS wage base $184,500 | Sara, Carlos | WT 5200 → partial then $0 |
-| Sep | Additional Medicare triggers | Sara ($250k MFJ threshold) | WT 5220 → active |
-| Dec | 401k annual cap | Robert ($32,500 incl. age-50+) | WT 1200 → near cap |
+| Jan / Feb | FUTA $7,000 wage base reached | All | WT 6700 → $0 |
+| May | NY PFL maximum $411.91 | Sara | WT 5620 → remainder, then $0 |
+| Oct | SS wage base $184,500 | Sara | WT 5200 → $530.10, then $0 |
+| Nov | Additional Medicare above $200,000 YTD | Sara | WT 5220 → active |
+| Nov | NY PFL maximum $411.91 | Robert | WT 5620 → remainder, then $0 |
+| Dec | 401(k) limit $32,500 incl. age-50 catch-up | Robert | WT 1200 → $1,700 |
+
+Asserted by [DEMO-TC13](../Tests/DEMO-TC13-US-Sara-WageBase/) and
+[DEMO-TC14](../Tests/DEMO-TC14-US-Robert-401kLimit/).

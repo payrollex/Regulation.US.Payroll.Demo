@@ -1,6 +1,6 @@
 {
   "$schema": "../Schemas/PayrollEngine.Exchange.schema.json",
-  "createdObjectDate": "2026-01-20T00:00:00.0Z",
+  "createdObjectDate": "2026-01-26T00:00:00.0Z",
   "tenants": [
     {
       "identifier": "Apex.DigitalSolutions",
@@ -20,8 +20,8 @@
                   {
                     "caseFieldName": "US.SupplementalWages",
                     "value": "10000",
-                    "start": "2026-03-17T00:00:00.0Z",
-                    "end": "2026-03-31T00:00:00.0Z"
+                    "start": "2026-03-09T00:00:00.0Z",
+                    "end": "2026-03-23T00:00:00.0Z"
                   }
                 ]
               }
@@ -31,13 +31,13 @@
       ],
       "payrunJobInvocations": [
         {
-          "name": "Apex-Biweekly-P2-Jan20-2026",
+          "name": "Apex-Biweekly-P2-Jan26-2026",
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-20T00:00:00.0Z",
-          "evaluationDate": "2026-02-03T00:00:00.0Z",
-          "reason": "Biweekly Jan 20 – Feb 2 2026. Required to reach March period.",
+          "periodStart": "2026-01-26T00:00:00.0Z",
+          "evaluationDate": "2026-02-09T00:00:00.0Z",
+          "reason": "Biweekly Jan 26 – Feb 8 2026, paid Feb 13. Required to reach the March period.",
           "employeeIdentifiers": [
             "marcus.johnson@apexdigital.com",
             "priya.patel@apexdigital.com",
@@ -48,13 +48,13 @@
           ]
         },
         {
-          "name": "Apex-Biweekly-P3-Feb3-2026",
+          "name": "Apex-Biweekly-P3-Feb9-2026",
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-02-03T00:00:00.0Z",
-          "evaluationDate": "2026-02-17T00:00:00.0Z",
-          "reason": "Biweekly Feb 3–16 2026. Required to reach March period.",
+          "periodStart": "2026-02-09T00:00:00.0Z",
+          "evaluationDate": "2026-02-23T00:00:00.0Z",
+          "reason": "Biweekly Feb 9–22 2026, paid Feb 27. Required to reach the March period.",
           "employeeIdentifiers": [
             "marcus.johnson@apexdigital.com",
             "priya.patel@apexdigital.com",
@@ -65,13 +65,13 @@
           ]
         },
         {
-          "name": "Apex-Biweekly-P4-Feb17-2026",
+          "name": "Apex-Biweekly-P4-Feb23-2026",
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-02-17T00:00:00.0Z",
-          "evaluationDate": "2026-03-03T00:00:00.0Z",
-          "reason": "Biweekly Feb 17 – Mar 2 2026. Required to reach March period.",
+          "periodStart": "2026-02-23T00:00:00.0Z",
+          "evaluationDate": "2026-03-09T00:00:00.0Z",
+          "reason": "Biweekly Feb 23 – Mar 8 2026, paid Mar 13. Required to reach the March period.",
           "employeeIdentifiers": [
             "marcus.johnson@apexdigital.com",
             "priya.patel@apexdigital.com",
@@ -82,30 +82,13 @@
           ]
         },
         {
-          "name": "Apex-Biweekly-P5-Mar3-2026",
+          "name": "Apex-Biweekly-P5-Mar9-2026",
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-03-03T00:00:00.0Z",
-          "evaluationDate": "2026-03-17T00:00:00.0Z",
-          "reason": "Biweekly Mar 3–16 2026. Required to reach March period.",
-          "employeeIdentifiers": [
-            "marcus.johnson@apexdigital.com",
-            "priya.patel@apexdigital.com",
-            "kevin.wu@apexdigital.com",
-            "jessica.torres@apexdigital.com",
-            "carlos.rivera@apexdigital.com",
-            "linda.okafor@apexdigital.com"
-          ]
-        },
-        {
-          "name": "Apex-Biweekly-P6-Mar17-2026",
-          "payrunName": "Apex.Payrun.Biweekly",
-          "userIdentifier": "apex.admin@apexdigital.com",
-          "completedJobStatus": "Complete",
-          "periodStart": "2026-03-17T00:00:00.0Z",
-          "evaluationDate": "2026-03-31T00:00:00.0Z",
-          "reason": "Biweekly Mar 17–30 2026. Jessica Torres receives $10,000 supplemental bonus (22% flat FIT).",
+          "periodStart": "2026-03-09T00:00:00.0Z",
+          "evaluationDate": "2026-03-23T00:00:00.0Z",
+          "reason": "Biweekly Mar 9–22 2026, paid Mar 27. Jessica Torres receives a $10,000 supplemental bonus.",
           "employeeIdentifiers": [
             "marcus.johnson@apexdigital.com",
             "priya.patel@apexdigital.com",

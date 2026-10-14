@@ -64,6 +64,21 @@
               "employeeIdentifier": "carlos.rivera@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NJ", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NJ", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CT", "value": "F", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "carlos.rivera@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.MultiStateEmployment",
                 "values": [
                   { "caseFieldName": "US.StateAllocationCount", "value": "3",    "start": "2026-01-01T00:00:00.0Z" },
@@ -84,9 +99,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-06T00:00:00.0Z",
-          "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Carlos Rivera, $185k/yr, NY resident/work primary, 3-state allocation NY(60%)/NJ(25%)/CT(15%). Gross=$7,115.38/period. No pre-tax deductions. FIT: annual $185k-$16,100 StdDed=$168,900 → 24% bracket → $33,134/yr ÷ 26=$1,274.38 (WT 5100). WT 5310 by the rules of each state (lookup MultiStateRules): NJ nonresident TaxOnAllocatedWages (NJ-WT p.10), NJ-W4 missing → rate A biweekly on the NJ wages $7,115.38 × 25% = $1,778.85: $31 + ($1,778.85 - $1,538) × 6.1% = $45.69. CT nonresident ProrateFullWageTax (IP 2026(1) p.11), CT-W4 missing → 6.99% on all wages $7,115.38 = $497.37 × 15% = $74.61. NY resident ReduceByOtherStateWithholding (NYS-50 Sec. 3 part F), NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D biweekly on all wages: net $7,115.38 - $284.60 = $6,830.78 → $372.04 + ($6,830.78 - $6,063) × 6.4% = $421.18; minus NJ and CT withholding: $421.18 - $45.69 - $74.61 = $300.88. Total WT 5310 = $45.69 + $74.61 + $300.88 = $421.18. WorkLocality=NYC but no LocalTaxJurisdiction → WT 5400=null. NY PFL (WT 5620): 0.432%×$7,115.38=$30.74. Net = $7,115.38 - $1,274.38 - $441.15 - $103.17 - $421.18 - $30.74 = $4,844.76.",
+          "periodStart": "2026-01-12T00:00:00.0Z",
+          "evaluationDate": "2026-01-26T00:00:00.0Z",
+          "reason": "Carlos Rivera, $185k/yr, NY resident/work primary, 3-state allocation NY(60%)/NJ(25%)/CT(15%). Gross=$7,115.38/period. No pre-tax deductions. FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $7,115.38 × 26 = $184,999.88 - Step 1g $8,600 = $176,399.88 → $17,966 + 24% × ($176,399.88 - $113,200) = $33,133.97/yr ÷ 26 = $1,274.38. WT 5310 by the rules of each state (lookup MultiStateRules): NJ nonresident TaxOnAllocatedWages (NJ-WT p.10), NJ-W4 single (status S) → rate A biweekly on the NJ wages $7,115.38 × 25% = $1,778.85: $31 + ($1,778.85 - $1,538) × 6.1% = $45.69. CT nonresident ProrateFullWageTax (IP 2026(1) p.11), CT-W4 code F (TPG-211 2026, annualized $184,999.88: exemption $0, tax $4,750 + 6% × ($184,999.88 - $100,000) = $9,849.99, phase-out add-back $250, recapture $250, credit 0%) → $10,349.99 ÷ 26 = $398.08 × 15% = $59.71. NY resident ReduceByOtherStateWithholding (NYS-50 Sec. 3 part F), NYS-50-T-NYS 1/26 Method II, IT-2104 single, 0 allowances, Table II-D biweekly on all wages: net $7,115.38 - $284.60 = $6,830.78 → $372.04 + ($6,830.78 - $6,063) × 6.4% = $421.18; minus NJ and CT withholding: $421.18 - $45.69 - $59.71 = $315.78. Total WT 5310 = $45.69 + $59.71 + $315.78 = $421.18. WorkLocality=NYC but no LocalTaxJurisdiction → WT 5400=null. NY PFL (WT 5620): 0.432%×$7,115.38=$30.74. Net = $7,115.38 - $1,274.38 - $441.15 - $103.17 - $421.18 - $30.74 = $4,844.76.",
           "employeeIdentifiers": [ "carlos.rivera@apexdigital.com" ]
         }
       ],

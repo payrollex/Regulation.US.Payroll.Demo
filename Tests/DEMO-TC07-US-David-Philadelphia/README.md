@@ -1,7 +1,7 @@
 # DEMO-TC07 — David Kim: Philadelphia Weekly
 
 **Payroll:** Apex.Payroll.Weekly  
-**Period:** 2026-01-05 / 2026-01-11  
+**Period:** 2026-01-05 / 2026-01-11 (paid 2026-01-16)  
 **Employee:** David Kim (IT Support Tech, Philadelphia PA, hourly $32, Single)
 
 ## Scenario

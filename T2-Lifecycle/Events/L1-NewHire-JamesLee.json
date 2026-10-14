@@ -71,6 +71,18 @@
               "employeeIdentifier": "james.lee@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CA", "value": "S", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "CA", "value": "0", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
                   { "caseFieldName": "US.Pre401kPercent",  "value": "0.05", "start": "2026-03-17T00:00:00.0Z" },

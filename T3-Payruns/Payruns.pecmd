@@ -1,61 +1,47 @@
 ### T3-Payruns — Scenario Validation & Reports
-### Prerequisite: T1-Bootstrap must be completed first
+### Prerequisite: Setup.cmd completed (T1-Bootstrap, T4-Customizing, January and March payruns)
 ###
-### NOTE: Live payrun execution (monthly/biweekly/weekly jobs) is done via
-###       WebApp or REST API — there is no pecmd PayrunJobStart command.
-###       This script validates specific scenarios with PayrunEmployeePreviewTest
-###       and generates reports from completed payrun data.
+### Persistent payruns are executed by Payruns-January.pecmd and Payruns-March-Biweekly.pecmd
+### (PayrollImport with payrunJobInvocations). This script asserts the annual-limit scenarios
+### and generates the reports from the persistent payrun results.
+### All paths are relative to T3-Payruns/ (pecmd working directory).
 
 ### ─────────────────────────────────────────────────────────────────────────────
 ### Scenario 1 — January baseline
-### Run the full T1 integration test suite (imports cases + runs payrun + verifies)
-### ─────────────────────────────────────────────────────────────────────────────
-# See Tests/Run.Tests.pecmd for the full test suite (8 employees, Jan 2026).
-# Run that file directly for the baseline:
-#   pecmd Tests/Run.Tests.pecmd
-
-### ─────────────────────────────────────────────────────────────────────────────
-### Scenario 2 — March: Jessica $10,000 performance bonus (supplemental wages)
-###   PayrunEmployeeTest is self-contained: imports cases from et.json,
-###   runs payrun job, compares results. No separate PayrollImport needed.
-###   /OkOnFail because payrollResults are empty (no assertions yet).
-###   Actual results written to March-Bonus.actual.json for later assertion.
-### ─────────────────────────────────────────────────────────────────────────────
-PayrunEmployeeTest Scenarios/March-Bonus-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/March-Bonus.actual.json
-
-### ─────────────────────────────────────────────────────────────────────────────
-### Reports — prerequisite: payruns for the target period must be complete
-### All paths are relative to T3-Payruns/ (pecmd working directory)
+###   Per-employee tests DEMO-TC01 to DEMO-TC11: pecmd Tests/Run.Tests.pecmd /TestPrecision2
 ### ─────────────────────────────────────────────────────────────────────────────
 
 ### ─────────────────────────────────────────────────────────────────────────────
-### Scenario 3 — October: Social Security wage base cap (Sara Chen)
-###   SS wage base 2026: $184,500 (SSA COLA Oct 2025).
-###   Sara's FICA taxable: $19,550/month → YTD through Sep = $175,950.
-###   October cap: $184,500 - $175,950 = $8,550 remaining → WT 5200 = $530.10.
-###   From November: WT 5200 = $0. WT 5220 (Add'l Medicare) triggers independently.
-###   Prerequisite: payruns Jan–Sep must be completed in the live system.
+### Scenario 2 — March: Jessica Torres $10,000 bonus (Mar 9-22, paid Mar 27)
+###   Supplemental FIT 22% flat rate (WT 5120), no 401(k) on the bonus.
 ### ─────────────────────────────────────────────────────────────────────────────
-PayrunEmployeeTest Scenarios/October-SSCap-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/October-SSCap.actual.json
+PayrunEmployeeTest ../Tests/DEMO-TC12-US-Jessica-Bonus/DEMO-TC12-US-Jessica-Bonus.et.json /TestPrecision2
 
 ### ─────────────────────────────────────────────────────────────────────────────
-### Scenario 4 — December: 401(k) annual cap (Robert Stevenson, age 59)
-###   Annual limit 2026: $24,500 standard + $8,000 age-50+ catch-up = $32,500.
-###   Fixed $2,708.33/month × 12 = $32,499.96 — just under the cap (no truncation).
-###   Super catch-up ($11,250, ages 60-63 per SECURE 2.0 §603) starts 2027.
-###   Prerequisite: payruns Jan–Nov must be completed in the live system.
+### Scenario 3 — Sara Chen: annual wage limits, January-November (11 monthly jobs)
+###   NY PFL maximum $411.91 reached in May.
+###   Social Security wage base $184,500: $19,550/month, YTD through September $175,950,
+###   October taxes the remaining $8,550 (WT 5200 = $530.10), no Social Security from November.
+###   Additional Medicare 0.9% on wages above $200,000 YTD (employer threshold): from November.
 ### ─────────────────────────────────────────────────────────────────────────────
-PayrunEmployeeTest Scenarios/December-401kCap-Preview.et.json /showall /OkOnFail ActualOutputFile:Scenarios/December-401kCap.actual.json
+PayrunEmployeeTest ../Tests/DEMO-TC13-US-Sara-WageBase/DEMO-TC13-US-Sara-WageBase.et.json /TestPrecision2
+
+### ─────────────────────────────────────────────────────────────────────────────
+### Scenario 4 — Robert Stevenson: 401(k) annual limit, January-December (12 monthly jobs)
+###   Born 1967 (age 59 in 2026): limit $24,500 + $8,000 age-50 catch-up = $32,500.
+###   $2,800/month: YTD through November $30,800, December capped at $1,700.
+###   NY PFL maximum $411.91 reached in November.
+### ─────────────────────────────────────────────────────────────────────────────
+PayrunEmployeeTest ../Tests/DEMO-TC14-US-Robert-401kLimit/DEMO-TC14-US-Robert-401kLimit.et.json /TestPrecision2
 
 ### ─────────────────────────────────────────────────────────────────────────────
 ### Reports — prerequisite: payruns for the target period must be complete
-### All paths are relative to T3-Payruns/ (pecmd working directory)
 ### ─────────────────────────────────────────────────────────────────────────────
 
-### Payslip — Sara Chen, January 2026 (Monthly payroll)
+### Payslip — Sara Chen, January 2026 (Monthly payroll, paid Jan 31)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Reports/Payslip-Sara-January.parameters.json /pdf /shellopen
 
-### Payslip — Jessica Torres, March 2026 (Biweekly, includes bonus)
+### Payslip — Jessica Torres, pay date Mar 27 2026 (Biweekly, includes bonus)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Payslip culture:en-US parameterFile:Reports/Payslip-Jessica-March.parameters.json /pdf /shellopen
 
 ### Form 941 — Q1 2026 (run after Q1 payruns complete)

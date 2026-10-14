@@ -1,0 +1,143 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-03-17T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",       "value": "111-22-3011", "created": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1993",        "created": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2026-03-17", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "CA",         "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "CA",         "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "130000", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CA", "value": "S", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "CA", "value": "0", "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "james.lee@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.05", "start": "2026-03-17T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "220",  "start": "2026-03-17T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC15-US-James-NewHire-Mar09",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-09T00:00:00.0Z",
+          "evaluationDate": "2026-03-23T00:00:00.0Z",
+          "reason": "James Lee, CA, Single, hired Mar 17 2026. Biweekly Mar 9-22 2026 (paid Mar 27): employed 6 of 14 days (Mar 17-22). AnnualSalary and PreHealthAmount are CalendarPeriod fields, prorated by calendar days. Salary $130,000÷26=$5,000.00 × 6/14 = $2,142.86 (WT 1000). 401k 5% × $2,142.86 = $107.14 (WT 1200). Health $220 × 6/14 = $94.29 (WT 1210). FICATaxable=$2,142.86-$94.29=$2,048.57 (WT 5051). FITTaxable=$2,048.57-$107.14=$1,941.43 (WT 5050). FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $1,941.43 × 26 = $50,477.18 - Step 1g $8,600 = $41,877.18 → $1,240 + 12% × ($41,877.18 - $19,900) = $3,877.26/yr ÷ 26 = $149.13. SS 6.2% × $2,048.57 = $127.01 (WT 5200). Medicare 1.45% × $2,048.57 = $29.70 (WT 5210). CA SIT (EDD 2026 Method B annualized; DE 4 single, 0 allowances, WT 5300): $1,941.43 above the biweekly low-income exemption $727; annual $50,477.18 - standard deduction $5,706 = $44,771.18 → $1,124.21 + ($44,771.18 - $41,452) × 6.6% = $1,343.28/yr ÷ 26 = $51.66. CA SDI 1.3% × $2,048.57 = $26.63 (WT 5600). Net = $2,142.86 - $107.14 - $94.29 - $149.13 - $127.01 - $29.70 - $51.66 - $26.63 = $1,557.30.",
+          "employeeIdentifiers": [ "james.lee@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC15-US-James-NewHire-Mar23",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-23T00:00:00.0Z",
+          "evaluationDate": "2026-04-06T00:00:00.0Z",
+          "reason": "James Lee, first full period Mar 23-Apr 5 2026 (paid Apr 10). Salary $5,000.00 (WT 1000). 401k 5% = $250.00 (WT 1200). Health $220.00 (WT 1210). FICATaxable=$4,780.00 (WT 5051). FITTaxable=$4,530.00 (WT 5050). FIT (Worksheet 1A, Single): $4,530 × 26 = $117,780 - $8,600 = $109,180 → $5,800 + 22% × ($109,180 - $57,900) = $17,081.60/yr ÷ 26 = $656.98. SS 6.2% × $4,780 = $296.36. Medicare 1.45% × $4,780 = $69.31. CA SIT (Method B, DE 4 single, 0 allowances): annual $117,780 - $5,706 = $112,074 → $3,522.17 + ($112,074 - $72,724) × 10.23% = $7,547.68/yr ÷ 26 = $290.30. CA SDI 1.3% × $4,780 = $62.14. Net = $5,000 - $250 - $220 - $656.98 - $296.36 - $69.31 - $290.30 - $62.14 = $3,154.91.",
+          "employeeIdentifiers": [ "james.lee@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC15-US-James-NewHire-Mar09",
+          "employeeIdentifier": "james.lee@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 2142.86 },
+            { "wageTypeNumber": 1200,  "value": -107.14 },
+            { "wageTypeNumber": 1210,  "value": -94.29 },
+            { "wageTypeNumber": 5050,  "value": 1941.43 },
+            { "wageTypeNumber": 5051,  "value": 2048.57 },
+            { "wageTypeNumber": 5100,  "value": -149.13 },
+            { "wageTypeNumber": 5200,  "value": -127.01 },
+            { "wageTypeNumber": 5210,  "value": -29.70 },
+            { "wageTypeNumber": 5300,  "value": -51.66 },
+            { "wageTypeNumber": 5600,  "value": -26.63 },
+            { "wageTypeNumber": 6500,  "value": 1557.30 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC15-US-James-NewHire-Mar23",
+          "employeeIdentifier": "james.lee@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 5000.00 },
+            { "wageTypeNumber": 1210,  "value": -220.00 },
+            { "wageTypeNumber": 5100,  "value": -656.98 },
+            { "wageTypeNumber": 5300,  "value": -290.30 },
+            { "wageTypeNumber": 5600,  "value": -62.14 },
+            { "wageTypeNumber": 6500,  "value": 3154.91 }
+          ]
+        }
+      ]
+    }
+  ]
+}

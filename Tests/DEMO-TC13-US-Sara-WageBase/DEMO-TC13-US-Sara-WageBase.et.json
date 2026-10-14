@@ -1,0 +1,293 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+        "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3001", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1975",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2015-03-01", "start": "2015-03-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkLocality",  "value": "NYC",        "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "240000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus",         "value": "MFJ",       "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step2",             "value": "false",     "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",             "value": "4000",      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4a",            "value": "0",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4b",            "value": "0",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step4c",            "value": "500",       "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.LocalTaxJurisdiction","value": "NY-NYC",    "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "M", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.08", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "600", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHSAAmount",    "value": "300", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "sara.chen@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.BenefitsInKind",
+                "values": [
+                  { "caseFieldName": "US.CompanyCarValue", "value": "450", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC13-US-Sara-2026-01",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-01T00:00:00.0Z",
+          "evaluationDate": "2026-02-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly January 2026 (paid Jan 31). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-02",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-02-01T00:00:00.0Z",
+          "evaluationDate": "2026-03-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly February 2026 (paid Feb 28). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-03",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-01T00:00:00.0Z",
+          "evaluationDate": "2026-04-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly March 2026 (paid Mar 31). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-04",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-04-01T00:00:00.0Z",
+          "evaluationDate": "2026-05-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly April 2026 (paid Apr 30). Gross $20,000, FICA wages $19,550 (WT 5051). YTD FICA wages before April $58,650. SS 6.2% × $19,550 = $1,212.10 (WT 5200) on SS wages $19,550 (WT 5201); employer SS $1,212.10 (WT 6600). Medicare 1.45% × $19,550 = $283.48 (WT 5210) on Medicare wages $19,550 (WT 5211); employer Medicare $283.48 (WT 6610). Additional Medicare not triggered (YTD Medicare wages $78,200 ≤ $200,000). NY PFL (WT 5620): 0.432% × $19,550 = $84.46; YTD $337.84 of the annual maximum $411.91 (0.432% × $95,348.76, DFS 8/29/2025). Net $11,444.03 (as DEMO-TC01).",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-05",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-05-01T00:00:00.0Z",
+          "evaluationDate": "2026-06-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly May 2026 (paid May 31). Gross $20,000, FICA wages $19,550 (WT 5051). NY PFL maximum reached: $411.91 - YTD $337.84 = $74.07 (WT 5620) instead of $84.46. SS $1,212.10 (WT 5200/6600), Medicare $283.48 (WT 5210/6610) unchanged. Net $11,444.03 + $10.39 = $11,454.42.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-06",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-06-01T00:00:00.0Z",
+          "evaluationDate": "2026-07-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly June 2026 (paid Jun 30). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-07",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-07-01T00:00:00.0Z",
+          "evaluationDate": "2026-08-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly July 2026 (paid Jul 31). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-08",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-08-01T00:00:00.0Z",
+          "evaluationDate": "2026-09-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly August 2026 (paid Aug 31). Gross $20,000, FICA wages $19,550 (WT 5051). Year-to-date build-up for the Social Security wage base, the Additional Medicare threshold and the NY PFL maximum; no assertions in this period.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-09",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-09-01T00:00:00.0Z",
+          "evaluationDate": "2026-10-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly September 2026 (paid Sep 30). Gross $20,000, FICA wages $19,550 (WT 5051). NY PFL maximum exhausted: WT 5620 null. YTD SS wages before September $156,400 + $19,550 = $175,950 ≤ $184,500: full SS $1,212.10 (WT 5200/6600). Medicare $283.48 (WT 5210/6610). Net $11,454.42 + $74.07 = $11,528.49.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-10",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-10-01T00:00:00.0Z",
+          "evaluationDate": "2026-11-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly October 2026 (paid Oct 31). Gross $20,000, FICA wages $19,550 (WT 5051). Social Security wage base reached: YTD SS wages $175,950 (WT 5201), remaining $184,500 - $175,950 = $8,550 SS wages (WT 5201) → SS 6.2% × $8,550 = $530.10 (WT 5200), employer $530.10 (WT 6600). Medicare on all wages $283.48 (WT 5210/6610, no cap). Additional Medicare not yet triggered (YTD Medicare wages $195,500). Net $11,528.49 + $682.00 = $12,210.49.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC13-US-Sara-2026-11",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-11-01T00:00:00.0Z",
+          "evaluationDate": "2026-12-01T00:00:00.0Z",
+          "reason": "Sara Chen (CFO, NY/NYC, MFJ), Monthly November 2026 (paid Nov 30). Gross $20,000, FICA wages $19,550 (WT 5051). SS wage base exhausted: WT 5201, 5200 and 6600 null. Additional Medicare (WT 5220, IRC 3102(f), employer threshold $200,000 regardless of filing status): YTD Medicare wages (WT 5211) $195,500 + $19,550 = $215,050 → 0.9% × ($215,050 - $200,000) = $135.45; no employer match (WT 6610 stays $283.48). Net $12,210.49 + $530.10 - $135.45 = $12,605.14.",
+          "employeeIdentifiers": [ "sara.chen@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC13-US-Sara-2026-04",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5200,  "value": -1212.10 },
+            { "wageTypeNumber": 5201,  "value": 19550.00 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5211,  "value": 19550.00 },
+            { "wageTypeNumber": 5620,  "value": -84.46 },
+            { "wageTypeNumber": 6600,  "value": -1212.10 },
+            { "wageTypeNumber": 6610,  "value": -283.48 },
+            { "wageTypeNumber": 6500,  "value": 11444.03 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC13-US-Sara-2026-05",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5200,  "value": -1212.10 },
+            { "wageTypeNumber": 5201,  "value": 19550.00 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5211,  "value": 19550.00 },
+            { "wageTypeNumber": 5620,  "value": -74.07 },
+            { "wageTypeNumber": 6600,  "value": -1212.10 },
+            { "wageTypeNumber": 6610,  "value": -283.48 },
+            { "wageTypeNumber": 6500,  "value": 11454.42 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC13-US-Sara-2026-09",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5200,  "value": -1212.10 },
+            { "wageTypeNumber": 5201,  "value": 19550.00 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5211,  "value": 19550.00 },
+            { "wageTypeNumber": 6600,  "value": -1212.10 },
+            { "wageTypeNumber": 6610,  "value": -283.48 },
+            { "wageTypeNumber": 6500,  "value": 11528.49 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC13-US-Sara-2026-10",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5200,  "value": -530.10 },
+            { "wageTypeNumber": 5201,  "value": 8550.00 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5211,  "value": 19550.00 },
+            { "wageTypeNumber": 6600,  "value": -530.10 },
+            { "wageTypeNumber": 6610,  "value": -283.48 },
+            { "wageTypeNumber": 6500,  "value": 12210.49 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC13-US-Sara-2026-11",
+          "employeeIdentifier": "sara.chen@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 5051,  "value": 19550.00 },
+            { "wageTypeNumber": 5210,  "value": -283.48 },
+            { "wageTypeNumber": 5211,  "value": 19550.00 },
+            { "wageTypeNumber": 5220,  "value": -135.45 },
+            { "wageTypeNumber": 6610,  "value": -283.48 },
+            { "wageTypeNumber": 6500,  "value": 12605.14 }
+          ]
+        }
+      ]
+    }
+  ]
+}

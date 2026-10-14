@@ -1,0 +1,238 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Monthly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",      "value": "111-22-3002", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear", "value": "1967",       "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2018-07-15", "start": "2018-07-15T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NY",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "115000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "MFJ",  "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.W4Step3",      "value": "2000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "M", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "robert.stevenson@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kAmount",   "value": "2800", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "475",     "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC14-US-Robert-2026-01",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-01-01T00:00:00.0Z",
+          "evaluationDate": "2026-02-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly January 2026 (paid Jan 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $2,800); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-02",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-02-01T00:00:00.0Z",
+          "evaluationDate": "2026-03-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly February 2026 (paid Feb 28). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $5,600); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-03",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-01T00:00:00.0Z",
+          "evaluationDate": "2026-04-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly March 2026 (paid Mar 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $8,400); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-04",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-04-01T00:00:00.0Z",
+          "evaluationDate": "2026-05-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly April 2026 (paid Apr 30). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $11,200); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-05",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-05-01T00:00:00.0Z",
+          "evaluationDate": "2026-06-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly May 2026 (paid May 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $14,000); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-06",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-06-01T00:00:00.0Z",
+          "evaluationDate": "2026-07-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly June 2026 (paid Jun 30). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $16,800); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-07",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-07-01T00:00:00.0Z",
+          "evaluationDate": "2026-08-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly July 2026 (paid Jul 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $19,600); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-08",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-08-01T00:00:00.0Z",
+          "evaluationDate": "2026-09-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly August 2026 (paid Aug 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $22,400); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-09",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-09-01T00:00:00.0Z",
+          "evaluationDate": "2026-10-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly September 2026 (paid Sep 30). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $25,200); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-10",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-10-01T00:00:00.0Z",
+          "evaluationDate": "2026-11-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly October 2026 (paid Oct 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. Year-to-date build-up of the 401(k) elective deferrals (YTD $28,000); no assertions in this period.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-11",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-11-01T00:00:00.0Z",
+          "evaluationDate": "2026-12-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly November 2026 (paid Nov 30). Salary $9,583.33, Pre401kAmount $2,800, health $475. YTD 401(k) before November $28,000; November $2,800 (WT 1200) → YTD $30,800, within the 2026 limit $32,500 (IRC 402(g) $24,500 + age-50 catch-up IRC 414(v) $8,000; age 59 = 2026 - BirthYear 1967, outside the 60-63 range). FITTaxable $9,583.33 - $2,800 - $475 = $6,308.33 (WT 5050). FIT (WT 5100) $227.00 as in January (DEMO-TC09). NY SIT (WT 5300, IT-2104 married, 0 allowances, Table II-D monthly married) $291.17 as in January. NY PFL maximum reached: $411.91 - YTD 10 × $39.35 = $18.41 (WT 5620). Net $9,583.33 - $2,800 - $475 - $227.00 - $564.72 - $132.07 - $291.17 - $18.41 = $5,074.96.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC14-US-Robert-2026-12",
+          "payrunName": "Apex.Payrun.Monthly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-12-01T00:00:00.0Z",
+          "evaluationDate": "2027-01-01T00:00:00.0Z",
+          "reason": "Robert Stevenson (VP Engineering, NY, MFJ, age 59 in 2026), Monthly December 2026 (paid Dec 31). Salary $9,583.33, Pre401kAmount $2,800, health $475. 401(k) annual limit: $32,500 - YTD $30,800 = $1,700 (WT 1200) instead of $2,800. FITTaxable $9,583.33 - $1,700 - $475 = $7,408.33 (WT 5050). FIT (WT 5100, Pub 15-T Worksheet 1A, MFJ): $7,408.33 × 12 = $88,899.96 - Step 1g $12,900 = $75,999.96 → $2,480 + 12% × ($75,999.96 - $44,100) = $6,308.00/yr; ($6,308.00 - Step 3 $2,000) ÷ 12 = $359.00. NY SIT (WT 5300; NYS-50-T-NYS 1/26 Method II, IT-2104 married, 0 allowances, Table II-D monthly married): net $7,408.33 - $662.50 = $6,745.83 → line 5: $349.17 + ($6,745.83 - $6,721) × 5.9% = $350.63. NY PFL maximum exhausted (WT 5620 null). SS $564.72, Medicare $132.07. Net $9,583.33 - $1,700 - $475 - $359.00 - $564.72 - $132.07 - $350.63 = $6,001.91.",
+          "employeeIdentifiers": [ "robert.stevenson@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC14-US-Robert-2026-11",
+          "employeeIdentifier": "robert.stevenson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1200,  "value": -2800.00 },
+            { "wageTypeNumber": 5050,  "value": 6308.33 },
+            { "wageTypeNumber": 5100,  "value": -227.00 },
+            { "wageTypeNumber": 5300,  "value": -291.17 },
+            { "wageTypeNumber": 5620,  "value": -18.41 },
+            { "wageTypeNumber": 6500,  "value": 5074.96 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC14-US-Robert-2026-12",
+          "employeeIdentifier": "robert.stevenson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1200,  "value": -1700.00 },
+            { "wageTypeNumber": 5050,  "value": 7408.33 },
+            { "wageTypeNumber": 5100,  "value": -359.00 },
+            { "wageTypeNumber": 5300,  "value": -350.63 },
+            { "wageTypeNumber": 6500,  "value": 6001.91 }
+          ]
+        }
+      ]
+    }
+  ]
+}

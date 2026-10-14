@@ -1,7 +1,7 @@
 # DEMO-TC05 — Jessica Torres: Texas Baseline (No State Income Tax)
 
 **Payroll:** Apex.Payroll.Biweekly  
-**Period:** 2026-01-06 / 2026-01-19  
+**Period:** 2026-01-12 / 2026-01-25 (paid 2026-01-30)  
 **Employee:** Jessica Torres (Account Executive, TX, MFJ)
 
 ## Scenario
@@ -13,8 +13,8 @@ The simplest payslip in the demo:
 - 401(k) 4% and health premium reduce FIT taxable wages; only health reduces FICA
 - Direct contrast to Sara (NYC) and Carlos (three-state allocation)
 
-The Q1 supplemental bonus (flat 22% federal rate) is covered by the T3 scenario
-[`March-Bonus-Preview.et.json`](../../T3-Payruns/Scenarios/March-Bonus-Preview.et.json).
+The March bonus (flat 22% federal supplemental rate) is covered by
+[DEMO-TC12](../DEMO-TC12-US-Jessica-Bonus/README.md).
 
 ## Key Assertions
 

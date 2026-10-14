@@ -1,0 +1,153 @@
+{
+  "$schema": "../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "payrolls": [
+        {
+          "name": "Apex.Payroll.Biweekly",
+          "updateMode": "NoUpdate",
+          "cases": [
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PersonalData",
+                "values": [
+                  { "caseFieldName": "US.SSN",        "value": "111-22-3003", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.BirthYear",   "value": "1988",  "created": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Employment",
+                "values": [
+                  { "caseFieldName": "US.HireDate",      "value": "2021-01-04", "start": "2021-01-04T00:00:00.0Z" },
+                  { "caseFieldName": "US.WorkState",     "value": "NY",         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.ResidentState", "value": "NJ",         "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.PayType",      "value": "Salary", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AnnualSalary", "value": "150000", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.Remuneration",
+                "values": [
+                  { "caseFieldName": "US.AnnualSalary", "value": "165000", "start": "2026-03-15T00:00:00.0Z", "created": "2026-03-15T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.TaxData",
+                "values": [
+                  { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NJ", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NJ", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
+                "caseName": "US.PreTaxDeductions",
+                "values": [
+                  { "caseFieldName": "US.Pre401kPercent",  "value": "0.06", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.PreHealthAmount", "value": "200", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "payrunJobInvocations": [
+        {
+          "name": "DEMO-TC16-US-Marcus-SalaryChange-Mar09",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-09T00:00:00.0Z",
+          "evaluationDate": "2026-03-23T00:00:00.0Z",
+          "reason": "Marcus Johnson, NJ resident / NY work state, Single. Merit increase $150,000 → $165,000 from Mar 15. Biweekly Mar 9-22 2026 (paid Mar 27): AnnualSalary is a CalendarPeriod field, the period is split by calendar days: Mar 9-14 (6 days) at $150,000, Mar 15-22 (8 days) at $165,000. Salary ($150,000 × 6 + $165,000 × 8) ÷ 14 ÷ 26 = $6,098.90 (WT 1000). 401k 6% = $365.93 (WT 1200). Health $200 (WT 1210). FICATaxable=$5,898.90 (WT 5051). FITTaxable=$5,532.97 (WT 5050). FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $5,532.97 × 26 = $143,857.22 - Step 1g $8,600 = $135,257.22 → $17,966 + 24% × ($135,257.22 - $113,200) = $23,259.73/yr ÷ 26 = $894.61. SS 6.2% × $5,898.90 = $365.73 (WT 5200). Medicare 1.45% × $5,898.90 = $85.53 (WT 5210). WT 5310: NY work state (NYS-50-T-NYS 1/26 Method II, IT-2104 single, 0 allowances, Table II-D biweekly): net $5,532.97 - $284.60 = $5,248.37 → $227.15 + ($5,248.37 - $4,140) × 7.53% = $310.61; NJ resident (NJ-WT rate A, NJ-W4 single) on NJ wages $5,732.97 (401(k) excluded, IRC §125 health premium NJ-taxable): $113 + ($5,732.97 - $2,885) × 7% = $312.36 > NY → additional NJ withholding $1.75; WT 5310 = $312.36. NY PFL 0.432% × $5,898.90 = $25.48 (WT 5620). Net = $6,098.90 - $365.93 - $200 - $894.61 - $365.73 - $85.53 - $312.36 - $25.48 = $3,849.26.",
+          "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
+        },
+        {
+          "name": "DEMO-TC16-US-Marcus-SalaryChange-Mar23",
+          "payrunName": "Apex.Payrun.Biweekly",
+          "userIdentifier": "apex.admin@apexdigital.com",
+          "completedJobStatus": "Complete",
+          "periodStart": "2026-03-23T00:00:00.0Z",
+          "evaluationDate": "2026-04-06T00:00:00.0Z",
+          "reason": "Marcus Johnson, first full period at $165,000: Mar 23-Apr 5 2026 (paid Apr 10). Salary $165,000 ÷ 26 = $6,346.15 (WT 1000). 401k 6% = $380.77. Health $200. FICATaxable=$6,146.15. FITTaxable=$5,765.38. FIT (Worksheet 1A, Single): $5,765.38 × 26 = $149,899.88 - $8,600 = $141,299.88 → $17,966 + 24% × ($141,299.88 - $113,200) = $24,709.97/yr ÷ 26 = $950.38. SS 6.2% × $6,146.15 = $381.06. Medicare 1.45% × $6,146.15 = $89.12. WT 5310: NY net $5,765.38 - $284.60 = $5,480.78 → $227.15 + ($5,480.78 - $4,140) × 7.53% = $328.11; NJ rate A on $5,965.38: $113 + ($5,965.38 - $2,885) × 7% = $328.63 > NY → additional NJ $0.52; WT 5310 = $328.63. NY PFL 0.432% × $6,146.15 = $26.55. Net = $6,346.15 - $380.77 - $200 - $950.38 - $381.06 - $89.12 - $328.63 - $26.55 = $3,989.64.",
+          "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
+        }
+      ],
+      "payrollResults": [
+        {
+          "payrunJobName": "DEMO-TC16-US-Marcus-SalaryChange-Mar09",
+          "employeeIdentifier": "marcus.johnson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 6098.90 },
+            { "wageTypeNumber": 1200,  "value": -365.93 },
+            { "wageTypeNumber": 5050,  "value": 5532.97 },
+            { "wageTypeNumber": 5051,  "value": 5898.90 },
+            { "wageTypeNumber": 5100,  "value": -894.61 },
+            { "wageTypeNumber": 5200,  "value": -365.73 },
+            { "wageTypeNumber": 5210,  "value": -85.53 },
+            { "wageTypeNumber": 5310,  "value": -312.36 },
+            { "wageTypeNumber": 5620,  "value": -25.48 },
+            { "wageTypeNumber": 6500,  "value": 3849.26 }
+          ]
+        },
+        {
+          "payrunJobName": "DEMO-TC16-US-Marcus-SalaryChange-Mar23",
+          "employeeIdentifier": "marcus.johnson@apexdigital.com",
+          "wageTypeResults": [
+            { "wageTypeNumber": 1000,  "value": 6346.15 },
+            { "wageTypeNumber": 5100,  "value": -950.38 },
+            { "wageTypeNumber": 5310,  "value": -328.63 },
+            { "wageTypeNumber": 6500,  "value": 3989.64 }
+          ]
+        }
+      ]
+    }
+  ]
+}

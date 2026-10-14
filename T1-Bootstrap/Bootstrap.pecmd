@@ -6,30 +6,30 @@
 # PREREQUISITE: Regulation packages (one-time, per PE instance)
 # Run Setup.Regulation.pecmd from the US.Payroll distribution package:
 #   PayrollImport <path>/US.Payroll.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Federal.Tax.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Federal.FICA.2026.json
-#   PayrollImport <path>/US.Payroll.Data.State.2026.json
-#   PayrollImport <path>/US.Payroll.Data.State.Withholding.2026.json
-#   PayrollImport <path>/US.Payroll.Data.State.MultiState.2026.json
-#   PayrollImport <path>/US.Payroll.Data.State.WageBase.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Local.Tax.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Local.Tax.WageBase.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Local.Tax.IndianaCounty.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Local.Tax.Philadelphia.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Local.Tax.NewYork.2026.json
-#   PayrollImport <path>/US.Payroll.Data.Federal.Garnishment.2026.json
+#   PayrollImport <path>/US.Payroll.Data.Federal.Tax.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Federal.FICA.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.State.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.State.Withholding.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.State.MultiState.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.State.WageBase.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.WageBase.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.IndianaCounty.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.Philadelphia.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Local.Tax.NewYork.2026.json /bulk
+#   PayrollImport <path>/US.Payroll.Data.Federal.Garnishment.2026.json /bulk
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Step 0: Clean slate — remove any prior demo tenant (safe to run on a fresh DB)
 TenantDelete Apex.DigitalSolutions /trydelete
 
 # Step 1: Tenant structure
-# Creates: tenant Apex.DigitalSolutions, admin user, Apex.Division,
+# Creates: tenant Apex.DigitalSolutions, admin user, 3 calendars, 3 divisions,
 #          10 employees, 3 payrolls (Monthly/Biweekly/Weekly), 3 payruns
+# The division calendar sets the pay frequency: Monthly (12), Biweekly (26), Weekly (52)
 PayrollImport Setup.json
 
-# Step 2: Company cases — pay frequency per payroll
-# Monthly (annualization factor 12), Biweekly (26), Weekly (52)
+# Step 2: Company cases — employer data (EIN, company state, SUI rate) per payroll
 PayrollImport CompanyCases/Monthly.json
 PayrollImport CompanyCases/Biweekly.json
 PayrollImport CompanyCases/Weekly.json

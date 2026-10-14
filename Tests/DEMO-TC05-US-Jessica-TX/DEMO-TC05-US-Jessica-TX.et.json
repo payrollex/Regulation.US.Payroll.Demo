@@ -79,9 +79,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-06T00:00:00.0Z",
-          "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Jessica Torres, TX, MFJ. Biweekly gross=$80,000÷26=$3,076.92 (WT 1000). 401k 4%=AnnualSalary×4%÷26=$123.08; health=$310 → FITTaxable=$2,643.84 (WT 5050). FICATaxable=$3,076.92-$310=$2,766.92 (WT 5051). FIT: annual $68,739.84-$32,200=$36,539.84 → 10% to $24,800=$2,480 + 12% on $11,739.84=$1,408.78 = $3,888.78÷26=$149.57 (WT 5100). SS $2,766.92×6.2%=$171.55 (WT 5200). Medicare $2,766.92×1.45%=$40.12 (WT 5210). TX has no SIT → WT 5300=null (not tested). Net=$2,282.60.",
+          "periodStart": "2026-01-12T00:00:00.0Z",
+          "evaluationDate": "2026-01-26T00:00:00.0Z",
+          "reason": "Jessica Torres, TX, MFJ. Biweekly gross=$80,000÷26=$3,076.92 (WT 1000). 401k 4%=AnnualSalary×4%÷26=$123.08; health=$310 → FITTaxable=$2,643.84 (WT 5050). FICATaxable=$3,076.92-$310=$2,766.92 (WT 5051). FIT (WT 5100, Pub 15-T Worksheet 1A, MFJ): $2,643.84 × 26 = $68,739.84 - Step 1g $12,900 = $55,839.84 → $2,480 + 12% × ($55,839.84 - $44,100) = $3,888.78/yr ÷ 26 = $149.57. SS $2,766.92×6.2%=$171.55 (WT 5200). Medicare $2,766.92×1.45%=$40.12 (WT 5210). TX has no SIT → WT 5300=null (not tested). Net=$2,282.60.",
           "employeeIdentifiers": [ "jessica.torres@apexdigital.com" ]
         }
       ],

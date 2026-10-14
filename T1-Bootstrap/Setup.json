@@ -22,10 +22,38 @@
           "userType": "TenantAdministrator"
         }
       ],
+      "calendars": [
+        {
+          "name": "Apex.Monthly",
+          "cycleTimeUnit": "Year",
+          "periodTimeUnit": "CalendarMonth",
+          "timeMap": "Period",
+          "payDateOffset": 0,
+          "cycleAssignment": "PayDate"
+        },
+        {
+          "name": "Apex.Biweekly",
+          "cycleTimeUnit": "Year",
+          "periodTimeUnit": "BiWeek",
+          "timeMap": "Period",
+          "periodAnchorDate": "2025-12-29T00:00:00.0Z",
+          "payDateOffset": 5,
+          "cycleAssignment": "PayDate"
+        },
+        {
+          "name": "Apex.Weekly",
+          "cycleTimeUnit": "Year",
+          "periodTimeUnit": "Week",
+          "timeMap": "Period",
+          "periodAnchorDate": "2025-12-29T00:00:00.0Z",
+          "payDateOffset": 5,
+          "cycleAssignment": "PayDate"
+        }
+      ],
       "divisions": [
-        { "name": "Apex.Division.Monthly",  "culture": "en-US" },
-        { "name": "Apex.Division.Biweekly", "culture": "en-US" },
-        { "name": "Apex.Division.Weekly",   "culture": "en-US" }
+        { "name": "Apex.Division.Monthly",  "culture": "en-US", "calendar": "Apex.Monthly"  },
+        { "name": "Apex.Division.Biweekly", "culture": "en-US", "calendar": "Apex.Biweekly" },
+        { "name": "Apex.Division.Weekly",   "culture": "en-US", "calendar": "Apex.Weekly"   }
       ],
       "employees": [
         { "identifier": "sara.chen@apexdigital.com",        "firstName": "Sara",    "lastName": "Chen",       "divisions": [ "Apex.Division.Monthly"  ] },
@@ -43,6 +71,10 @@
         {
           "name": "Apex.Payroll.Monthly",
           "divisionName": "Apex.Division.Monthly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -55,6 +87,10 @@
         {
           "name": "Apex.Payroll.Biweekly",
           "divisionName": "Apex.Division.Biweekly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },
@@ -67,6 +103,10 @@
         {
           "name": "Apex.Payroll.Weekly",
           "divisionName": "Apex.Division.Weekly",
+          "clusterSetWageTypeConsolidated": "ConsolidatedCache",
+          "clusterSets": [
+            { "name": "ConsolidatedCache", "includeClusters": [ "US.ConsolidatedCache" ] }
+          ],
           "layers": [
             { "level": 1, "priority": 1,  "regulationName": "US.Payroll" },
             { "level": 1, "priority": 7,  "regulationName": "US.Payroll.Data.Federal.Tax" },

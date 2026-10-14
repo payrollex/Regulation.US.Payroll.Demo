@@ -1,7 +1,7 @@
 # DEMO-TC08 — L2 §132(f) Transit Benefit (T4-Customizing)
 
 **Payroll:** Apex.Payroll.Biweekly  
-**Period:** 2026-02-03 / 2026-02-16  
+**Period:** 2026-02-09 / 2026-02-22 (paid 2026-02-27)  
 **Employee:** Carlos Rivera (Principal Consultant, NY, Single — three-state allocation as in TC03)
 
 ## Prerequisites
@@ -33,7 +33,7 @@ Validates a company-specific benefit added by the L2 regulation without modifyin
 | Federal income tax (WT 5100) | −$1,274.38 | −$1,236.72 | 24% × $156.92 saved |
 | Social Security (WT 5200) | −$441.15 | −$431.42 | |
 | Medicare (WT 5210) | −$103.17 | −$100.90 | |
-| Multi-state withholding (WT 5310) | −$421.18 | −$411.14 | NJ $45.69 + CT $72.96 + NY $292.49 |
+| Multi-state withholding (WT 5310) | −$421.18 | −$411.14 | NJ $45.69 + CT $58.30 + NY $307.15 |
 | Transit excess post-tax (WT 5520) | — | −$27.69 | $60 × 12 / 26 |
 | NY PFL (WT 5620) | −$30.74 | −$30.06 | |
 | Net pay (WT 6500) | $4,844.76 | $4,720.53 | |

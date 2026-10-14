@@ -64,6 +64,19 @@
               "employeeIdentifier": "priya.patel@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "H", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CT", "value": "B", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "priya.patel@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
                   { "caseFieldName": "US.Pre401kPercent",  "value": "0.04", "start": "2026-01-01T00:00:00.0Z" },
@@ -80,9 +93,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-06T00:00:00.0Z",
-          "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Priya Patel (Project Manager), CT resident working in NY, Biweekly Jan 6-19 2026. Annual $95k/26=$3,653.85 gross. 401k 4%×$3,653.85=$146.15. Health $180. FITTaxable=$3,327.70. FICATaxable=$3,473.85. Filing HoH with W4Step3 $2,000. CT has no reciprocity with NY — NY SIT applies on work income (WT 5310 MultiState), CT SIT on resident income. WT 5300 is null (multi-state path); WT 5310 = $232.61: NY work state (NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D biweekly) net $3,327.70 - $284.60 = $3,043.10 → $22.54 + ($3,043.10 - $535) × 5.4% = $157.98; CT resident without CT-W4 (IP 2026(1)): 6.99% × $3,327.70 = $232.61 > NY → CT withholds the excess $74.63. FIT: annual $3,327.70×26 = $86,520.20 - HoH StdDed $24,150 = $62,370.20 → 10%×$17,700 + 12%×$44,670.20 = $7,130.42 - Step 3 $2,000 = $5,130.42 ÷ 26 = $197.32 (WT 5100). SS 6.2%×$3,473.85 = $215.38. Medicare 1.45%×$3,473.85 = $50.37. NY PFL (WT 5620): 0.432%×$3,473.85 = $15.01. Net = $3,653.85 - $146.15 - $180 - $197.32 - $215.38 - $50.37 - $232.61 - $15.01 = $2,617.01.",
+          "periodStart": "2026-01-12T00:00:00.0Z",
+          "evaluationDate": "2026-01-26T00:00:00.0Z",
+          "reason": "Priya Patel (Project Manager), CT resident working in NY, Biweekly Jan 12-25 2026 (paid Jan 30). Annual $95k/26=$3,653.85 gross. 401k 4%×$3,653.85=$146.15. Health $180. FITTaxable=$3,327.70. FICATaxable=$3,473.85. Filing HoH with W4Step3 $2,000. CT has no reciprocity with NY — NY SIT applies on work income (WT 5310 MultiState), CT SIT on resident income. WT 5300 is null (multi-state path); WT 5310 = $157.98: NY work state (NYS-50-T-NYS 1/26 Method II, IT-2104 head of household = single tables, 0 allowances, Table II-D biweekly) net $3,327.70 - $284.60 = $3,043.10 → $22.54 + ($3,043.10 - $535) × 5.4% = $157.98; CT resident with CT-W4 code B (TPG-211 2026, annualized): $3,327.70 × 26 = $86,520.20, exemption $0 (Table B, over $56,000), tax $3,200 + 5.5% × ($86,520.20 - $80,000) = $3,558.61, phase-out add-back $120, credit 0% → $3,678.61 ÷ 26 = $141.48 < NY $157.98 → CT withholds only the excess over the NY withholding = $0 (IP 2026(1)). FIT (WT 5100, Pub 15-T Worksheet 1A, HoH): $3,327.70 × 26 = $86,520.20 - Step 1g $8,600 = $77,920.20 → $1,770 + 12% × ($77,920.20 - $33,250) = $7,130.42/yr; ($7,130.42 - Step 3 $2,000) ÷ 26 = $197.32. SS 6.2%×$3,473.85 = $215.38. Medicare 1.45%×$3,473.85 = $50.37. NY PFL (WT 5620): 0.432%×$3,473.85 = $15.01. Net = $3,653.85 - $146.15 - $180 - $197.32 - $215.38 - $50.37 - $157.98 - $15.01 = $2,691.64.",
           "employeeIdentifiers": [ "priya.patel@apexdigital.com" ]
         }
       ],
@@ -99,9 +112,9 @@
             { "wageTypeNumber": 5100,  "value": -197.32 },
             { "wageTypeNumber": 5200,  "value": -215.38 },
             { "wageTypeNumber": 5210,  "value": -50.37 },
-            { "wageTypeNumber": 5310,  "value": -232.61 },
+            { "wageTypeNumber": 5310,  "value": -157.98 },
             { "wageTypeNumber": 5620,  "value": -15.01 },
-            { "wageTypeNumber": 6500,  "value": 2617.01 }
+            { "wageTypeNumber": 6500,  "value": 2691.64 }
           ]
         }
       ]

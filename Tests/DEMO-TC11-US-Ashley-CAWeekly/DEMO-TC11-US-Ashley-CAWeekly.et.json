@@ -58,6 +58,18 @@
                   { "caseFieldName": "US.FilingStatus", "value": "Single", "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "ashley.park@apexdigital.com",
+              "divisionName": "Apex.Division.Weekly",
+              "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "CA", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "CA", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
             }
           ]
         }
@@ -70,7 +82,7 @@
           "completedJobStatus": "Complete",
           "periodStart": "2026-01-05T00:00:00.0Z",
           "evaluationDate": "2026-01-12T00:00:00.0Z",
-          "reason": "Ashley Park (QA Engineer), CA, Single, Weekly Jan 5-11 2026. Hourly $42 × 40 regular hours = $1,680.00 gross. No pre-tax deductions. FITTaxable=$1,680.00. FICATaxable=$1,680.00. SS 6.2%×$1,680=$104.16. Medicare 1.45%×$1,680=$24.36. FIT: annual $87,360 - Single StdDed $16,100 = $71,260 → 10%×$12,400 + 12%×$38,000 + 22%×$20,860 = $10,389.20/yr ÷ 52 = $199.79 (WT 5100). CA SIT (EDD 2026 Method B annualized; no DE 4: single, 0 allowances, WT 5300): annual $87,360 - standard deduction $5,706 = $81,654 → $3,522.17 + ($81,654 - $72,724) × 10.23% = $4,435.71/yr ÷ 52 = $85.30. CA SDI (WT 5600): 1.3%×$1,680 = $21.84 (no wage cap). No overtime in this baseline week. Net = $1,680 - $199.79 - $104.16 - $24.36 - $85.30 - $21.84 = $1,244.55.",
+          "reason": "Ashley Park (QA Engineer), CA, Single, Weekly Jan 5-11 2026. Hourly $42 × 40 regular hours = $1,680.00 gross. No pre-tax deductions. FITTaxable=$1,680.00. FICATaxable=$1,680.00. SS 6.2%×$1,680=$104.16. Medicare 1.45%×$1,680=$24.36. FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $1,680 × 52 = $87,360 - Step 1g $8,600 = $78,760 → $5,800 + 22% × ($78,760 - $57,900) = $10,389.20/yr ÷ 52 = $199.79. CA SIT (EDD 2026 Method B annualized; DE 4 single, 0 allowances, WT 5300): annual $87,360 - standard deduction $5,706 = $81,654 → $3,522.17 + ($81,654 - $72,724) × 10.23% = $4,435.71/yr ÷ 52 = $85.30. CA SDI (WT 5600): 1.3%×$1,680 = $21.84 (no wage cap). No overtime in this baseline week. Net = $1,680 - $199.79 - $104.16 - $24.36 - $85.30 - $21.84 = $1,244.55.",
           "employeeIdentifiers": [ "ashley.park@apexdigital.com" ]
         }
       ],

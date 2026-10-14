@@ -1,7 +1,7 @@
 # DEMO-TC06 — Linda Okafor: Child Support Garnishment
 
 **Payroll:** Apex.Payroll.Biweekly  
-**Period:** 2026-01-06 / 2026-01-19  
+**Period:** 2026-01-12 / 2026-01-25 (paid 2026-01-30)  
 **Employee:** Linda Okafor (HR Coordinator, NY, Single)
 
 ## Scenario
@@ -23,7 +23,7 @@ Validates a child support order under the CCPA limit (15 USC §1673(b)):
 | Federal income tax (WT 5100) | −$216.15 | Single, 12% bracket |
 | Social Security (WT 5200) | −$155.00 | $2,500 × 6.2% |
 | Medicare (WT 5210) | −$36.25 | $2,500 × 1.45% |
-| NY SIT (WT 5300) | −$113.28 | NYS-50-T-NYS Table II-D biweekly, no IT-2104: $2,500 − $284.60 → $22.54 + ($2,215.40 − $535) × 5.4% |
+| NY SIT (WT 5300) | −$113.28 | NYS-50-T-NYS Table II-D biweekly, IT-2104 single, 0 allowances: $2,500 − $284.60 → $22.54 + ($2,215.40 − $535) × 5.4% |
 | NY PFL (WT 5620) | −$10.80 | $2,500 × 0.432% |
 | Garnishment (WT 5900) | −$500.00 | Within the 60% CCPA limit |
 | Net pay (WT 6500) | $1,468.52 | $1,968.52 − $500 |

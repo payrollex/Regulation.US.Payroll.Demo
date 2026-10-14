@@ -63,6 +63,20 @@
               "employeeIdentifier": "marcus.johnson@apexdigital.com",
               "divisionName": "Apex.Division.Biweekly",
               "case": {
+                "caseName": "US.StateWithholdingCertificate",
+                "values": [
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NY", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NY", "value": "0", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateFilingStatus", "caseSlot": "NJ", "value": "S", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateAllowances",   "caseSlot": "NJ", "value": "0", "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "employeeIdentifier": "marcus.johnson@apexdigital.com",
+              "divisionName": "Apex.Division.Biweekly",
+              "case": {
                 "caseName": "US.PreTaxDeductions",
                 "values": [
                   { "caseFieldName": "US.Pre401kPercent",  "value": "0.06", "start": "2026-01-01T00:00:00.0Z" },
@@ -79,9 +93,9 @@
           "payrunName": "Apex.Payrun.Biweekly",
           "userIdentifier": "apex.admin@apexdigital.com",
           "completedJobStatus": "Complete",
-          "periodStart": "2026-01-06T00:00:00.0Z",
-          "evaluationDate": "2026-01-20T00:00:00.0Z",
-          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity. Multi-state goes through WT 5310 (not WT 5300). $150k/26=$5,769.23 gross. 401k 6%=$346.15. Health=$200. FITTaxable=$5,223.08 (WT 5050). FICATaxable=$5,569.23 (WT 5051, health only, no HSA). FIT (WT 5100): annual $135,800 - Single StdDed $16,100 = $119,700 → 24% bracket → $21,326/yr ÷ 26 = $820.23. SS $5,569.23×6.2%=$345.29 (WT 5200). Medicare $5,569.23×1.45%=$80.75 (WT 5210). WT 5310: NY work state (NYS-50-T-NYS 1/26 Method II, no IT-2104: single, 0 allowances, Table II-D biweekly): net $5,223.08 - $284.60 = $4,938.48 → line 7: $227.15 + ($4,938.48 - $4,140) × 7.53% = $287.28; NJ resident (NJ-WT, no NJ-W4: rate A) on NJ wages $5,423.08 (401(k) excluded, IRC §125 health premium NJ-taxable: N.J.S.A. 54A:6-21, 54A:6-24; TB-39(R) Example 1): $113 + ($5,423.08 - $2,885) × 7% = $290.67 > NY → additional NJ withholding $3.39; WT 5310 = $287.28 + $3.39 = $290.67. WT 5300 null (multi-state bypasses single-state WT). NY PFL (WT 5620): 0.432%×$5,569.23=$24.06 (work state NY). Net $3,662.08.",
+          "periodStart": "2026-01-12T00:00:00.0Z",
+          "evaluationDate": "2026-01-26T00:00:00.0Z",
+          "reason": "Marcus Johnson, NJ resident / NY work state. No NJ-NY reciprocity. Multi-state goes through WT 5310 (not WT 5300). $150k/26=$5,769.23 gross. 401k 6%=$346.15. Health=$200. FITTaxable=$5,223.08 (WT 5050). FICATaxable=$5,569.23 (WT 5051, health only, no HSA). FIT (WT 5100, Pub 15-T Worksheet 1A, Single): $5,223.08 × 26 = $135,800.08 - Step 1g $8,600 = $127,200.08 → $17,966 + 24% × ($127,200.08 - $113,200) = $21,326.02/yr ÷ 26 = $820.23. SS $5,569.23×6.2%=$345.29 (WT 5200). Medicare $5,569.23×1.45%=$80.75 (WT 5210). WT 5310: NY work state (NYS-50-T-NYS 1/26 Method II, IT-2104 single, 0 allowances, Table II-D biweekly): net $5,223.08 - $284.60 = $4,938.48 → line 7: $227.15 + ($4,938.48 - $4,140) × 7.53% = $287.28; NJ resident (NJ-WT, NJ-W4 single (status S): rate A) on NJ wages $5,423.08 (401(k) excluded, IRC §125 health premium NJ-taxable: N.J.S.A. 54A:6-21, 54A:6-24; TB-39(R) Example 1): $113 + ($5,423.08 - $2,885) × 7% = $290.67 > NY → additional NJ withholding $3.39; WT 5310 = $287.28 + $3.39 = $290.67. WT 5300 null (multi-state bypasses single-state WT). NY PFL (WT 5620): 0.432%×$5,569.23=$24.06 (work state NY). Net $3,662.08.",
           "employeeIdentifiers": [ "marcus.johnson@apexdigital.com" ]
         }
       ],
