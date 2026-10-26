@@ -50,5 +50,8 @@ Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:U
 ### W-2 — full year 2026 (run after December payruns complete)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.W2 culture:en-US parameterFile:Reports/W2-2026.parameters.json /pdf /shellopen
 
+### State W-2 — full year 2026 (run after December payruns complete)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.StateW2 culture:en-US parameterFile:Reports/StateW2-2026.parameters.json /pdf /shellopen
+
 ### Form 940 — annual FUTA 2026 (run after December payruns complete)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form940 culture:en-US parameterFile:Reports/Form940-2026.parameters.json /pdf /shellopen

@@ -28,8 +28,9 @@ for a single legal entity. Each payroll has its own division because the payroll
 
 ### Regulation Packages
 
-The US regulation packages must be imported once per PE instance. They are distributed
-separately (commercial). If your PE instance already has them, skip this step.
+The US regulation packages must be imported once per PE instance. They are commercial and
+not part of this repository (see [Running the Demo](../README.md#running-the-demo-licensed-users)).
+If your PE instance already has them, skip this step.
 
 ```bash
 PayrollImport US.Payroll.2026.json

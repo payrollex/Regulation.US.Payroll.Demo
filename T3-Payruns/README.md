@@ -151,7 +151,7 @@ Robert reaches 60 in 2027; for 2026 the age-50 catch-up applies.
 pecmd Payruns.pecmd
 ```
 
-Runs DEMO-TC12, DEMO-TC13 and DEMO-TC14 and generates the five reports.
+Runs DEMO-TC12, DEMO-TC13 and DEMO-TC14 and generates the six reports.
 
 ---
 
@@ -168,10 +168,18 @@ Each report has a dedicated `.pecmd` file in `Reports/`. Run from the `Reports/`
 | `Payslip-Jessica-March.pecmd` | Jessica Torres payslip, pay date Mar 27 2026 (incl. bonus) | `Payslip-Jessica-March.pdf` | March Biweekly payruns complete |
 | `Form941-Q1.pecmd` | Form 941 Q1 2026 | timestamp-based | All Jan–Mar payruns complete |
 | `W2-2026.pecmd` | W-2 all employees, 2026 | timestamp-based | All December payruns complete |
+| `StateW2-2026.pecmd` | State W-2 (Boxes 15–17) per employee and state, 2026 | timestamp-based | All December payruns complete |
 | `Form940-2026.pecmd` | Form 940 annual FUTA, 2026 | timestamp-based | All December payruns complete |
-| `Reports.pecmd` | All five reports combined | see above | See individual prerequisites above |
+| `Reports.pecmd` | All six reports combined | see above | See individual prerequisites above |
 
 Each payslip uses `targetFile:` to write a fixed, employee-named PDF. Running the command a second time overwrites the previous file. All other reports use the default timestamp-based filename.
+
+> **Seeded data vs. report scope.** `Setup.cmd` persists the January payruns of all three
+> payrolls and the biweekly payruns up to Mar 22. The two payslips are complete with this data.
+> Form 941 Q1, W-2, State W-2 and Form 940 cover the full quarter or year: after `Setup.cmd`
+> they show the seeded periods only. Run the remaining monthly, biweekly and weekly periods
+> (WebApp or `payrunJobInvocations`) before generating them for a complete filing. The annual
+> limits over a full year are asserted by DEMO-TC13 and DEMO-TC14.
 
 ```bash
 cd T3-Payruns/Reports
@@ -207,6 +215,13 @@ across all three payrolls. Parameter file: `Form941-Q1.parameters.json`.
 
 All employees, wages paid in 2026 from all payrolls. Run after December year-end close.
 YTD accumulators must be final before generating.
+
+### State W-2 — Year-End
+
+One line per employee and state with state wages (Box 16) and state income tax (Box 17),
+aggregated over all payrolls. Multi-state and commuter employees (Marcus, Priya, Carlos) get
+one line per state by the W-2 rules of each state. States without income tax have no line:
+Jessica gets a CA line only with the T2 relocation (TX → CA from July 1).
 
 ### Form 940 — Annual FUTA Return
 

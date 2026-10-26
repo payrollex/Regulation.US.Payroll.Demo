@@ -20,6 +20,8 @@ standard week:
 - Case fields: `US.CADay1Hours`–`US.CADay5Hours` = 9 / 9 / 8 / 9 / 8, `US.RegularHours` = 80
   (straight time of both weeks)
 - No federal `US.OvertimeHours` is entered — WT 1020 comes from the CA path only
+- The test sets its own 401(k) amount of $253.50 (5% of the $5,070 gross); the T1 employee
+  data of Kevin has a fixed $240 per period
 - Daily OT: 3h × $60 × 1.5 = $270; the 3 weekly OT hours (43h) are already covered by the daily premium
 - CA SDI 1.3% on SDI wages without a wage cap (SB 951)
 

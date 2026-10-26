@@ -1,31 +1,16 @@
 # Regulation.US.Payroll.Demo
 
-Demo company and tutorials for [US.Payroll](https://github.com/payrollex/Regulation.US.Payroll)
+Demo company and tutorials for [US.Payroll](https://payrollex.io/countries/us.html)
 on [Payroll Engine](https://payrollengine.org).
 
----
-
-## Dependency: Regulation.US.Payroll
-
-This demo requires **[Regulation.US.Payroll](https://github.com/payrollex/Regulation.US.Payroll)**
-to be checked out as a sibling folder:
-
-```
-Repos/
-  Regulation.US.Payroll/      ← required
-  Regulation.US.Payroll.Demo/ ← this repo
-```
-
-`Setup.cmd` first deletes the tenants `Apex.DigitalSolutions` and `US.Payroll` (Step 1),
-then calls `Regulation.US.Payroll\2026\Setup.Tests.pecmd` (Step 2) to install
-all US.Payroll packages and data regulations into the running PE backend before the demo
-tenant is created. The demo tenant (`Apex.DigitalSolutions`) then consumes
-`US.Payroll` as a shared regulation — no separate package import is needed.
-
-> Step 1 makes the setup repeatable: the US.Payroll test fixtures cannot be imported
-> twice into the same tenant. If the backend is already loaded with a current
-> `US.Payroll` installation you can skip Steps 1 and 2 and run the remaining setup
-> steps manually from the tutorial READMEs.
+> **Reference demo.** This repository shows how a real company is modeled and
+> calculated with the commercial US.Payroll regulation: company setup, employee data,
+> lifecycle events, tenant customizing, and 18 scenario tests with fully documented
+> expected results.
+>
+> The demo is MIT-licensed and free to read and adapt. **Running it requires a licensed
+> copy of US.Payroll**, which is not public. To see the demo live, or to obtain a license,
+> [contact us](https://payrollex.io/contact/?interest=demo&country=US).
 
 ---
 
@@ -45,7 +30,7 @@ tenant is created. The demo tenant (`Apex.DigitalSolutions`) then consumes
 | **Garnishment** — child support order, disposable earnings calculation, CCPA cap | T1, T3 |
 | **Employee lifecycle** — new hire, mid-period salary change, FMLA leave, state relocation, re-entry | T2 |
 | **YTD caps and FUTA** — SS wage base, FUTA $7,000/employee base, 401(k) limits, Additional Medicare threshold, NY PFL maximum | T3 |
-| **Reports** — payslip per pay date, W-2, Form 941 (quarterly), Form 940 (annual FUTA), State W-2 | T3 |
+| **Reports** — payslip per pay date, W-2, State W-2, Form 941 (quarterly), Form 940 (annual FUTA) | T3 |
 | **Tenant customizing** — L2 regulation extending US.Payroll without modifying it (§132 transit benefit, WFH stipend) | T4 |
 
 ---
@@ -79,6 +64,8 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 | 9 | David Kim | IT Support Tech | Weekly | PA hourly · Philadelphia Wage Tax · PA UC |
 | 10 | Ashley Park | QA Engineer | Weekly | CA hourly · SDI uncapped |
 
+James Lee (CA software engineer, biweekly) joins as a new hire in [T2-Lifecycle](T2-Lifecycle/).
+
 ---
 
 ## Tutorials
@@ -87,30 +74,102 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 |:---:|:---|:---|
 | [T1](T1-Bootstrap/) | **Bootstrap a Company** | Set up Apex from zero to first payrun in 20 min |
 | [T2](T2-Lifecycle/) | **Employee Lifecycle** | New hire · salary change · FMLA · state relocation · re-entry |
-| [T3](T3-Payruns/) | **Payruns & Reports** | Monthly/biweekly/weekly runs · YTD caps · W-2 · Form 941/940 |
+| [T3](T3-Payruns/) | **Payruns & Reports** | Monthly/biweekly/weekly runs · YTD caps · W-2 · State W-2 · Form 941/940 |
 | [T4](T4-Customizing/) | **Tenant Customizing** | Add §132 transit benefit + WFH stipend via L2 regulation |
+
+The tenant structure, regulation layers, wage types and tax jurisdiction resolution are
+summarized in [Docs/Architecture.md](Docs/Architecture.md).
 
 ---
 
-## Prerequisites
+## Tests
 
-- **Payroll Engine Backend** running (local or hosted) — see [payrollengine.org](https://payrollengine.org)
-- **pecmd** CLI installed — see [PayrollConsole](https://github.com/Payroll-Engine/PayrollEngine.PayrollConsole)
-- **Regulation packages** installed:
-  - `US.Payroll.2026.json` (core)
-  - `US.Payroll.Data.Federal.Tax.2026.json`
-  - `US.Payroll.Data.Federal.FICA.2026.json`
-  - `US.Payroll.Data.State.2026.json`
-  - `US.Payroll.Data.State.Withholding.2026.json`
-  - `US.Payroll.Data.State.MultiState.2026.json`
-  - `US.Payroll.Data.State.W2.2026.json`
-  - `US.Payroll.Data.State.WageBase.2026.json`
-  - `US.Payroll.Data.Local.Tax.2026.json`
-  - `US.Payroll.Data.Local.Tax.WageBase.2026.json`
-  - `US.Payroll.Data.Local.Tax.IndianaCounty.2026.json`
-  - `US.Payroll.Data.Local.Tax.Philadelphia.2026.json`
-  - `US.Payroll.Data.Local.Tax.NewYork.2026.json`
-  - `US.Payroll.Data.Federal.Garnishment.2026.json`
+The [`Tests/`](Tests/) folder contains 18 integration tests (223 asserted wage type results) — one per key demo scenario,
+including the March bonus, the annual limits over consecutive monthly payruns and the T2 lifecycle events.
+
+Each test folder has a `README.md` with the scenario description and assertion table, and each
+`*.et.json` documents the full calculation chain in its `reason` field — readable without running anything.
+With a licensed US.Payroll installation, the tests validate the setup:
+
+```bash
+cd Tests
+pecmd Run.Tests.pecmd /TestPrecision2
+```
+
+---
+
+## Running the Demo (Licensed Users)
+
+### Prerequisites
+
+- **Payroll Engine Backend 1.2 or later** running (local or hosted) — see [payrollengine.org](https://payrollengine.org)
+- **`TenantIsolationLevel`** other than `None` in the backend configuration (e.g. `Write`):
+  the demo tenant consumes US.Payroll as a shared regulation
+- **pecmd** CLI installed, with the `.pecmd` file extension registered — see
+  [PayrollConsole](https://github.com/Payroll-Engine/PayrollEngine.PayrollConsole)
+- **Regulation.US.Payroll** (licensed) checked out as a sibling folder:
+
+```
+Repos/
+  Regulation.US.Payroll/      ← licensed, not public
+  Regulation.US.Payroll.Demo/ ← this repo
+```
+
+The setup scripts are Windows command files (`.cmd`). On other platforms, run the `.pecmd`
+files of each step in the order listed in `Setup.cmd`.
+
+### Regulation Packages
+
+`Setup.cmd` installs them from the sibling folder. For a manual setup, import:
+
+- `US.Payroll.2026.json` (core)
+- `US.Payroll.Data.Federal.Tax.2026.json`
+- `US.Payroll.Data.Federal.FICA.2026.json`
+- `US.Payroll.Data.State.2026.json`
+- `US.Payroll.Data.State.Withholding.2026.json`
+- `US.Payroll.Data.State.MultiState.2026.json`
+- `US.Payroll.Data.State.W2.2026.json`
+- `US.Payroll.Data.State.WageBase.2026.json`
+- `US.Payroll.Data.Local.Tax.2026.json`
+- `US.Payroll.Data.Local.Tax.WageBase.2026.json`
+- `US.Payroll.Data.Local.Tax.IndianaCounty.2026.json`
+- `US.Payroll.Data.Local.Tax.Philadelphia.2026.json`
+- `US.Payroll.Data.Local.Tax.NewYork.2026.json`
+- `US.Payroll.Data.Federal.Garnishment.2026.json`
+
+### Quick Start
+
+Run the full setup from the repo root:
+
+```bash
+Setup.cmd
+```
+
+> **Warning:** Step 1 deletes the tenants `Apex.DigitalSolutions` **and `US.Payroll`**.
+> Do not run `Setup.cmd` against a backend with a `US.Payroll` tenant you want to keep.
+
+| Step | What it does |
+|:---:|:---|
+| 1 | Delete the tenants `Apex.DigitalSolutions` and `US.Payroll` (the US.Payroll test fixtures cannot be imported twice) |
+| 2 | Install US.Payroll and the 2026 data regulations (`Regulation.US.Payroll\2026\Setup.Tests.pecmd`) |
+| 3 | Import the reports (Payslip, W-2, State W-2, Form 941, Form 940) |
+| 4 | Bootstrap the Apex tenant, payrolls, employees and company cases (T1) |
+| 5 | Add the L2 regulation `Apex.Payroll` (T4) |
+| 6 | Persist the January payruns of all three payrolls |
+| 7 | Persist the biweekly payruns up to Mar 22, including the March bonus |
+| 8 | Run all 18 integration tests |
+
+The demo tenant (`Apex.DigitalSolutions`) consumes `US.Payroll` as a shared regulation —
+no separate package import is needed.
+
+| Script | Purpose |
+|:---|:---|
+| `Setup.cmd` | Full setup and test run (steps 1–8) |
+| `Setup.Bootstrap.cmd` | Regulation, reports and T1 bootstrap only — keeps the `US.Payroll` tenant, deletes only `Apex.DigitalSolutions` |
+| `Delete.cmd` | Delete the demo tenant `Apex.DigitalSolutions` only |
+
+Or step through the tutorials manually, starting with
+[T1-Bootstrap/README.md](T1-Bootstrap/README.md).
 
 ---
 
@@ -124,35 +183,7 @@ A fictional IT consulting company that exercises the full breadth of US payroll 
 
 ---
 
-## Tests
-
-The [`Tests/`](Tests/) folder contains 18 integration tests (223 asserted wage type results) — one per key demo scenario,
-including the March bonus, the annual limits over consecutive monthly payruns and the T2 lifecycle events.
-Run them after T1-Bootstrap to validate your setup and confirm expected payslip values.
-
-```bash
-cd Tests
-pecmd Run.Tests.pecmd /TestPrecision2
-```
-
-Each test folder has a `README.md` with the scenario description and assertion table.
-
----
-
-## Quick Start
-
-Run the full setup from the repo root — this bootstraps the tenant,
-imports all employee data, sets up T4 customizing, and runs all 14 integration tests:
-
-```bash
-Setup.cmd
-```
-
-Or step through the tutorials manually, starting with
-[T1-Bootstrap/README.md](T1-Bootstrap/README.md).
-
----
-
 ## License
 
-[MIT](LICENSE) — free to use for any purpose.
+[MIT](LICENSE) — free to use for any purpose. The MIT license covers this demo repository only;
+the US.Payroll regulation it runs on is commercial.

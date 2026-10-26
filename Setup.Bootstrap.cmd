@@ -12,12 +12,10 @@ setlocal
 ::
 :: Prerequisites:
 ::   - .pecmd extension registered (Register-PecmdExtension.ps1)
-::   - PE backend running
-::   - Regulation.US.Payroll repo at ..\Regulation.US.Payroll
+::   - PE backend 1.2 or later running (shared regulations, payroll calendar cycle assignment)
+::   - Licensed Regulation.US.Payroll at ..\Regulation.US.Payroll
 ::   - TenantIsolationLevel != None in appsettings (e.g. "Read" or "Write")
 ::     Required for RegulationShare controller + cross-tenant case resolution
-::   - PE backend built with SharedRegulation fix
-::     (CaseRepository + CaseFieldRepository + RegulationRepository)
 :: ============================================================
 
 echo.

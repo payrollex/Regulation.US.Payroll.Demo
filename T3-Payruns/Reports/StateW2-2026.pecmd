@@ -1,0 +1,6 @@
+# State W-2 — W-2 Boxes 15-17 per state, full year 2026
+# One line per employee and state (multi-state and commuter employees get one line per state)
+# Prerequisite: all December 2026 payruns completed (all three payrolls)
+# Note: run after year-end close — YTD accumulators must be final
+
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.StateW2 culture:en-US parameterFile:StateW2-2026.parameters.json /pdf /shellopen

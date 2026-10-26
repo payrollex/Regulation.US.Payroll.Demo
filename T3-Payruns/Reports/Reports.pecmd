@@ -5,6 +5,7 @@
 #   Payslips  → target month payruns completed
 #   Form 941  → Q1 payruns completed (Jan + Feb + Mar)
 #   W-2       → all December payruns completed (year-end close)
+#   State W-2 → all December payruns completed (year-end close)
 #   Form 940  → all December payruns completed (year-end close)
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -26,6 +27,9 @@ Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:U
 
 # W-2 — full year 2026 (all employees, after December year-end close)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.W2 culture:en-US parameterFile:W2-2026.parameters.json /pdf /shellopen
+
+# State W-2 — full year 2026 (Boxes 15-17 per employee and state, after December year-end close)
+Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.StateW2 culture:en-US parameterFile:StateW2-2026.parameters.json /pdf /shellopen
 
 # Form 940 — annual FUTA 2026 (0.6% net, $7,000 wage base, after year-end close)
 Report tenant:Apex.DigitalSolutions user:apex.admin@apexdigital.com regulation:US.Payroll report:US.Form940 culture:en-US parameterFile:Form940-2026.parameters.json /pdf /shellopen

@@ -10,6 +10,10 @@ expected payroll results for each key scenario.
 
 ## Prerequisites
 
+The test files and READMEs document the expected results and can be read without any setup.
+Running the tests requires:
+
+- A licensed US.Payroll installation (see [Running the Demo](../README.md#running-the-demo-licensed-users))
 - Payroll Engine backend running and accessible
 - Tutorial T1-Bootstrap completed (`Tests/` assumes Apex tenant and all employee cases exist)
 - Tutorial T4-Customizing completed (required by DEMO-TC08)

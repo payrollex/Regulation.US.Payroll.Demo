@@ -23,11 +23,12 @@ setlocal
 ::
 :: Prerequisites:
 ::   - .pecmd extension registered (Register-PecmdExtension.ps1)
-::   - PE backend running
-::   - Regulation.US.Payroll repo at ..\Regulation.US.Payroll
+::   - PE backend 1.2 or later running (shared regulations, payroll calendar cycle assignment)
+::   - Licensed Regulation.US.Payroll at ..\Regulation.US.Payroll
 ::   - TenantIsolationLevel != None in appsettings (e.g. "Write")
-::   - PE backend built with SharedRegulation fix
-::     (CaseRepository + CaseFieldRepository + RegulationRepository)
+::
+:: WARNING: Step 1 deletes the tenant US.Payroll. Do not run against a backend
+:: with a US.Payroll tenant you want to keep.
 :: ============================================================
 
 echo.
