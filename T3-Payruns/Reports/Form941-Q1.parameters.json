@@ -1,6 +1,7 @@
 {
   "Year": "2026",
   "Quarter": "1",
+  "DepositSchedule": "Monthly",
   "Culture": "en-US",
   "PayrollId": "Apex.Payroll.Monthly"
 }

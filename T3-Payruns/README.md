@@ -105,7 +105,9 @@ $9,478.30. DEMO-TC12 runs without the T4 stipend.
 ## Scenario 3 — Sara Chen: Annual Wage Limits
 
 Sara's FICA wages are $19,550 per month ($20,000 salary + $450 company car − $600 pre-tax
-health − $300 HSA). Consecutive monthly payruns January–November show the limits:
+health − $300 HSA). The seeded payruns also contain her $315 monthly transit benefit from
+T4-Customizing (WT 1250, FICA exempt), so the persistent reports show $19,235; DEMO-TC13 runs
+without the T4 transit benefit. Consecutive monthly payruns January–November show the limits:
 
 | Month | Limit | Effect |
 |:---|:---|:---|
@@ -168,7 +170,7 @@ Each report has a dedicated `.pecmd` file in `Reports/`. Run from the `Reports/`
 | `Payslip-Jessica-March.pecmd` | Jessica Torres payslip, pay date Mar 27 2026 (incl. bonus) | `Payslip-Jessica-March.pdf` | March Biweekly payruns complete |
 | `Form941-Q1.pecmd` | Form 941 Q1 2026 | timestamp-based | All Jan–Mar payruns complete |
 | `W2-2026.pecmd` | W-2 all employees, 2026 | timestamp-based | All December payruns complete |
-| `StateW2-2026.pecmd` | State W-2 (Boxes 15–17) per employee and state, 2026 | timestamp-based | All December payruns complete |
+| `StateW2-2026.pecmd` | State W-2 (Boxes 15–20) per employee, state and locality, 2026 | timestamp-based | All December payruns complete |
 | `Form940-2026.pecmd` | Form 940 annual FUTA, 2026 | timestamp-based | All December payruns complete |
 | `Reports.pecmd` | All six reports combined | see above | See individual prerequisites above |
 
@@ -206,28 +208,43 @@ in a month and require `PayDate`.
 | Output file | `Payslip-Sara-January.pdf` | `Payslip-Jessica-March.pdf` |
 | Key feature | Company car · 401(k) · NYC local tax | $10,000 bonus at 22% flat FIT |
 
+The employee card shows the employer (Apex Digital Solutions LLC, EIN), the pay date and the pay
+period. Employer costs are listed as positive amounts below the net pay; they are not deducted.
+
+All reports show the employer name and EIN from the company cases of T1-Bootstrap.
+
 ### Form 941 — Quarterly Federal Tax Return
 
 Q1 2026 (wages paid January–March). Covers FIT withheld + Social Security/Medicare EE and ER
-across all three payrolls. Parameter file: `Form941-Q1.parameters.json`.
+across all three payrolls. Parameter file: `Form941-Q1.parameters.json`. Line 1 counts the
+employees paid for the pay period including March 12. Lines 5a–5d show the wages (column 1)
+and the tax as wages × rate (column 2); line 7 holds the fractions of cents between column 2
+and the taxes withheld per pay period.
 
 ### W-2 — Year-End
 
 All employees, wages paid in 2026 from all payrolls. Run after December year-end close.
-YTD accumulators must be final before generating.
+YTD accumulators must be final before generating. Employees without wages in 2026 get no form.
+Box a shows the truncated SSN, Box 14 the state programs per state (e.g. `NY PFL`, `NY SDI`),
+and Box 18–20 the local wages, tax and locality (e.g. Sara: New York City, David: Philadelphia).
 
 ### State W-2 — Year-End
 
 One line per employee and state with state wages (Box 16) and state income tax (Box 17),
-aggregated over all payrolls. Multi-state and commuter employees (Marcus, Priya, Carlos) get
-one line per state by the W-2 rules of each state. States without income tax have no line:
-Jessica gets a CA line only with the T2 relocation (TX → CA from July 1).
+aggregated over all payrolls, plus local wages, tax and locality (Box 18–20). Multi-state and
+commuter employees (Marcus, Priya, Carlos) get one line per state by the W-2 rules of each state.
+States without income tax have no line: Jessica gets a CA line only with the T2 relocation
+(TX → CA from July 1).
 
 ### Form 940 — Annual FUTA Return
 
 Full year 2026. Net FUTA rate: 0.6% (gross 6.0% minus 5.4% SUTA credit
 for non-credit-reduction states). Wage base: $7,000/employee — exhausted
-in Q1 for all Apex employees.
+in Q1 for most Apex employees; with the seeded periods only, employees with lower wages
+(e.g. Ashley, David) stay below $7,000. California is a credit-reduction state: line 11 shows
+the Schedule A credit reduction (CA FUTA wages × the CA rate of the `FUTACreditReduction`
+lookup) with one row per state. Lines 13–15 compare the annual tax with the FUTA tax of the pay
+periods; a rounding difference of a few cents appears as balance due or overpayment.
 
 ---
 

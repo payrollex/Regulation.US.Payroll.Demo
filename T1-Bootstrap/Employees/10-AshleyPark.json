@@ -18,7 +18,11 @@
                 "caseName": "US.PersonalData",
                 "values": [
                   { "caseFieldName": "US.SSN",        "value": "111-22-3010", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear",   "value": "1994",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.BirthYear",   "value": "1994",        "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressStreet", "value": "900 Wilshire Boulevard", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressCity", "value": "Los Angeles", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressState", "value": "CA", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressZip", "value": "90017", "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },

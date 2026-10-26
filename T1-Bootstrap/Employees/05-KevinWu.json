@@ -18,7 +18,11 @@
                 "caseName": "US.PersonalData",
                 "values": [
                   { "caseFieldName": "US.SSN",        "value": "111-22-3005", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear",   "value": "1990",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.BirthYear",   "value": "1990",        "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressStreet", "value": "1450 Market Street", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressCity", "value": "San Francisco", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressState", "value": "CA", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressZip", "value": "94103", "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },

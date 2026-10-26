@@ -18,7 +18,11 @@
                 "caseName": "US.PersonalData",
                 "values": [
                   { "caseFieldName": "US.SSN",        "value": "111-22-3007", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear",   "value": "1982",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.BirthYear",   "value": "1982",        "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressStreet", "value": "77 Garth Road", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressCity", "value": "Scarsdale", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressState", "value": "NY", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressZip", "value": "10583", "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },

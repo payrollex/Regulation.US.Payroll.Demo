@@ -18,7 +18,11 @@
                 "caseName": "US.PersonalData",
                 "values": [
                   { "caseFieldName": "US.SSN",        "value": "111-22-3008", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear",   "value": "1991",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.BirthYear",   "value": "1991",        "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressStreet", "value": "15 Court Street", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressCity", "value": "White Plains", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressState", "value": "NY", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressZip", "value": "10601", "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },

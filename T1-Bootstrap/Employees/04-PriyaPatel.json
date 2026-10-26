@@ -18,7 +18,11 @@
                 "caseName": "US.PersonalData",
                 "values": [
                   { "caseFieldName": "US.SSN",        "value": "111-22-3004", "created": "2026-01-01T00:00:00.0Z" },
-                  { "caseFieldName": "US.BirthYear",   "value": "1985",        "created": "2026-01-01T00:00:00.0Z" }
+                  { "caseFieldName": "US.BirthYear",   "value": "1985",        "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressStreet", "value": "35 Elm Street", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressCity", "value": "Stamford", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressState", "value": "CT", "created": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.AddressZip", "value": "06902", "created": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },

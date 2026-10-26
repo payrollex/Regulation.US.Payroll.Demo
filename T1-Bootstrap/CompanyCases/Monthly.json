@@ -19,8 +19,26 @@
                   { "caseFieldName": "US.EIN",                       "value": "27-1234567",                 "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.CompanyLegalName",          "value": "Apex Digital Solutions LLC", "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.CompanyState",              "value": "NY",                         "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.CompanyStreet",             "value": "125 Hudson Street, Suite 800", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.CompanyCity",               "value": "New York",                   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.CompanyZip",                "value": "10013",                      "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.CompanyPhone",              "value": "(212) 555-0142",             "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.SUIRate",                   "value": "0.021",                      "start": "2026-01-01T00:00:00.0Z" },
                   { "caseFieldName": "US.FUTACreditReductionState",  "value": "false",                      "start": "2026-01-01T00:00:00.0Z" }
+                ]
+              }
+            },
+            {
+              "userIdentifier": "apex.admin@apexdigital.com",
+              "divisionName": "Apex.Division.Monthly",
+              "case": {
+                "caseName": "US.StateEmployerAccount",
+                "values": [
+                  { "caseFieldName": "US.StateEmployerId", "caseSlot": "CA", "value": "123-4567-8",    "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateEmployerId", "caseSlot": "CT", "value": "1234567-000",   "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateEmployerId", "caseSlot": "NJ", "value": "271234567/000", "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateEmployerId", "caseSlot": "NY", "value": "271234567",     "start": "2026-01-01T00:00:00.0Z" },
+                  { "caseFieldName": "US.StateEmployerId", "caseSlot": "PA", "value": "12345678",      "start": "2026-01-01T00:00:00.0Z" }
                 ]
               }
             },
