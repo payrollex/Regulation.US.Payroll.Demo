@@ -39,8 +39,8 @@ Payrun results belong to the year of the pay date (`cycleAssignment: PayDate`).
 
 ## Regulation Layer Model
 
-Each of the three payrolls uses the same six L1 regulation layers plus one
-optional L2 (added by T4-Customizing):
+Each of the three payrolls uses the same six L1 regulation layers plus two
+optional L2 layers (added by T4-Customizing):
 
 ```
 Priority │ Level │ Regulation
@@ -52,6 +52,7 @@ Priority │ Level │ Regulation
       10 │  L1   │ US.Payroll.Data.Local.Tax     (local EIT rates, PSD codes)
       11 │  L1   │ US.Payroll.Data.Federal.Garnishment  (CCPA limits)
      100 │  L2   │ Apex.Payroll              (company-specific benefits — T4)
+     101 │  L2   │ Apex.Payroll.Data.Policy  (company policy values, source-traced via .lex — T4)
 ```
 
 Higher priority overrides lower priority for the same wage type or case field.

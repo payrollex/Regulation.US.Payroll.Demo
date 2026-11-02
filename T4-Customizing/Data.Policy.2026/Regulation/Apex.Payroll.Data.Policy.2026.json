@@ -1,0 +1,39 @@
+{
+  "$schema": "../../../Schemas/PayrollEngine.Exchange.schema.json",
+  "createdObjectDate": "2026-01-01T00:00:00.0Z",
+  "tenants": [
+    {
+      "identifier": "Apex.DigitalSolutions",
+      "updateMode": "NoUpdate",
+      "regulations": [
+        {
+          "name": "Apex.Payroll.Data.Policy",
+          "updateMode": "Update",
+          "description": "Apex Digital Solutions LLC — company policy parameters 2026 (Level 2 data regulation). Holds the WFH equipment stipend maximum per pay period. The value is a company policy, not a statutory value; its source is documented in the .lex manifest next to this regulation.",
+          "validFrom": "2026-01-01T00:00:00Z",
+          "lookups": [
+            {
+              "name": "Apex.PolicyParameters",
+              "nameLocalizations": { "en-US": "Apex Policy Parameters" },
+              "description": "Company policy parameters of Apex Digital Solutions LLC for 2026. Source: Apex Employee Handbook 2026, section 4.2 (see .lex/lex.json). Company policy, not statute.",
+              "attributes": {
+                "compliance.legalBasis": "Company policy (Apex Employee Handbook 2026, section 4.2); no statutory basis",
+                "compliance.unit": "USD",
+                "compliance.scope": "company",
+                "compliance.provider": "Apex HR",
+                "compliance.updateCycle": "annual (handbook edition)"
+              },
+              "values": [
+                {
+                  "key": "WFHStipendMaxPerPeriod",
+                  "description": "Apex Employee Handbook 2026, section 4.2: the remote-work equipment stipend is limited to 200 USD per pay period, regardless of the payroll frequency.",
+                  "value": "200"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

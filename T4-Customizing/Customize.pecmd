@@ -5,11 +5,14 @@
 # Step 1: Create the L2 Apex.Payroll regulation in Apex.DigitalSolutions tenant
 PayrollImport Apex.Payroll.2026.json
 
-# Step 2: Add L2 layer to all three payrolls
+# Step 2: Import the company policy data regulation (WFH stipend maximum; source documented in Data.Policy.2026/.lex)
+PayrollImport Data.Policy.2026/Regulation/Apex.Payroll.Data.Policy.2026.json
+
+# Step 3: Add L2 layers (Apex.Payroll + Apex.Payroll.Data.Policy) to all three payrolls
 PayrollImport PayrollsWithL2.json
 
-# Step 3: Set transit benefit for NYC-based employees (Sara, Carlos, Linda)
+# Step 4: Set transit benefit for NYC-based employees (Sara, Carlos, Linda)
 PayrollImport CaseValues/TransitBenefit-NYC.json
 
-# Step 4: Set WFH equipment stipend for remote employees (Kevin, Jessica)
+# Step 5: Set WFH equipment stipend for remote employees (Kevin, Jessica)
 PayrollImport CaseValues/WFHStipend-Remote.json

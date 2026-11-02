@@ -21,7 +21,8 @@
             { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
             { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
             { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
-            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" },
+            { "level": 2, "priority": 101, "regulationName": "Apex.Payroll.Data.Policy" }
           ]
         },
         {
@@ -39,7 +40,8 @@
             { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
             { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
             { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
-            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" },
+            { "level": 2, "priority": 101, "regulationName": "Apex.Payroll.Data.Policy" }
           ]
         },
         {
@@ -57,7 +59,8 @@
             { "level": 1, "priority": 9,  "regulationName": "US.Payroll.Data.State" },
             { "level": 1, "priority": 10, "regulationName": "US.Payroll.Data.Local.Tax" },
             { "level": 1, "priority": 11, "regulationName": "US.Payroll.Data.Federal.Garnishment" },
-            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" }
+            { "level": 2, "priority": 100, "regulationName": "Apex.Payroll" },
+            { "level": 2, "priority": 101, "regulationName": "Apex.Payroll.Data.Policy" }
           ]
         }
       ]
