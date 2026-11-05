@@ -17,7 +17,7 @@
       "content": "200",
       "documentRef": "Apex-EmployeeHandbook-2026-Excerpt.md",
       "unit": "USD",
-      "sourceUrl": "https://intranet.apexdigital.example/hr/employee-handbook-2026",
+      "sourceUrls": ["https://intranet.apexdigital.example/hr/employee-handbook-2026"],
       "sourceLocation": "Employee Handbook 2026, section 4.2 Remote-Work Equipment Stipend, first bullet",
       "legalReference": "Company policy, not statute: no legal norm applies. The stipend is taxable wages (no accountable plan).",
       "description": "Maximum WFH equipment stipend per pay period (company policy)"
