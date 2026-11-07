@@ -4,6 +4,7 @@
   "regulation": "Apex.Payroll.Data.Policy",
   "validFrom": "2026-01-01",
   "provider": "Apex HR",
+  "languages": ["en"],
   "sources": [
     {
       "url": "https://intranet.apexdigital.example/hr/employee-handbook-2026",
