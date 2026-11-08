@@ -1,0 +1,46 @@
+﻿{
+  "created": "2026-11-07T16:35:05Z",
+  "tool": "pecmd LexSnapshot 1.2.0",
+  "authority": "US",
+  "regulation": "Apex.Payroll.Data.Policy",
+  "validFrom": "2026-01-01",
+  "provider": "Apex HR",
+  "sourceHash": "sha256:8f93ccff3439f0c838206ec2e16db385de986ce4f5bde112fd5a4af365a59b80",
+  "sources": [
+    {
+      "url": "https://intranet.apexdigital.example/hr/employee-handbook-2026",
+      "description": "Apex Digital Solutions LLC Employee Handbook 2026 (company policy, fictional demo document)",
+      "legalBasis": "Company policy; no statutory basis"
+    }
+  ],
+  "values": [
+    {
+      "key": "Apex.PolicyParameters.WFHStipendMaxPerPeriod",
+      "content": "200",
+      "documentRef": "Apex-EmployeeHandbook-2026-Excerpt.md",
+      "unit": "USD",
+      "sourceUrls": [
+        "https://intranet.apexdigital.example/hr/employee-handbook-2026"
+      ],
+      "sourceLocation": "Employee Handbook 2026, section 4.2 Remote-Work Equipment Stipend, first bullet",
+      "legalReference": "Company policy, not statute: no legal norm applies. The stipend is taxable wages (no accountable plan).",
+      "description": "Maximum WFH equipment stipend per pay period (company policy)"
+    }
+  ],
+  "files": [
+    {
+      "fileName": "Apex-EmployeeHandbook-2026-Excerpt.md",
+      "contentFile": "Apex-EmployeeHandbook-2026-Excerpt.md",
+      "contentType": "application/octet-stream",
+      "sha256": "ac60457408f1f7ea7a5ff68b5474cef4ac9b7d22e79e3a9a51991a3726a0cafa",
+      "fileSizeBytes": 768,
+      "description": "Excerpt of the Apex Employee Handbook 2026, section 4.2 (evidence for the stipend maximum)"
+    }
+  ],
+  "liveSources": [
+    {
+      "url": "https://intranet.apexdigital.example/hr/employee-handbook-2026",
+      "reason": "No such host is known. (intranet.apexdigital.example:443)"
+    }
+  ]
+}
